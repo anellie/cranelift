@@ -1,0 +1,33 @@
+[package]
+name = "minira-util"
+version = "0.1.0"
+authors = ["The Regalloc.rs Project Developers"]
+edition = "2018"
+repository = "https://github.com/bytecodealliance/regalloc.rs"
+publish = false
+
+[[bin]]
+name = "minira-util"
+path = "./bin/minira.rs"
+
+[lib]
+name = "minira"
+path = "./bin/minira_lib.rs"
+
+[dependencies]
+regalloc =  { path = "./lib", features = ["fuzzing", "enable-serde"] }
+arbitrary = { version = "0.4.0", features = ["derive"]}
+rustc-hash = { version = "1.0.1", default-features = false }
+log = { version = "0.4.8", default-features = false }
+pretty_env_logger = "0.4.0"
+clap = "2.33.0"
+serde = "1.0.94"
+bincode = "1.2.1"
+
+[profile.release]
+debug = true
+
+[profile.release.package.minira-util-fuzz]
+debug = true
+debug-assertions = true
+overflow-checks = true

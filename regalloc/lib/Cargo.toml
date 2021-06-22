@@ -1,0 +1,24 @@
+[package]
+name = "regalloc"
+version = "0.0.31"
+authors = ["The Regalloc.rs Developers"]
+edition = "2018"
+license = "Apache-2.0 WITH LLVM-exception"
+description = "Modular register allocation algorithms"
+repository = "https://github.com/bytecodealliance/regalloc.rs"
+readme = "README.md"
+
+[dependencies]
+rustc-hash = { version = "1.0.1", default-features = false }
+log = { version = "0.4.8", default-features = false }
+smallvec = "1.6.1"
+serde = { version = "1.0.94", features = ["derive"], optional = true }
+hashbrown = "0.11.2"
+
+
+[features]
+default = []
+fuzzing = []
+
+# For dependent crates that want to serialize some parts of regalloc.
+enable-serde = ["serde"]
