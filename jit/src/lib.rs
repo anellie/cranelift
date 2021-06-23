@@ -84,7 +84,8 @@ pub trait MemoryManager {
     /// Allocates a new page-aligned pointer of `size`, which should be a multiple of page size
     fn alloc_page_aligned(&mut self, size: usize) -> *mut u8;
     /// Deallocates pointer obtained from `alloc_page_aligned`
-    fn dealloc(&mut self, ptr: *mut u8);
+    /// `size` must be the same as passed to `alloc_page_aligned`.
+    fn dealloc(&mut self, ptr: *mut u8, size: usize);
 }
 
 struct DefaultManager;
@@ -134,8 +135,8 @@ impl MemoryManager for DefaultManager {
         }
     }
 
-    fn dealloc(&mut self, _ptr: *mut u8) {
-        panic!()
+    fn dealloc(&mut self, ptr: *mut u8, _size: usize) {
+        unsafe { libc::free(ptr as _); }
     }
 }
 
@@ -161,7 +162,7 @@ impl MemoryManager for DefaultManager {
         panic!()
     }
 
-    fn dealloc(&mut self, _ptr: *mut u8) {
+    fn dealloc(&mut self, _ptr: *mut u8, _size: usize) {
         panic!()
     }
 }

@@ -40,7 +40,7 @@ impl Drop for PtrLen {
         if !self.ptr.is_null() {
             unsafe {
                 mem_manage().set_rw(self.ptr, self.len);
-                mem_manage().dealloc(self.ptr);
+                mem_manage().dealloc(self.ptr, self.len);
             }
         }
     }
