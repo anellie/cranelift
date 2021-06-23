@@ -41,7 +41,7 @@ impl Drop for PtrLen {
     fn drop(&mut self) {
         if !self.ptr.is_null() {
             unsafe {
-                mem_manage().set_rw(self.ptr);
+                mem_manage().set_rw(self.ptr, self.len);
                 mem_manage().dealloc(self.ptr);
             }
         }
@@ -104,7 +104,7 @@ impl Memory {
         {
             for &PtrLen { ptr, len } in &self.allocations[self.executable..] {
                 if len != 0 {
-                    mem_manage().set_rx(ptr);
+                    mem_manage().set_rx(ptr, len);
                 }
             }
         }
@@ -117,7 +117,7 @@ impl Memory {
         {
             for &PtrLen { ptr, len } in &self.allocations[self.executable..] {
                 if len != 0 {
-                    mem_manage().set_r(ptr);
+                    mem_manage().set_r(ptr, len);
                 }
             }
         }
