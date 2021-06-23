@@ -25,23 +25,19 @@ impl PtrLen {
     fn with_size(size: usize) -> Result<Self, ()> {
         let page_size = mem_manage().page_size();
         let alloc_size = round_up_to_page_size(size, page_size);
-        unsafe {
-            let ptr = mem_manage().alloc_page_aligned(alloc_size);
-            Ok(Self {
-                ptr,
-                len: alloc_size,
-            })
-        }
+        let ptr = mem_manage().alloc_page_aligned(alloc_size);
+        Ok(Self {
+            ptr,
+            len: alloc_size,
+        })
     }
 }
 
 impl Drop for PtrLen {
     fn drop(&mut self) {
         if !self.ptr.is_null() {
-            unsafe {
-                mem_manage().set_rw(self.ptr, self.len);
-                mem_manage().dealloc(self.ptr, self.len);
-            }
+            mem_manage().set_rw(self.ptr, self.len);
+            mem_manage().dealloc(self.ptr, self.len);
         }
     }
 }

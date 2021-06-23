@@ -40,8 +40,6 @@ use std::sync::{Mutex, MutexGuard};
 
 pub use crate::backend::{JITBuilder, JITModule};
 use alloc::boxed::Box;
-use core::{any::Any, ptr};
-use cranelift_entity::__core::ffi::c_void;
 use lazy_static::lazy_static;
 
 /// Version number of this crate.
@@ -62,9 +60,11 @@ fn mem_manage() -> MutexGuard<'static, Box<dyn MemoryManager + Send>> {
 
 /// Set the memory manager. See below.
 /// Only call once.
-/// Not needed on with feature std.
+/// Not needed with feature std.
 #[cfg(not(feature = "std"))]
 pub fn set_manager(new_mgr: Box<dyn MemoryManager + Send>) {
+    use core::any::Any;
+
     let mut manager = MANAGER.lock();
     assert_eq!((**manager).type_id(), DefaultManager.type_id());
     *manager = new_mgr
@@ -110,7 +110,7 @@ impl MemoryManager for DefaultManager {
 
     #[cfg(not(target_os = "windows"))]
     fn alloc_page_aligned(&mut self, size: usize) -> *mut u8 {
-        let mut ptr = ptr::null_mut();
+        let mut ptr = core::ptr::null_mut();
         unsafe {
             let err = libc::posix_memalign(&mut ptr, self.page_size(), size);
             assert_eq!(err, 0);
@@ -127,7 +127,7 @@ impl MemoryManager for DefaultManager {
 
         unsafe {
             VirtualAlloc(
-                ptr::null_mut(),
+                core::ptr::null_mut(),
                 size,
                 MEM_COMMIT | MEM_RESERVE,
                 PAGE_READWRITE,
