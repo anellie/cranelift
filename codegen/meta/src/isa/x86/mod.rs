@@ -1,12 +1,18 @@
-use crate::cdsl::cpu_modes::CpuMode;
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::types::{ReferenceType, VectorType};
+use crate::cdsl::{
+    cpu_modes::CpuMode,
+    isa::TargetIsa,
+    types::{ReferenceType, VectorType},
+};
 
-use crate::shared::types::Bool::B1;
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I16, I32, I64, I8};
-use crate::shared::types::Reference::{R32, R64};
-use crate::shared::Definitions as SharedDefinitions;
+use crate::shared::{
+    types::{
+        Bool::B1,
+        Float::{F32, F64},
+        Int::{I16, I32, I64, I8},
+        Reference::{R32, R64},
+    },
+    Definitions as SharedDefinitions,
+};
 
 mod encodings;
 mod instructions;

@@ -57,33 +57,37 @@
 //!   of arguments must match the destination type, and the lane indexes must be in range.
 
 use self::flags::verify_flags;
-use crate::dbg::DisplayList;
-use crate::dominator_tree::DominatorTree;
-use crate::entity::SparseSet;
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir;
-use crate::ir::entities::AnyEntity;
-use crate::ir::instructions::{BranchInfo, CallInfo, InstructionFormat, ResolvedConstraint};
-use crate::ir::{
-    types, ArgumentLoc, ArgumentPurpose, Block, Constant, FuncRef, Function, GlobalValue, Inst,
-    InstructionData, JumpTable, Opcode, SigRef, StackSlot, StackSlotKind, Type, Value, ValueDef,
-    ValueList, ValueLoc,
+use crate::{
+    dbg::DisplayList,
+    dominator_tree::DominatorTree,
+    entity::SparseSet,
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir,
+    ir::{
+        entities::AnyEntity,
+        instructions::{BranchInfo, CallInfo, InstructionFormat, ResolvedConstraint},
+        types, ArgumentLoc, ArgumentPurpose, Block, Constant, FuncRef, Function, GlobalValue, Inst,
+        InstructionData, JumpTable, Opcode, SigRef, StackSlot, StackSlotKind, Type, Value,
+        ValueDef, ValueList, ValueLoc,
+    },
+    isa::TargetIsa,
+    iterators::IteratorExtras,
+    print_errors::pretty_verifier_error,
+    settings::FlagsOrIsa,
+    timing,
 };
-use crate::isa::TargetIsa;
-use crate::iterators::IteratorExtras;
-use crate::print_errors::pretty_verifier_error;
-use crate::settings::FlagsOrIsa;
-use crate::timing;
-use alloc::collections::BTreeSet;
-use alloc::string::{String, ToString};
-use alloc::vec::Vec;
-use core::cmp::Ordering;
-use core::fmt::{self, Display, Formatter, Write};
+use alloc::{
+    collections::BTreeSet,
+    string::{String, ToString},
+    vec::Vec,
+};
+use core::{
+    cmp::Ordering,
+    fmt::{self, Display, Formatter, Write},
+};
 use log::debug;
 
-pub use self::cssa::verify_cssa;
-pub use self::liveness::verify_liveness;
-pub use self::locations::verify_locations;
+pub use self::{cssa::verify_cssa, liveness::verify_liveness, locations::verify_locations};
 
 mod cssa;
 mod flags;
@@ -2051,10 +2055,14 @@ impl<'a> Verifier<'a> {
 #[cfg(test)]
 mod tests {
     use super::{Verifier, VerifierError, VerifierErrors};
-    use crate::entity::EntityList;
-    use crate::ir::instructions::{InstructionData, Opcode};
-    use crate::ir::{types, AbiParam, Function};
-    use crate::settings;
+    use crate::{
+        entity::EntityList,
+        ir::{
+            instructions::{InstructionData, Opcode},
+            types, AbiParam, Function,
+        },
+        settings,
+    };
 
     macro_rules! assert_err_with_msg {
         ($e:expr, $msg:expr) => {

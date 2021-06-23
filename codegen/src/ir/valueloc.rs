@@ -3,8 +3,10 @@
 //! The register allocator assigns every SSA value to either a register or a stack slot. This
 //! assignment is represented by a `ValueLoc` object.
 
-use crate::ir::StackSlot;
-use crate::isa::{RegInfo, RegUnit};
+use crate::{
+    ir::StackSlot,
+    isa::{RegInfo, RegUnit},
+};
 use core::fmt;
 
 #[cfg(feature = "enable-serde")]

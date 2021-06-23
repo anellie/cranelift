@@ -5,10 +5,13 @@
 //! `cranelift-codegen/meta/src/shared/immediates` crate in the meta language.
 
 use alloc::vec::Vec;
-use core::cmp::Ordering;
-use core::fmt::{self, Display, Formatter};
-use core::str::FromStr;
-use core::{i32, u32};
+use core::{
+    cmp::Ordering,
+    fmt::{self, Display, Formatter},
+    i32,
+    str::FromStr,
+    u32,
+};
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 
@@ -884,10 +887,7 @@ impl IntoBytes for Ieee64 {
 mod tests {
     use super::*;
     use alloc::string::ToString;
-    use core::fmt::Display;
-    use core::mem;
-    use core::str::FromStr;
-    use core::{f32, f64};
+    use core::{f32, f64, fmt::Display, mem, str::FromStr};
 
     #[test]
     fn format_imm64() {

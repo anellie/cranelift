@@ -8,14 +8,14 @@ use crate::{
     VirtualReg, NUM_REG_CLASSES,
 };
 
+use crate::data_structures::FxHashMap as HashMap;
+use alloc::collections::BinaryHeap;
+use alloc::fmt;
+use alloc::format;
+use alloc::vec::Vec;
+use core::{cmp, cmp::Ordering};
 use log::{debug, info, log_enabled, trace, Level};
 use smallvec::SmallVec;
-use alloc::collections::BinaryHeap;
-use core::{cmp, cmp::Ordering};
-use alloc::fmt;
-use alloc::vec::Vec;
-use alloc::format;
-use crate::data_structures::FxHashMap as HashMap;
 
 macro_rules! lsra_assert {
     ($arg:expr) => {

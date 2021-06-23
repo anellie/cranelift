@@ -1,7 +1,5 @@
 //! An index-accessed table implementation that avoids duplicate entries.
-use std::collections::HashMap;
-use std::hash::Hash;
-use std::slice;
+use std::{collections::HashMap, hash::Hash, slice};
 
 /// Collect items into the `table` list, removing duplicates.
 pub(crate) struct UniqueTable<'entries, T: Eq + Hash> {

@@ -4,18 +4,19 @@
 //! should be useful for already well-optimized code. More general purpose
 //! early-stage optimizations can be found in the preopt crate.
 
-use crate::cursor::{Cursor, FuncCursor};
-use crate::divconst_magic_numbers::{magic_s32, magic_s64, magic_u32, magic_u64};
-use crate::divconst_magic_numbers::{MS32, MS64, MU32, MU64};
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::{
-    condcodes::{CondCode, IntCC},
-    instructions::Opcode,
-    types::{I32, I64},
-    Block, DataFlowGraph, Function, Inst, InstBuilder, InstructionData, Type, Value,
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    divconst_magic_numbers::{magic_s32, magic_s64, magic_u32, magic_u64, MS32, MS64, MU32, MU64},
+    flowgraph::ControlFlowGraph,
+    ir::{
+        condcodes::{CondCode, IntCC},
+        instructions::Opcode,
+        types::{I32, I64},
+        Block, DataFlowGraph, Function, Inst, InstBuilder, InstructionData, Type, Value,
+    },
+    isa::TargetIsa,
+    timing,
 };
-use crate::isa::TargetIsa;
-use crate::timing;
 
 #[inline]
 /// Replaces the unique result of the instruction inst to an alias of the given value, and

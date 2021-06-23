@@ -3,21 +3,22 @@
 //! The `Function` struct defined in this module owns all of its basic blocks and
 //! instructions.
 
-use crate::binemit::CodeOffset;
-use crate::entity::{PrimaryMap, SecondaryMap};
-use crate::ir;
-use crate::ir::{
-    instructions::BranchInfo, Block, ExtFuncData, FuncRef, GlobalValue, GlobalValueData, Heap,
-    HeapData, Inst, InstructionData, JumpTable, JumpTableData, Opcode, SigRef, StackSlot,
-    StackSlotData, Table, TableData,
+use crate::{
+    binemit::CodeOffset,
+    entity::{PrimaryMap, SecondaryMap},
+    ir,
+    ir::{
+        instructions::BranchInfo, Block, BlockOffsets, DataFlowGraph, ExtFuncData, ExternalName,
+        FuncRef, GlobalValue, GlobalValueData, Heap, HeapData, Inst, InstEncodings,
+        InstructionData, JumpTable, JumpTableData, JumpTableOffsets, JumpTables, Layout, Opcode,
+        SigRef, Signature, SourceLocs, StackSlot, StackSlotData, StackSlots, Table, TableData,
+        ValueLocations,
+    },
+    isa::{CallConv, EncInfo, Encoding, Legalize, TargetIsa},
+    regalloc::{EntryRegDiversions, RegDiversions},
+    value_label::ValueLabelsRanges,
+    write::write_function,
 };
-use crate::ir::{BlockOffsets, InstEncodings, SourceLocs, StackSlots, ValueLocations};
-use crate::ir::{DataFlowGraph, ExternalName, Layout, Signature};
-use crate::ir::{JumpTableOffsets, JumpTables};
-use crate::isa::{CallConv, EncInfo, Encoding, Legalize, TargetIsa};
-use crate::regalloc::{EntryRegDiversions, RegDiversions};
-use crate::value_label::ValueLabelsRanges;
-use crate::write::write_function;
 #[cfg(feature = "enable-serde")]
 use alloc::string::String;
 use alloc::vec::Vec;

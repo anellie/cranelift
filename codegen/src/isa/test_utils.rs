@@ -1,13 +1,13 @@
 // This is unused when no platforms with the new backend are enabled.
 #![allow(dead_code)]
 
-use crate::binemit::{Addend, CodeOffset, CodeSink, Reloc};
-use crate::ir::Value;
-use crate::ir::{ConstantOffset, ExternalName, Function, JumpTable, Opcode, SourceLoc, TrapCode};
-use crate::isa::TargetIsa;
+use crate::{
+    binemit::{Addend, CodeOffset, CodeSink, Reloc},
+    ir::{ConstantOffset, ExternalName, Function, JumpTable, Opcode, SourceLoc, TrapCode, Value},
+    isa::TargetIsa,
+};
 
-use alloc::vec::Vec;
-use alloc::string::String;
+use alloc::{string::String, vec::Vec};
 
 pub struct TestCodeSink {
     bytes: Vec<u8>,

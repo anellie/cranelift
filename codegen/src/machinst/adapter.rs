@@ -1,13 +1,12 @@
 //! Adapter for a `MachBackend` to implement the `TargetIsa` trait.
 
-use crate::binemit;
-use crate::ir;
-use crate::isa::{
-    BackendVariant, EncInfo, Encoding, Encodings, Legalize, RegClass, RegInfo, TargetIsa,
+use crate::{
+    binemit, ir,
+    isa::{BackendVariant, EncInfo, Encoding, Encodings, Legalize, RegClass, RegInfo, TargetIsa},
+    machinst::*,
+    regalloc::RegisterSet,
+    settings::{self, Flags},
 };
-use crate::machinst::*;
-use crate::regalloc::RegisterSet;
-use crate::settings::{self, Flags};
 
 #[cfg(feature = "testing_hooks")]
 use crate::regalloc::RegDiversions;
@@ -15,9 +14,8 @@ use crate::regalloc::RegDiversions;
 #[cfg(feature = "unwind")]
 use crate::isa::unwind::systemv::RegisterMappingError;
 
+use alloc::{borrow::Cow, fmt};
 use core::any::Any;
-use alloc::borrow::Cow;
-use alloc::fmt;
 use target_lexicon::Triple;
 
 /// A wrapper around a `MachBackend` that provides a `TargetIsa` impl.

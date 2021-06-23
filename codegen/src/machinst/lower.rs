@@ -5,28 +5,28 @@
 // TODO: separate the IR-query core of `LowerCtx` from the lowering logic built
 // on top of it, e.g. the side-effect/coloring analysis and the scan support.
 
-use crate::data_value::DataValue;
-use crate::entity::SecondaryMap;
-use crate::fx::{FxHashMap, FxHashSet};
-use crate::inst_predicates::{has_lowering_side_effect, is_constant_64bit};
-use crate::ir::instructions::BranchInfo;
-use crate::ir::{
-    ArgumentPurpose, Block, Constant, ConstantData, ExternalName, Function, GlobalValueData, Inst,
-    InstructionData, MemFlags, Opcode, Signature, SourceLoc, Type, Value, ValueDef,
-    ValueLabelAssignments, ValueLabelStart,
+use crate::{
+    data_value::DataValue,
+    entity::SecondaryMap,
+    fx::{FxHashMap, FxHashSet},
+    inst_predicates::{has_lowering_side_effect, is_constant_64bit},
+    ir::{
+        instructions::BranchInfo, ArgumentPurpose, Block, Constant, ConstantData, ExternalName,
+        Function, GlobalValueData, Inst, InstructionData, MemFlags, Opcode, Signature, SourceLoc,
+        Type, Value, ValueDef, ValueLabelAssignments, ValueLabelStart,
+    },
+    machinst::{
+        writable_value_regs, ABICallee, BlockIndex, BlockLoweringOrder, LoweredBlock, MachLabel,
+        VCode, VCodeBuilder, VCodeConstant, VCodeConstantData, VCodeConstants, VCodeInst,
+        ValueRegs,
+    },
+    CodegenResult,
 };
-use crate::machinst::{
-    writable_value_regs, ABICallee, BlockIndex, BlockLoweringOrder, LoweredBlock, MachLabel, VCode,
-    VCodeBuilder, VCodeConstant, VCodeConstantData, VCodeConstants, VCodeInst, ValueRegs,
-};
-use crate::CodegenResult;
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{boxed::Box, fmt::Debug, vec::Vec};
 use core::convert::TryInto;
 use log::debug;
 use regalloc::{Reg, StackmapRequestInfo, Writable};
 use smallvec::{smallvec, SmallVec};
-use alloc::fmt::Debug;
 
 /// An "instruction color" partitions CLIF instructions by side-effecting ops.
 /// All instructions with the same "color" are guaranteed not to be separated by

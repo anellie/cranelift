@@ -1,14 +1,15 @@
 //! Windows x64 ABI unwind information.
 
-use crate::isa::unwind::input;
-use crate::result::{CodegenError, CodegenResult};
+use crate::{
+    isa::unwind::input,
+    result::{CodegenError, CodegenResult},
+};
 use alloc::vec::Vec;
 use log::warn;
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 
-use crate::binemit::CodeOffset;
-use crate::isa::unwind::UnwindInst;
+use crate::{binemit::CodeOffset, isa::unwind::UnwindInst};
 
 /// Maximum (inclusive) size of a "small" stack allocation
 const SMALL_ALLOC_MAX_SIZE: u32 = 128;

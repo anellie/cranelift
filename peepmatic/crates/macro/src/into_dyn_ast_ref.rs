@@ -1,6 +1,5 @@
 use quote::quote;
-use syn::DeriveInput;
-use syn::Result;
+use syn::{DeriveInput, Result};
 
 pub fn derive_into_dyn_ast_ref(input: &DeriveInput) -> Result<impl quote::ToTokens> {
     let ty = &input.ident;

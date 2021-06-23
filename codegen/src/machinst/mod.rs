@@ -60,23 +60,21 @@
 //!
 //! ```
 
-use crate::binemit::{CodeInfo, CodeOffset, StackMap};
-use crate::ir::condcodes::IntCC;
-use crate::ir::{Function, SourceLoc, StackSlot, Type, ValueLabel};
-use crate::result::CodegenResult;
-use crate::settings::{self, Flags};
-use crate::value_label::ValueLabelsRanges;
-use alloc::boxed::Box;
-use alloc::vec::Vec;
-use core::fmt::Debug;
-use core::hash::Hasher;
+use crate::{
+    binemit::{CodeInfo, CodeOffset, StackMap},
+    ir::{condcodes::IntCC, Function, SourceLoc, StackSlot, Type, ValueLabel},
+    result::CodegenResult,
+    settings::{self, Flags},
+    value_label::ValueLabelsRanges,
+};
+use alloc::{boxed::Box, string::String, vec::Vec};
+use core::{fmt::Debug, hash::Hasher};
 use cranelift_entity::PrimaryMap;
-use regalloc::RegUsageCollector;
 use regalloc::{
-    RealReg, RealRegUniverse, Reg, RegClass, RegUsageMapper, SpillSlot, VirtualReg, Writable,
+    RealReg, RealRegUniverse, Reg, RegClass, RegUsageCollector, RegUsageMapper, SpillSlot,
+    VirtualReg, Writable,
 };
 use smallvec::{smallvec, SmallVec};
-use alloc::string::String;
 use target_lexicon::Triple;
 
 #[cfg(feature = "unwind")]

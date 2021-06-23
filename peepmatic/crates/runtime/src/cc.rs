@@ -1,8 +1,7 @@
 //! Condition codes.
 
 use serde::{Deserialize, Serialize};
-use std::convert::TryFrom;
-use std::fmt;
+use std::{convert::TryFrom, fmt};
 
 /// A condition code.
 ///

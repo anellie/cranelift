@@ -1,15 +1,13 @@
 //! Lower a single Cranelift instruction into vcode.
 
-use crate::ir::types::*;
-use crate::ir::Inst as IRInst;
-use crate::ir::Opcode;
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::settings::Flags;
-use crate::CodegenResult;
+use crate::{
+    ir::{types::*, Inst as IRInst, Opcode},
+    machinst::{lower::*, *},
+    settings::Flags,
+    CodegenResult,
+};
 
-use crate::isa::arm32::abi::*;
-use crate::isa::arm32::inst::*;
+use crate::isa::arm32::{abi::*, inst::*};
 
 use smallvec::SmallVec;
 

@@ -27,43 +27,43 @@ mod valueloc;
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 
-pub use crate::ir::atomic_rmw_op::AtomicRmwOp;
-pub use crate::ir::builder::{
-    InsertBuilder, InstBuilder, InstBuilderBase, InstInserterBase, ReplaceBuilder,
+pub use crate::{
+    ir::{
+        atomic_rmw_op::AtomicRmwOp,
+        builder::{InsertBuilder, InstBuilder, InstBuilderBase, InstInserterBase, ReplaceBuilder},
+        constant::{ConstantData, ConstantOffset, ConstantPool},
+        dfg::{DataFlowGraph, ValueDef},
+        entities::{
+            Block, Constant, FuncRef, GlobalValue, Heap, Immediate, Inst, JumpTable, SigRef,
+            StackSlot, Table, Value,
+        },
+        extfunc::{AbiParam, ArgumentExtension, ArgumentPurpose, ExtFuncData, Signature},
+        extname::ExternalName,
+        function::{DisplayFunctionAnnotations, Function},
+        globalvalue::GlobalValueData,
+        heap::{HeapData, HeapStyle},
+        instructions::{InstructionData, Opcode, ValueList, ValueListPool, VariableArgs},
+        jumptable::JumpTableData,
+        layout::Layout,
+        libcall::{get_probestack_funcref, LibCall},
+        memflags::{Endianness, MemFlags},
+        progpoint::{ExpandedProgramPoint, ProgramOrder, ProgramPoint},
+        sourceloc::SourceLoc,
+        stackslot::{StackLayoutInfo, StackSlotData, StackSlotKind, StackSlots},
+        table::TableData,
+        trapcode::TrapCode,
+        types::Type,
+        valueloc::{ArgumentLoc, ValueLoc},
+    },
+    value_label::LabelValueLoc,
 };
-pub use crate::ir::constant::{ConstantData, ConstantOffset, ConstantPool};
-pub use crate::ir::dfg::{DataFlowGraph, ValueDef};
-pub use crate::ir::entities::{
-    Block, Constant, FuncRef, GlobalValue, Heap, Immediate, Inst, JumpTable, SigRef, StackSlot,
-    Table, Value,
-};
-pub use crate::ir::extfunc::{
-    AbiParam, ArgumentExtension, ArgumentPurpose, ExtFuncData, Signature,
-};
-pub use crate::ir::extname::ExternalName;
-pub use crate::ir::function::{DisplayFunctionAnnotations, Function};
-pub use crate::ir::globalvalue::GlobalValueData;
-pub use crate::ir::heap::{HeapData, HeapStyle};
-pub use crate::ir::instructions::{
-    InstructionData, Opcode, ValueList, ValueListPool, VariableArgs,
-};
-pub use crate::ir::jumptable::JumpTableData;
-pub use crate::ir::layout::Layout;
-pub use crate::ir::libcall::{get_probestack_funcref, LibCall};
-pub use crate::ir::memflags::{Endianness, MemFlags};
-pub use crate::ir::progpoint::{ExpandedProgramPoint, ProgramOrder, ProgramPoint};
-pub use crate::ir::sourceloc::SourceLoc;
-pub use crate::ir::stackslot::{StackLayoutInfo, StackSlotData, StackSlotKind, StackSlots};
-pub use crate::ir::table::TableData;
-pub use crate::ir::trapcode::TrapCode;
-pub use crate::ir::types::Type;
-pub use crate::ir::valueloc::{ArgumentLoc, ValueLoc};
-pub use crate::value_label::LabelValueLoc;
 pub use cranelift_codegen_shared::condcodes;
 
-use crate::binemit;
-use crate::entity::{entity_impl, PrimaryMap, SecondaryMap};
-use crate::isa;
+use crate::{
+    binemit,
+    entity::{entity_impl, PrimaryMap, SecondaryMap},
+    isa,
+};
 
 /// Map of value locations.
 pub type ValueLocations = SecondaryMap<Value, ValueLoc>;

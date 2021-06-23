@@ -9,33 +9,35 @@
 //! contexts concurrently. Typically, you would have one context per compilation thread and only a
 //! single ISA instance.
 
-use crate::binemit::{
-    relax_branches, shrink_instructions, CodeInfo, MemoryCodeSink, RelocSink, StackMapSink,
-    TrapSink,
+use crate::{
+    binemit::{
+        relax_branches, shrink_instructions, CodeInfo, MemoryCodeSink, RelocSink, StackMapSink,
+        TrapSink,
+    },
+    dce::do_dce,
+    dominator_tree::DominatorTree,
+    flowgraph::ControlFlowGraph,
+    ir::Function,
+    isa::TargetIsa,
+    legalize_function,
+    legalizer::simple_legalize,
+    licm::do_licm,
+    loop_analysis::LoopAnalysis,
+    machinst::{MachCompileResult, MachStackMap},
+    nan_canonicalization::do_nan_canonicalization,
+    postopt::do_postopt,
+    redundant_reload_remover::RedundantReloadRemover,
+    regalloc,
+    remove_constant_phis::do_remove_constant_phis,
+    result::CodegenResult,
+    settings::{FlagsOrIsa, OptLevel},
+    simple_gvn::do_simple_gvn,
+    simple_preopt::do_preopt,
+    timing,
+    unreachable_code::eliminate_unreachable_code,
+    value_label::{build_value_labels_ranges, ComparableSourceLoc, ValueLabelsRanges},
+    verifier::{verify_context, verify_locations, VerifierErrors, VerifierResult},
 };
-use crate::dce::do_dce;
-use crate::dominator_tree::DominatorTree;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::Function;
-use crate::isa::TargetIsa;
-use crate::legalize_function;
-use crate::legalizer::simple_legalize;
-use crate::licm::do_licm;
-use crate::loop_analysis::LoopAnalysis;
-use crate::machinst::{MachCompileResult, MachStackMap};
-use crate::nan_canonicalization::do_nan_canonicalization;
-use crate::postopt::do_postopt;
-use crate::redundant_reload_remover::RedundantReloadRemover;
-use crate::regalloc;
-use crate::remove_constant_phis::do_remove_constant_phis;
-use crate::result::CodegenResult;
-use crate::settings::{FlagsOrIsa, OptLevel};
-use crate::simple_gvn::do_simple_gvn;
-use crate::simple_preopt::do_preopt;
-use crate::timing;
-use crate::unreachable_code::eliminate_unreachable_code;
-use crate::value_label::{build_value_labels_ranges, ComparableSourceLoc, ValueLabelsRanges};
-use crate::verifier::{verify_context, verify_locations, VerifierErrors, VerifierResult};
 #[cfg(feature = "souper-harvest")]
 use alloc::string::String;
 use alloc::vec::Vec;

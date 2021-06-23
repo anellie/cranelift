@@ -1,15 +1,17 @@
 #![allow(non_snake_case)]
 
-use crate::cdsl::instructions::{
-    AllInstructions, InstructionBuilder as Inst, InstructionGroup, InstructionGroupBuilder,
+use crate::{
+    cdsl::{
+        instructions::{
+            AllInstructions, InstructionBuilder as Inst, InstructionGroup, InstructionGroupBuilder,
+        },
+        operands::Operand,
+        type_inference::Constraint::WiderOrEq,
+        types::{LaneType, ValueType},
+        typevar::{Interval, TypeSetBuilder, TypeVar},
+    },
+    shared::{entities::EntityRefs, formats::Formats, immediates::Immediates, types},
 };
-use crate::cdsl::operands::Operand;
-use crate::cdsl::type_inference::Constraint::WiderOrEq;
-use crate::cdsl::types::{LaneType, ValueType};
-use crate::cdsl::typevar::{Interval, TypeSetBuilder, TypeVar};
-use crate::shared::formats::Formats;
-use crate::shared::types;
-use crate::shared::{entities::EntityRefs, immediates::Immediates};
 
 #[inline(never)]
 fn define_control_flow(

@@ -1,22 +1,29 @@
 //! This module defines x86_64-specific machine instruction types.
 
-use crate::binemit::{CodeOffset, StackMap};
-use crate::ir::{types, ExternalName, Opcode, SourceLoc, TrapCode, Type, ValueLabel};
-use crate::isa::unwind::UnwindInst;
-use crate::isa::x64::abi::X64ABIMachineSpec;
-use crate::isa::x64::settings as x64_settings;
-use crate::isa::CallConv;
-use crate::machinst::*;
-use crate::{settings, settings::Flags, CodegenError, CodegenResult};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    binemit::{CodeOffset, StackMap},
+    ir::{types, ExternalName, Opcode, SourceLoc, TrapCode, Type, ValueLabel},
+    isa::{
+        unwind::UnwindInst,
+        x64::{abi::X64ABIMachineSpec, settings as x64_settings},
+        CallConv,
+    },
+    machinst::*,
+    settings,
+    settings::Flags,
+    CodegenError, CodegenResult,
+};
+use alloc::{
+    boxed::Box,
+    fmt,
+    string::{String, ToString},
+    vec::Vec,
+};
 use regalloc::{
     PrettyPrint, PrettyPrintSized, RealRegUniverse, Reg, RegClass, RegUsageCollector,
     RegUsageMapper, SpillSlot, VirtualReg, Writable,
 };
 use smallvec::{smallvec, SmallVec};
-use alloc::fmt;
-use alloc::string::{String, ToString};
 
 pub mod args;
 mod emit;

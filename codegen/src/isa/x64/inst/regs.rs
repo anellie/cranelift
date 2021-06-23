@@ -17,11 +17,10 @@
 //! at callsites.
 
 use crate::settings;
-use alloc::vec::Vec;
+use alloc::{string::String, vec::Vec};
 use regalloc::{
     PrettyPrint, RealReg, RealRegUniverse, Reg, RegClass, RegClassInfo, NUM_REG_CLASSES,
 };
-use alloc::string::String;
 
 // Hardware encodings (note the special rax, rcx, rdx, rbx order).
 

@@ -1,14 +1,15 @@
 //! Compiled peephole optimizations.
 
-use crate::error::Result;
-use crate::instruction_set::InstructionSet;
-use crate::integer_interner::IntegerInterner;
-use crate::linear::{Action, MatchOp, MatchResult};
-use crate::optimizer::PeepholeOptimizer;
+use crate::{
+    error::Result,
+    instruction_set::InstructionSet,
+    integer_interner::IntegerInterner,
+    linear::{Action, MatchOp, MatchResult},
+    optimizer::PeepholeOptimizer,
+};
 use peepmatic_automata::Automaton;
 use serde::{Deserialize, Serialize};
-use std::fmt::Debug;
-use std::hash::Hash;
+use std::{fmt::Debug, hash::Hash};
 
 #[cfg(feature = "construct")]
 use std::fs;

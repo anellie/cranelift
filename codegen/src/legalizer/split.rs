@@ -64,9 +64,11 @@
 //! It is possible to have circular dependencies of block arguments that are never used by any real
 //! instructions. These loops will remain in the program.
 
-use crate::cursor::{Cursor, CursorPosition, FuncCursor};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir::{self, Block, Inst, InstBuilder, InstructionData, Opcode, Type, Value, ValueDef};
+use crate::{
+    cursor::{Cursor, CursorPosition, FuncCursor},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir::{self, Block, Inst, InstBuilder, InstructionData, Opcode, Type, Value, ValueDef},
+};
 use alloc::vec::Vec;
 use core::iter;
 use smallvec::SmallVec;

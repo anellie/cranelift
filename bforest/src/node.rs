@@ -1,8 +1,10 @@
 //! B+-tree nodes.
 
 use super::{slice_insert, slice_shift, Forest, Node, SetValue, INNER_SIZE};
-use core::borrow::{Borrow, BorrowMut};
-use core::fmt;
+use core::{
+    borrow::{Borrow, BorrowMut},
+    fmt,
+};
 
 /// B+-tree node.
 ///

@@ -9,15 +9,18 @@
 
 use crate::Variable;
 use alloc::vec::Vec;
-use core::convert::TryInto;
-use core::mem;
-use cranelift_codegen::cursor::{Cursor, FuncCursor};
-use cranelift_codegen::entity::SecondaryMap;
-use cranelift_codegen::ir::immediates::{Ieee32, Ieee64};
-use cranelift_codegen::ir::instructions::BranchInfo;
-use cranelift_codegen::ir::types::{F32, F64};
-use cranelift_codegen::ir::{Block, Function, Inst, InstBuilder, InstructionData, Type, Value};
-use cranelift_codegen::packed_option::PackedOption;
+use core::{convert::TryInto, mem};
+use cranelift_codegen::{
+    cursor::{Cursor, FuncCursor},
+    entity::SecondaryMap,
+    ir::{
+        immediates::{Ieee32, Ieee64},
+        instructions::BranchInfo,
+        types::{F32, F64},
+        Block, Function, Inst, InstBuilder, InstructionData, Type, Value,
+    },
+    packed_option::PackedOption,
+};
 use smallvec::SmallVec;
 
 /// Structure containing the data relevant the construction of SSA for a given function.
@@ -702,15 +705,15 @@ impl SSABuilder {
 
 #[cfg(test)]
 mod tests {
-    use crate::ssa::SSABuilder;
-    use crate::Variable;
-    use cranelift_codegen::cursor::{Cursor, FuncCursor};
-    use cranelift_codegen::entity::EntityRef;
-    use cranelift_codegen::ir::instructions::BranchInfo;
-    use cranelift_codegen::ir::types::*;
-    use cranelift_codegen::ir::{Function, Inst, InstBuilder, JumpTableData, Opcode};
-    use cranelift_codegen::settings;
-    use cranelift_codegen::verify_function;
+    use crate::{ssa::SSABuilder, Variable};
+    use cranelift_codegen::{
+        cursor::{Cursor, FuncCursor},
+        entity::EntityRef,
+        ir::{
+            instructions::BranchInfo, types::*, Function, Inst, InstBuilder, JumpTableData, Opcode,
+        },
+        settings, verify_function,
+    };
 
     #[test]
     fn simple_block() {

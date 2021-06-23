@@ -7,11 +7,12 @@
 
 use super::HashMap;
 use crate::data_context::DataContext;
-use cranelift_codegen::binemit;
-use cranelift_codegen::entity::{entity_impl, PrimaryMap};
-use cranelift_codegen::{ir, isa, CodegenError, Context};
-use std::borrow::ToOwned;
-use std::string::String;
+use cranelift_codegen::{
+    binemit,
+    entity::{entity_impl, PrimaryMap},
+    ir, isa, CodegenError, Context,
+};
+use std::{borrow::ToOwned, string::String};
 
 /// A function identifier for use in the `Module` interface.
 #[derive(Copy, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]

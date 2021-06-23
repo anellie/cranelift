@@ -33,21 +33,19 @@ extern crate alloc;
 #[cfg(feature = "std")]
 extern crate std;
 
-#[cfg(feature = "std")]
-use std::sync::{Mutex, MutexGuard};
 #[cfg(not(feature = "std"))]
 use spin::{Mutex, MutexGuard};
+#[cfg(feature = "std")]
+use std::sync::{Mutex, MutexGuard};
 
 pub use crate::backend::{JITBuilder, JITModule};
 use alloc::boxed::Box;
-use lazy_static::lazy_static;
+use core::{any::Any, ptr};
 use cranelift_entity::__core::ffi::c_void;
-use core::any::Any;
-use core::ptr;
+use lazy_static::lazy_static;
 
 /// Version number of this crate.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
-
 
 lazy_static! {
     static ref MANAGER: Mutex<Box<dyn MemoryManager + Send>> = Mutex::new(Box::new(DefaultManager));
@@ -121,15 +119,19 @@ impl MemoryManager for DefaultManager {
 
     #[cfg(target_os = "windows")]
     fn alloc_page_aligned(&mut self, size: usize) -> *mut u8 {
-        use winapi::um::memoryapi::VirtualAlloc;
-        use winapi::um::winnt::{MEM_COMMIT, MEM_RESERVE, PAGE_READWRITE};
+        use winapi::um::{
+            memoryapi::VirtualAlloc,
+            winnt::{MEM_COMMIT, MEM_RESERVE, PAGE_READWRITE},
+        };
 
-        unsafe { VirtualAlloc(
-            ptr::null_mut(),
-            size,
-            MEM_COMMIT | MEM_RESERVE,
-            PAGE_READWRITE,
-        ) as *mut u8 }
+        unsafe {
+            VirtualAlloc(
+                ptr::null_mut(),
+                size,
+                MEM_COMMIT | MEM_RESERVE,
+                PAGE_READWRITE,
+            ) as *mut u8
+        }
     }
 
     fn dealloc(&mut self, _ptr: *mut u8) {

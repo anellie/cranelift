@@ -55,11 +55,12 @@ mod serde_impls;
 #[cfg(feature = "dot")]
 pub mod dot;
 
-use std::collections::{BTreeMap, HashMap, HashSet};
-use std::convert::TryInto;
-use std::hash::Hash;
-use std::iter;
-use std::mem;
+use std::{
+    collections::{BTreeMap, HashMap, HashSet},
+    convert::TryInto,
+    hash::Hash,
+    iter, mem,
+};
 
 /// An output type for a transducer automata.
 ///

@@ -5,11 +5,13 @@
 //! **This module only exists when the `"dot"` cargo feature is enabled.**
 
 use crate::{Automaton, Output, State};
-use std::fmt::{Debug, Display};
-use std::fs;
-use std::hash::Hash;
-use std::io::{self, Write};
-use std::path::Path;
+use std::{
+    fmt::{Debug, Display},
+    fs,
+    hash::Hash,
+    io::{self, Write},
+    path::Path,
+};
 
 /// Format the user-provided bits of an `Automaton` for Graphviz Dot output.
 ///

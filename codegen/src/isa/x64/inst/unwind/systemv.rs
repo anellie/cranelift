@@ -96,14 +96,16 @@ impl crate::isa::unwind::systemv::RegisterMapper<Reg> for RegisterMapper {
 
 #[cfg(test)]
 mod tests {
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::{
-        types, AbiParam, ExternalName, Function, InstBuilder, Signature, StackSlotData,
-        StackSlotKind,
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{
+            types, AbiParam, ExternalName, Function, InstBuilder, Signature, StackSlotData,
+            StackSlotKind,
+        },
+        isa::{lookup, CallConv},
+        settings::{builder, Flags},
+        Context,
     };
-    use crate::isa::{lookup, CallConv};
-    use crate::settings::{builder, Flags};
-    use crate::Context;
     use gimli::write::Address;
     use std::str::FromStr;
     use target_lexicon::triple;

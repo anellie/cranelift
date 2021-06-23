@@ -3,11 +3,12 @@ extern crate proc_macro;
 use crate::proc_macro::TokenStream;
 use proc_macro2::Span;
 use quote::quote;
-use syn::parse::{Parse, ParseStream};
-use syn::punctuated::Punctuated;
-use syn::DeriveInput;
-use syn::Error;
-use syn::{parse_macro_input, Ident, Result};
+use syn::{
+    parse::{Parse, ParseStream},
+    parse_macro_input,
+    punctuated::Punctuated,
+    DeriveInput, Error, Ident, Result,
+};
 
 mod child_nodes;
 mod into_dyn_ast_ref;

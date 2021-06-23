@@ -2,8 +2,7 @@
 
 use cranelift_entity::EntityRef;
 
-use crate::error;
-use crate::srcgen::Formatter;
+use crate::{error, srcgen::Formatter};
 
 use crate::cdsl::recipes::{EncodingRecipe, OperandConstraint, Recipes};
 

@@ -1,14 +1,17 @@
 //! Densely numbered entity references as mapping keys.
-use crate::boxed_slice::BoxedSlice;
-use crate::iter::{IntoIter, Iter, IterMut};
-use crate::keys::Keys;
-use crate::EntityRef;
-use alloc::boxed::Box;
-use alloc::vec::Vec;
-use core::iter::FromIterator;
-use core::marker::PhantomData;
-use core::ops::{Index, IndexMut};
-use core::slice;
+use crate::{
+    boxed_slice::BoxedSlice,
+    iter::{IntoIter, Iter, IterMut},
+    keys::Keys,
+    EntityRef,
+};
+use alloc::{boxed::Box, vec::Vec};
+use core::{
+    iter::FromIterator,
+    marker::PhantomData,
+    ops::{Index, IndexMut},
+    slice,
+};
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 

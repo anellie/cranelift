@@ -43,31 +43,33 @@
 //! The configured target ISA trait object is a `Box<TargetIsa>` which can be used for multiple
 //! concurrent function compilations.
 
-pub use crate::isa::call_conv::CallConv;
-pub use crate::isa::constraints::{
-    BranchRange, ConstraintKind, OperandConstraint, RecipeConstraints,
+pub use crate::isa::{
+    call_conv::CallConv,
+    constraints::{BranchRange, ConstraintKind, OperandConstraint, RecipeConstraints},
+    enc_tables::Encodings,
+    encoding::{base_size, EncInfo, Encoding},
+    registers::{regs_overlap, RegClass, RegClassIndex, RegInfo, RegUnit},
+    stack::{StackBase, StackBaseMask, StackRef},
 };
-pub use crate::isa::enc_tables::Encodings;
-pub use crate::isa::encoding::{base_size, EncInfo, Encoding};
-pub use crate::isa::registers::{regs_overlap, RegClass, RegClassIndex, RegInfo, RegUnit};
-pub use crate::isa::stack::{StackBase, StackBaseMask, StackRef};
 
-use crate::binemit;
-use crate::flowgraph;
-use crate::ir;
 #[cfg(feature = "unwind")]
 use crate::isa::unwind::systemv::RegisterMappingError;
-use crate::machinst::{MachBackend, UnwindInfoKind};
-use crate::regalloc;
-use crate::result::CodegenResult;
-use crate::settings;
-use crate::settings::SetResult;
-use crate::timing;
+use crate::{
+    binemit, flowgraph, ir,
+    machinst::{MachBackend, UnwindInfoKind},
+    regalloc,
+    result::CodegenResult,
+    settings,
+    settings::SetResult,
+    timing,
+};
 use alloc::{borrow::Cow, boxed::Box, vec::Vec};
-use core::any::Any;
-use core::fmt;
-use core::fmt::{Debug, Formatter};
-use core::hash::Hasher;
+use core::{
+    any::Any,
+    fmt,
+    fmt::{Debug, Formatter},
+    hash::Hasher,
+};
 use target_lexicon::{triple, Architecture, PointerWidth, Triple};
 
 #[cfg(feature = "riscv")]
@@ -447,8 +449,10 @@ pub trait TargetIsa: fmt::Display + Send + Sync {
     fn prologue_epilogue(&self, func: &mut ir::Function) -> CodegenResult<()> {
         let _tt = timing::prologue_epilogue();
         // This default implementation is unlikely to be good enough.
-        use crate::ir::stackslot::{StackOffset, StackSize};
-        use crate::stack_layout::layout_stack;
+        use crate::{
+            ir::stackslot::{StackOffset, StackSize},
+            stack_layout::layout_stack,
+        };
 
         let word_size = StackSize::from(self.pointer_bytes());
 

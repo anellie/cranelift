@@ -1,6 +1,5 @@
 //! Error returned during meta code-generation.
-use std::fmt;
-use std::io;
+use std::{fmt, io};
 
 /// An error that occurred when the cranelift_codegen_meta crate was generating
 /// source files for the cranelift_codegen crate.

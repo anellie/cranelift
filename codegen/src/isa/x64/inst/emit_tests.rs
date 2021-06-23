@@ -13,8 +13,7 @@
 //!   --exclude peepmatic-macro --exclude wasmtime-wasi-nn -- isa::x64::inst::emit_tests::test_x64_emit
 
 use super::*;
-use crate::isa::test_utils;
-use crate::isa::x64;
+use crate::isa::{test_utils, x64};
 use alloc::vec::Vec;
 
 #[test]

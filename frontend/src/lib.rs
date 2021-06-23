@@ -190,9 +190,11 @@ extern crate std;
 
 use hashbrown::{hash_map, HashMap};
 
-pub use crate::frontend::{FunctionBuilder, FunctionBuilderContext};
-pub use crate::switch::Switch;
-pub use crate::variable::Variable;
+pub use crate::{
+    frontend::{FunctionBuilder, FunctionBuilderContext},
+    switch::Switch,
+    variable::Variable,
+};
 
 mod frontend;
 mod ssa;

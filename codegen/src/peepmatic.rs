@@ -1,14 +1,21 @@
 //! Glue for working with `peepmatic`-generated peephole optimizers.
 
-use crate::cursor::{Cursor, FuncCursor};
-use crate::ir::{
-    dfg::DataFlowGraph,
-    entities::{Inst, Value},
-    immediates::{Imm64, Uimm64},
-    instructions::{InstructionData, Opcode},
-    types, InstBuilder,
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    ir::{
+        dfg::DataFlowGraph,
+        entities::{Inst, Value},
+        immediates::{Imm64, Uimm64},
+        instructions::{InstructionData, Opcode},
+        types, InstBuilder,
+    },
+    isa::TargetIsa,
 };
-use crate::isa::TargetIsa;
+use alloc::borrow::Cow;
+use core::{
+    convert::{TryFrom, TryInto},
+    iter,
+};
 use cranelift_codegen_shared::condcodes::IntCC;
 use peepmatic_runtime::{
     cc::ConditionCode,
@@ -17,12 +24,11 @@ use peepmatic_runtime::{
     r#type::{BitWidth, Kind, Type},
     PeepholeOptimizations, PeepholeOptimizer,
 };
-use alloc::borrow::Cow;
-use std::boxed::Box;
-use core::convert::{TryFrom, TryInto};
-use core::iter;
-use std::ptr;
-use std::sync::atomic::{AtomicPtr, Ordering};
+use std::{
+    boxed::Box,
+    ptr,
+    sync::atomic::{AtomicPtr, Ordering},
+};
 
 peepmatic_traits::define_parse_and_typing_rules_for_operator! {
     Opcode {
@@ -249,8 +255,7 @@ peepmatic_traits::define_parse_and_typing_rules_for_operator! {
 mod rebuild {
     use super::*;
     use alloc::vec::Vec;
-    use std::fs;
-    use std::path::Path;
+    use std::{fs, path::Path};
 
     /// Rebuild the `preopt.peepmatic` peephole optimizer.
     ///
@@ -1315,8 +1320,10 @@ unsafe impl<'a, 'b> InstructionSet<'b> for &'a dyn TargetIsa {
 #[cfg(any(feature = "x64", feature = "x86", feature = "arm64"))]
 mod tests {
     use super::*;
-    use crate::isa::{lookup, TargetIsa};
-    use crate::settings::{builder, Flags};
+    use crate::{
+        isa::{lookup, TargetIsa},
+        settings::{builder, Flags},
+    };
     use std::str::FromStr;
     use target_lexicon::triple;
 

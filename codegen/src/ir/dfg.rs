@@ -1,25 +1,26 @@
 //! Data flow graph tracking Instructions, Values, and blocks.
 
-use crate::entity::{self, PrimaryMap, SecondaryMap};
-use crate::ir;
-use crate::ir::builder::ReplaceBuilder;
-use crate::ir::extfunc::ExtFuncData;
-use crate::ir::instructions::{BranchInfo, CallInfo, InstructionData};
-use crate::ir::{types, ConstantData, ConstantPool, Immediate};
-use crate::ir::{
-    Block, FuncRef, Inst, SigRef, Signature, Type, Value, ValueLabelAssignments, ValueList,
-    ValueListPool,
+use crate::{
+    entity::{self, PrimaryMap, SecondaryMap},
+    ir,
+    ir::{
+        builder::ReplaceBuilder,
+        extfunc::ExtFuncData,
+        instructions::{BranchInfo, CallInfo, InstructionData},
+        types, Block, ConstantData, ConstantPool, FuncRef, Immediate, Inst, SigRef, Signature,
+        Type, Value, ValueLabelAssignments, ValueList, ValueListPool,
+    },
+    isa::TargetIsa,
+    packed_option::ReservedValue,
+    write::write_operands,
+    HashMap,
 };
-use crate::isa::TargetIsa;
-use crate::packed_option::ReservedValue;
-use crate::write::write_operands;
-use crate::HashMap;
 use alloc::vec::Vec;
-use core::fmt;
-use core::iter;
-use core::mem;
-use core::ops::{Index, IndexMut};
-use core::u16;
+use core::{
+    fmt, iter, mem,
+    ops::{Index, IndexMut},
+    u16,
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
@@ -1125,9 +1126,10 @@ impl DataFlowGraph {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::types;
-    use crate::ir::{Function, InstructionData, Opcode, TrapCode};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types, Function, InstructionData, Opcode, TrapCode},
+    };
     use alloc::string::ToString;
 
     #[test]

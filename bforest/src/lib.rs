@@ -38,8 +38,7 @@ extern crate alloc;
 extern crate cranelift_entity as entity;
 use crate::entity::packed_option;
 
-use core::borrow::BorrowMut;
-use core::cmp::Ordering;
+use core::{borrow::BorrowMut, cmp::Ordering};
 
 mod map;
 mod node;
@@ -47,12 +46,12 @@ mod path;
 mod pool;
 mod set;
 
-pub use self::map::{Map, MapCursor, MapForest, MapIter};
-pub use self::set::{Set, SetCursor, SetForest, SetIter};
+pub use self::{
+    map::{Map, MapCursor, MapForest, MapIter},
+    set::{Set, SetCursor, SetForest, SetIter},
+};
 
-use self::node::NodeData;
-use self::path::Path;
-use self::pool::NodePool;
+use self::{node::NodeData, path::Path, pool::NodePool};
 
 /// The maximum branching factor of an inner node in a B+-tree.
 /// The minimum number of outgoing edges is `INNER_SIZE/2`.

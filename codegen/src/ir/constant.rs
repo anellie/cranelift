@@ -8,15 +8,20 @@
 //! - ensuring alignment of constants within the pool,
 //! - bucketing constants by size.
 
-use crate::ir::immediates::{IntoBytes, V128Imm};
-use crate::ir::Constant;
-use crate::HashMap;
-use alloc::collections::BTreeMap;
-use alloc::vec::Vec;
-use core::fmt;
-use core::iter::FromIterator;
-use core::slice::Iter;
-use core::str::{from_utf8, FromStr};
+use crate::{
+    ir::{
+        immediates::{IntoBytes, V128Imm},
+        Constant,
+    },
+    HashMap,
+};
+use alloc::{collections::BTreeMap, vec::Vec};
+use core::{
+    fmt,
+    iter::FromIterator,
+    slice::Iter,
+    str::{from_utf8, FromStr},
+};
 use cranelift_entity::EntityRef;
 
 #[cfg(feature = "enable-serde")]

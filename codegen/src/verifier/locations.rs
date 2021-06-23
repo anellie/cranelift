@@ -1,12 +1,12 @@
 //! Verify value locations.
 
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir;
-use crate::isa;
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::RegDiversions;
-use crate::timing;
-use crate::verifier::{VerifierErrors, VerifierStepResult};
+use crate::{
+    flowgraph::ControlFlowGraph,
+    ir, isa,
+    regalloc::{liveness::Liveness, RegDiversions},
+    timing,
+    verifier::{VerifierErrors, VerifierStepResult},
+};
 
 /// Verify value locations for `func`.
 ///

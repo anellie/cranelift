@@ -7,12 +7,12 @@ use crate::{
     Function, RealReg, Reg, SpillSlot, TypedIxVec, VirtualReg, Writable,
 };
 
-use log::{debug, info, trace};
 use crate::data_structures::FxHashMap as HashMap;
 use crate::data_structures::FxHashSet as HashSet;
-use smallvec::SmallVec;
 use alloc::fmt;
 use alloc::vec::Vec;
+use log::{debug, info, trace};
+use smallvec::SmallVec;
 
 fn resolve_moves_in_block<F: Function>(
     func: &F,

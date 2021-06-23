@@ -5,11 +5,13 @@
 
 #![macro_use]
 
-use std::cmp;
-use std::collections::{BTreeMap, BTreeSet};
-use std::fs;
-use std::io::Write;
-use std::path;
+use std::{
+    cmp,
+    collections::{BTreeMap, BTreeSet},
+    fs,
+    io::Write,
+    path,
+};
 
 use crate::error;
 
@@ -319,9 +321,7 @@ impl Match {
 
 #[cfg(test)]
 mod srcgen_tests {
-    use super::parse_multiline;
-    use super::Formatter;
-    use super::Match;
+    use super::{parse_multiline, Formatter, Match};
 
     fn from_raw_string<S: Into<String>>(s: S) -> Vec<String> {
         s.into()

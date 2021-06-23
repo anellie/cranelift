@@ -1,19 +1,17 @@
 //! Implementation of a standard AArch64 ABI.
 
-use crate::ir;
-use crate::ir::types;
-use crate::ir::types::*;
-use crate::ir::MemFlags;
-use crate::ir::Opcode;
-use crate::ir::{ExternalName, LibCall};
-use crate::isa;
-use crate::isa::aarch64::{inst::EmitState, inst::*};
-use crate::isa::unwind::UnwindInst;
-use crate::machinst::*;
-use crate::settings;
-use crate::{CodegenError, CodegenResult};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    ir,
+    ir::{types, types::*, ExternalName, LibCall, MemFlags, Opcode},
+    isa,
+    isa::{
+        aarch64::inst::{EmitState, *},
+        unwind::UnwindInst,
+    },
+    machinst::*,
+    settings, CodegenError, CodegenResult,
+};
+use alloc::{boxed::Box, vec::Vec};
 use regalloc::{RealReg, Reg, RegClass, Set, Writable};
 use smallvec::{smallvec, SmallVec};
 

@@ -1,18 +1,23 @@
 //! Utility routines for pretty-printing error messages.
 
-use crate::entity::SecondaryMap;
-use crate::ir;
-use crate::ir::entities::{AnyEntity, Block, Inst, Value};
-use crate::ir::function::Function;
-use crate::isa::TargetIsa;
-use crate::result::CodegenError;
-use crate::verifier::{VerifierError, VerifierErrors};
-use crate::write::{decorate_function, FuncWriter, PlainWriter};
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::vec::Vec;
-use core::fmt;
-use core::fmt::Write;
+use crate::{
+    entity::SecondaryMap,
+    ir,
+    ir::{
+        entities::{AnyEntity, Block, Inst, Value},
+        function::Function,
+    },
+    isa::TargetIsa,
+    result::CodegenError,
+    verifier::{VerifierError, VerifierErrors},
+    write::{decorate_function, FuncWriter, PlainWriter},
+};
+use alloc::{
+    boxed::Box,
+    string::{String, ToString},
+    vec::Vec,
+};
+use core::{fmt, fmt::Write};
 
 /// Pretty-print a verifier error.
 pub fn pretty_verifier_error<'a>(

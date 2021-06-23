@@ -3,9 +3,9 @@
 //! AVL tree internals are public, so that backtracking.rs can do custom
 //! traversals of the tree as it wishes.
 
-use smallvec::SmallVec;
-use core::cmp::Ordering;
 use alloc::vec::Vec;
+use core::cmp::Ordering;
+use smallvec::SmallVec;
 
 //=============================================================================
 // Data structures for AVLTree

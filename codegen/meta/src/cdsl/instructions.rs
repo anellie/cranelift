@@ -1,20 +1,26 @@
 use cranelift_codegen_shared::condcodes::IntCC;
 use cranelift_entity::{entity_impl, PrimaryMap};
 
-use std::collections::HashMap;
-use std::fmt;
-use std::fmt::{Display, Error, Formatter};
-use std::rc::Rc;
+use std::{
+    collections::HashMap,
+    fmt,
+    fmt::{Display, Error, Formatter},
+    rc::Rc,
+};
 
-use crate::cdsl::camel_case;
-use crate::cdsl::formats::{FormatField, InstructionFormat};
-use crate::cdsl::operands::Operand;
-use crate::cdsl::type_inference::Constraint;
-use crate::cdsl::types::{LaneType, ReferenceType, ValueType, VectorType};
-use crate::cdsl::typevar::TypeVar;
+use crate::cdsl::{
+    camel_case,
+    formats::{FormatField, InstructionFormat},
+    operands::Operand,
+    type_inference::Constraint,
+    types::{LaneType, ReferenceType, ValueType, VectorType},
+    typevar::TypeVar,
+};
 
-use crate::shared::formats::Formats;
-use crate::shared::types::{Bool, Float, Int, Reference};
+use crate::shared::{
+    formats::Formats,
+    types::{Bool, Float, Int, Reference},
+};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub(crate) struct OpcodeNumber(u32);
@@ -1305,10 +1311,14 @@ impl Into<InstSpec> for BoundInstruction {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::cdsl::formats::InstructionFormatBuilder;
-    use crate::cdsl::operands::{OperandKind, OperandKindFields};
-    use crate::cdsl::typevar::TypeSetBuilder;
-    use crate::shared::types::Int::{I32, I64};
+    use crate::{
+        cdsl::{
+            formats::InstructionFormatBuilder,
+            operands::{OperandKind, OperandKindFields},
+            typevar::TypeSetBuilder,
+        },
+        shared::types::Int::{I32, I64},
+    };
 
     fn field_to_operand(index: usize, field: OperandKindFields) -> Operand {
         // Pretend the index string is &'static.

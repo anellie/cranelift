@@ -2,8 +2,7 @@ use super::HashMap;
 use crate::frontend::FunctionBuilder;
 use alloc::vec::Vec;
 use core::convert::TryFrom;
-use cranelift_codegen::ir::condcodes::IntCC;
-use cranelift_codegen::ir::*;
+use cranelift_codegen::ir::{condcodes::IntCC, *};
 use log::debug;
 
 type EntryIndex = u128;

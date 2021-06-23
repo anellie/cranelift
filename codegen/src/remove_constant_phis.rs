@@ -1,16 +1,15 @@
 //! A Constant-Phi-Node removal pass.
 
-use crate::dominator_tree::DominatorTree;
-use crate::entity::EntityList;
-use crate::fx::FxHashMap;
-use crate::fx::FxHashSet;
-use crate::ir::instructions::BranchInfo;
-use crate::ir::Function;
-use crate::ir::{Block, Inst, Value};
-use crate::timing;
+use crate::{
+    dominator_tree::DominatorTree,
+    entity::EntityList,
+    fx::{FxHashMap, FxHashSet},
+    ir::{instructions::BranchInfo, Block, Function, Inst, Value},
+    timing,
+};
 
-use smallvec::{smallvec, SmallVec};
 use alloc::vec::Vec;
+use smallvec::{smallvec, SmallVec};
 
 // A note on notation.  For the sake of clarity, this file uses the phrase
 // "formal parameters" to mean the `Value`s listed in the block head, and

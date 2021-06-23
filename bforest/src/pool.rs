@@ -85,8 +85,7 @@ impl<F: Forest> NodePool<F> {
     {
         use crate::entity::EntitySet;
         use alloc::vec::Vec;
-        use core::borrow::Borrow;
-        use core::cmp::Ordering;
+        use core::{borrow::Borrow, cmp::Ordering};
 
         // The root node can't be an inner node with just a single sub-tree. It should have been
         // pruned.

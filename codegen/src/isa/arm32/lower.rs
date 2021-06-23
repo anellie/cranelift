@@ -1,15 +1,12 @@
 //! Lowering rules for 32-bit ARM.
 
-use crate::ir::condcodes::IntCC;
-use crate::ir::types::*;
-use crate::ir::Inst as IRInst;
-use crate::ir::{InstructionData, Opcode, TrapCode};
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::CodegenResult;
+use crate::{
+    ir::{condcodes::IntCC, types::*, Inst as IRInst, InstructionData, Opcode, TrapCode},
+    machinst::{lower::*, *},
+    CodegenResult,
+};
 
-use crate::isa::arm32::inst::*;
-use crate::isa::arm32::Arm32Backend;
+use crate::isa::arm32::{inst::*, Arm32Backend};
 
 use super::lower_inst;
 

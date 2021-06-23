@@ -89,15 +89,15 @@
 //! Finally, see `linearize_optimization` for the the main AST optimization into
 //! linear optimization translation function.
 
-use crate::ast::*;
-use crate::traversals::{Bfs, Dfs};
+use crate::{
+    ast::*,
+    traversals::{Bfs, Dfs},
+};
 use peepmatic_runtime::{integer_interner::IntegerInterner, linear};
-use std::collections::BTreeMap;
-use std::convert::TryInto;
-use std::fmt::Debug;
-use std::hash::Hash;
-use std::marker::PhantomData;
-use std::num::NonZeroU32;
+use std::{
+    collections::BTreeMap, convert::TryInto, fmt::Debug, hash::Hash, marker::PhantomData,
+    num::NonZeroU32,
+};
 use wast::Id;
 
 /// Translate the given AST optimizations into linear optimizations.

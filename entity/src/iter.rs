@@ -2,9 +2,7 @@
 
 use crate::EntityRef;
 use alloc::vec;
-use core::iter::Enumerate;
-use core::marker::PhantomData;
-use core::slice;
+use core::{iter::Enumerate, marker::PhantomData, slice};
 
 /// Iterate over all keys in order.
 pub struct Iter<'a, K: EntityRef, V>

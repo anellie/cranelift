@@ -1,8 +1,7 @@
 //! Types.
 
 use serde::{Deserialize, Serialize};
-use std::convert::TryFrom;
-use std::fmt;
+use std::{convert::TryFrom, fmt};
 
 /// A bit width of a type.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]

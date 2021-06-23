@@ -4,12 +4,14 @@
 //! between a conditional branch and the following terminator.
 use alloc::vec::Vec;
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::{Block, Function, Inst, InstBuilder, InstructionData, Opcode, ValueList};
-use crate::isa::TargetIsa;
-use crate::topo_order::TopoOrder;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    dominator_tree::DominatorTree,
+    flowgraph::ControlFlowGraph,
+    ir::{Block, Function, Inst, InstBuilder, InstructionData, Opcode, ValueList},
+    isa::TargetIsa,
+    topo_order::TopoOrder,
+};
 
 pub fn run(
     isa: &dyn TargetIsa,

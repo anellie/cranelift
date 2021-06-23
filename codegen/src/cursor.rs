@@ -2,8 +2,7 @@
 //!
 //! This module defines cursor data types that can be used for inserting instructions.
 
-use crate::ir;
-use crate::isa::TargetIsa;
+use crate::{ir, isa::TargetIsa};
 
 /// The possible positions of a cursor.
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]

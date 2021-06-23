@@ -1,12 +1,13 @@
-use std::collections::HashSet;
-use std::iter::FromIterator;
+use std::{collections::HashSet, iter::FromIterator};
 
-use crate::cdsl::cpu_modes::CpuMode;
-use crate::cdsl::instructions::{InstructionGroup, InstructionPredicateMap};
-use crate::cdsl::recipes::Recipes;
-use crate::cdsl::regs::IsaRegs;
-use crate::cdsl::settings::SettingGroup;
-use crate::cdsl::xform::{TransformGroupIndex, TransformGroups};
+use crate::cdsl::{
+    cpu_modes::CpuMode,
+    instructions::{InstructionGroup, InstructionPredicateMap},
+    recipes::Recipes,
+    regs::IsaRegs,
+    settings::SettingGroup,
+    xform::{TransformGroupIndex, TransformGroups},
+};
 
 #[allow(dead_code)]
 pub(crate) struct TargetIsa {

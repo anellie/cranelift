@@ -3,20 +3,26 @@
 // Some variants are not constructed, but we still want them as options in the future.
 #![allow(dead_code)]
 
-use crate::binemit::CodeOffset;
-use crate::ir::{types, ExternalName, Opcode, TrapCode, Type, ValueLabel};
-use crate::isa::unwind::UnwindInst;
-use crate::machinst::*;
-use crate::{settings, CodegenError, CodegenResult};
+use crate::{
+    binemit::CodeOffset,
+    ir::{types, ExternalName, Opcode, TrapCode, Type, ValueLabel},
+    isa::unwind::UnwindInst,
+    machinst::*,
+    settings, CodegenError, CodegenResult,
+};
 
-use regalloc::{PrettyPrint, RegUsageCollector, RegUsageMapper};
-use regalloc::{RealRegUniverse, Reg, RegClass, SpillSlot, VirtualReg, Writable};
+use regalloc::{
+    PrettyPrint, RealRegUniverse, Reg, RegClass, RegUsageCollector, RegUsageMapper, SpillSlot,
+    VirtualReg, Writable,
+};
 
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{
+    boxed::Box,
+    string::{String, ToString},
+    vec::Vec,
+};
 use core::convert::TryFrom;
 use smallvec::{smallvec, SmallVec};
-use alloc::string::{String, ToString};
 
 pub mod regs;
 pub use self::regs::*;

@@ -5,8 +5,7 @@
 //! values inserted while inside a scope aren't visible outside the scope.
 
 use crate::fx::FxHashMap;
-use core::hash::Hash;
-use core::mem;
+use core::{hash::Hash, mem};
 
 use crate::fx::FxHasher;
 type Hasher = core::hash::BuildHasherDefault<FxHasher>;

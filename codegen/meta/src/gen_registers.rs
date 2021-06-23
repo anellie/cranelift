@@ -1,8 +1,12 @@
 //! Generate the ISA-specific registers.
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::regs::{RegBank, RegClass};
-use crate::error;
-use crate::srcgen::Formatter;
+use crate::{
+    cdsl::{
+        isa::TargetIsa,
+        regs::{RegBank, RegClass},
+    },
+    error,
+    srcgen::Formatter,
+};
 use cranelift_entity::EntityRef;
 
 fn gen_regbank(fmt: &mut Formatter, reg_bank: &RegBank) {

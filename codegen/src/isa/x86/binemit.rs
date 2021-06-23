@@ -1,15 +1,19 @@
 //! Emitting binary x86 machine code.
 
-use super::enc_tables::{needs_offset, needs_sib_byte};
-use super::registers::RU;
-use crate::binemit::{bad_encoding, CodeSink, Reloc};
-use crate::ir::condcodes::{CondCode, FloatCC, IntCC};
-use crate::ir::{
-    Block, Constant, ExternalName, Function, Inst, InstructionData, JumpTable, LibCall, Opcode,
-    TrapCode,
+use super::{
+    enc_tables::{needs_offset, needs_sib_byte},
+    registers::RU,
 };
-use crate::isa::{RegUnit, StackBase, StackBaseMask, StackRef, TargetIsa};
-use crate::regalloc::RegDiversions;
+use crate::{
+    binemit::{bad_encoding, CodeSink, Reloc},
+    ir::{
+        condcodes::{CondCode, FloatCC, IntCC},
+        Block, Constant, ExternalName, Function, Inst, InstructionData, JumpTable, LibCall, Opcode,
+        TrapCode,
+    },
+    isa::{RegUnit, StackBase, StackBaseMask, StackRef, TargetIsa},
+    regalloc::RegDiversions,
+};
 use cranelift_codegen_shared::isa::x86::EncodingBits;
 
 include!(concat!(env!("OUT_DIR"), "/binemit-x86.rs"));

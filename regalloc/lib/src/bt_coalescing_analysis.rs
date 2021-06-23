@@ -38,8 +38,8 @@ use crate::union_find::{ToFromU32, UnionFind, UnionFindEquivClasses};
 use crate::Function;
 use alloc::format;
 use alloc::string::{String, ToString};
-use alloc::vec::Vec;
 use alloc::vec;
+use alloc::vec::Vec;
 
 //=============================================================================
 //

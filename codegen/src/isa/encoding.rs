@@ -1,9 +1,11 @@
 //! The `Encoding` struct.
 
-use crate::binemit::CodeOffset;
-use crate::ir::{Function, Inst};
-use crate::isa::constraints::{BranchRange, RecipeConstraints};
-use crate::regalloc::RegDiversions;
+use crate::{
+    binemit::CodeOffset,
+    ir::{Function, Inst},
+    isa::constraints::{BranchRange, RecipeConstraints},
+    regalloc::RegDiversions,
+};
 use core::fmt;
 
 #[cfg(feature = "enable-serde")]

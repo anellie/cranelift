@@ -2,8 +2,8 @@
 
 use super::{InsnOutput, LowerCtx, VCodeInst, ValueRegs};
 use crate::ir::Type;
-use regalloc::{Reg, Writable};
 use core::ops::{Add, BitAnd, Not, Sub};
+use regalloc::{Reg, Writable};
 
 /// Returns the size (in bits) of a given type.
 pub fn ty_bits(ty: Type) -> usize {

@@ -1,11 +1,10 @@
 //! S390x ISA: binary code emission.
 
-use crate::binemit::{Reloc, StackMap};
-use crate::ir::condcodes::IntCC;
-use crate::ir::MemFlags;
-use crate::ir::{SourceLoc, TrapCode};
-use crate::isa::s390x::inst::*;
-use crate::isa::s390x::settings as s390x_settings;
+use crate::{
+    binemit::{Reloc, StackMap},
+    ir::{condcodes::IntCC, MemFlags, SourceLoc, TrapCode},
+    isa::s390x::{inst::*, settings as s390x_settings},
+};
 use core::convert::TryFrom;
 use log::debug;
 use regalloc::{Reg, RegClass};

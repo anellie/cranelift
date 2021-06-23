@@ -1,10 +1,11 @@
-use crate::cursor::{Cursor, FuncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::inst_predicates::is_safepoint;
-use crate::ir::{Function, InstBuilder};
-use crate::isa::TargetIsa;
-use crate::regalloc::live_value_tracker::LiveValueTracker;
-use crate::regalloc::liveness::Liveness;
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    dominator_tree::DominatorTree,
+    inst_predicates::is_safepoint,
+    ir::{Function, InstBuilder},
+    isa::TargetIsa,
+    regalloc::{live_value_tracker::LiveValueTracker, liveness::Liveness},
+};
 use alloc::vec::Vec;
 
 fn insert_and_encode_safepoint<'f>(

@@ -1,10 +1,12 @@
 //! Emitting binary RISC-V machine code.
 
-use crate::binemit::{bad_encoding, CodeSink, Reloc};
-use crate::ir::{Function, Inst, InstructionData};
-use crate::isa::{RegUnit, StackBaseMask, StackRef, TargetIsa};
-use crate::predicates::is_signed_int;
-use crate::regalloc::RegDiversions;
+use crate::{
+    binemit::{bad_encoding, CodeSink, Reloc},
+    ir::{Function, Inst, InstructionData},
+    isa::{RegUnit, StackBaseMask, StackRef, TargetIsa},
+    predicates::is_signed_int,
+    regalloc::RegDiversions,
+};
 use core::u32;
 
 include!(concat!(env!("OUT_DIR"), "/binemit-riscv.rs"));

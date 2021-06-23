@@ -1,11 +1,10 @@
-use crate::ir::types::*;
-use crate::isa::aarch64::inst::*;
-use crate::isa::test_utils;
-use crate::isa::CallConv;
-use crate::settings;
+use crate::{
+    ir::types::*,
+    isa::{aarch64::inst::*, test_utils, CallConv},
+    settings,
+};
 
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{boxed::Box, vec::Vec};
 
 #[test]
 fn test_aarch64_binemit() {

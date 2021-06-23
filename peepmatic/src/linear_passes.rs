@@ -1,9 +1,7 @@
 //! Passes over the linear IR.
 
 use peepmatic_runtime::linear;
-use std::cmp::Ordering;
-use std::fmt::Debug;
-use std::hash::Hash;
+use std::{cmp::Ordering, fmt::Debug, hash::Hash};
 
 /// Sort a set of optimizations from least to most general.
 ///

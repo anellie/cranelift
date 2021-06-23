@@ -1,9 +1,7 @@
 //! Small lists of entity references.
-use crate::packed_option::ReservedValue;
-use crate::EntityRef;
+use crate::{packed_option::ReservedValue, EntityRef};
 use alloc::vec::Vec;
-use core::marker::PhantomData;
-use core::mem;
+use core::{marker::PhantomData, mem};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
@@ -561,8 +559,7 @@ impl<T: EntityRef + ReservedValue> EntityList<T> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::{sclass_for_length, sclass_size};
+    use super::{sclass_for_length, sclass_size, *};
     use crate::EntityRef;
 
     /// An opaque reference to an instruction in a function.

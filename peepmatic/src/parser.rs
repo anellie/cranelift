@@ -47,8 +47,7 @@ The grammar for the DSL is given below:
 
 use crate::ast::*;
 use peepmatic_runtime::r#type::Type;
-use std::cell::Cell;
-use std::marker::PhantomData;
+use std::{cell::Cell, marker::PhantomData};
 use wast::{
     parser::{Cursor, Parse, Parser, Peek, Result as ParseResult},
     Id, LParen,

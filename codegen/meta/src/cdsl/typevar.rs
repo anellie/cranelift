@@ -1,10 +1,11 @@
-use std::cell::RefCell;
-use std::collections::{BTreeSet, HashSet};
-use std::fmt;
-use std::hash;
-use std::iter::FromIterator;
-use std::ops;
-use std::rc::Rc;
+use std::{
+    cell::RefCell,
+    collections::{BTreeSet, HashSet},
+    fmt, hash,
+    iter::FromIterator,
+    ops,
+    rc::Rc,
+};
 
 use crate::cdsl::types::{LaneType, ReferenceType, SpecialType, ValueType};
 
@@ -1248,8 +1249,7 @@ fn test_typevar_functions() {
 
 #[test]
 fn test_typevar_singleton() {
-    use crate::cdsl::types::VectorType;
-    use crate::shared::types as shared_types;
+    use crate::{cdsl::types::VectorType, shared::types as shared_types};
 
     // Test i32.
     let typevar = TypeVar::new_singleton(ValueType::Lane(LaneType::Int(shared_types::Int::I32)));

@@ -1,22 +1,25 @@
 //! x86 ABI implementation.
 
-use super::super::settings as shared_settings;
-use super::registers::{FPR, GPR, RU};
-use super::settings as isa_settings;
-use crate::abi::{legalize_args, ArgAction, ArgAssigner, ValueConversion};
-use crate::cursor::{Cursor, CursorPosition, EncCursor};
-use crate::ir;
-use crate::ir::immediates::Imm64;
-use crate::ir::stackslot::{StackOffset, StackSize};
-use crate::ir::types;
-use crate::ir::{
-    get_probestack_funcref, AbiParam, ArgumentExtension, ArgumentLoc, ArgumentPurpose, InstBuilder,
-    ValueLoc,
+use super::{
+    super::settings as shared_settings,
+    registers::{FPR, GPR, RU},
+    settings as isa_settings,
 };
-use crate::isa::{CallConv, RegClass, RegUnit, TargetIsa};
-use crate::regalloc::RegisterSet;
-use crate::result::CodegenResult;
-use crate::stack_layout::layout_stack;
+use crate::{
+    abi::{legalize_args, ArgAction, ArgAssigner, ValueConversion},
+    cursor::{Cursor, CursorPosition, EncCursor},
+    ir,
+    ir::{
+        get_probestack_funcref,
+        immediates::Imm64,
+        stackslot::{StackOffset, StackSize},
+        types, AbiParam, ArgumentExtension, ArgumentLoc, ArgumentPurpose, InstBuilder, ValueLoc,
+    },
+    isa::{CallConv, RegClass, RegUnit, TargetIsa},
+    regalloc::RegisterSet,
+    result::CodegenResult,
+    stack_layout::layout_stack,
+};
 use alloc::borrow::Cow;
 use core::i32;
 use target_lexicon::{PointerWidth, Triple};
@@ -1085,8 +1088,7 @@ pub fn create_unwind_info(
     func: &ir::Function,
     isa: &dyn TargetIsa,
 ) -> CodegenResult<Option<crate::isa::unwind::UnwindInfo>> {
-    use crate::isa::unwind::UnwindInfo;
-    use crate::machinst::UnwindInfoKind;
+    use crate::{isa::unwind::UnwindInfo, machinst::UnwindInfoKind};
 
     // Assumption: RBP is being used as the frame pointer for both calling conventions
     // In the future, we should be omitting frame pointer as an optimization, so this will change

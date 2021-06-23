@@ -1,7 +1,9 @@
 //! Common types for the Cranelift code generator.
 
-use core::default::Default;
-use core::fmt::{self, Debug, Display, Formatter};
+use core::{
+    default::Default,
+    fmt::{self, Debug, Display, Formatter},
+};
 use cranelift_codegen_shared::constants;
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};

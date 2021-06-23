@@ -1,8 +1,7 @@
-use cranelift_codegen::binemit::Reloc;
-use cranelift_codegen::ir::ExternalName;
-use cranelift_module::RelocRecord;
-use core::convert::TryFrom;
 use alloc::vec::Vec;
+use core::convert::TryFrom;
+use cranelift_codegen::{binemit::Reloc, ir::ExternalName};
+use cranelift_module::RelocRecord;
 
 #[derive(Clone)]
 pub(crate) struct CompiledBlob {

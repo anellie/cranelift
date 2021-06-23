@@ -5,23 +5,23 @@
 //! possible and inserting copies where necessary such that all argument values passed to a block
 //! parameter will belong to the same virtual register as the block parameter value itself.
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::dbg::DisplayList;
-use crate::dominator_tree::{DominatorTree, DominatorTreePreorder};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::fx::FxHashMap;
-use crate::ir::{self, InstBuilder, ProgramOrder};
-use crate::ir::{Block, ExpandedProgramPoint, Function, Inst, Value};
-use crate::isa::{EncInfo, TargetIsa};
-use crate::regalloc::affinity::Affinity;
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::virtregs::{VirtReg, VirtRegs};
-use crate::timing;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    dbg::DisplayList,
+    dominator_tree::{DominatorTree, DominatorTreePreorder},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    fx::FxHashMap,
+    ir::{self, Block, ExpandedProgramPoint, Function, Inst, InstBuilder, ProgramOrder, Value},
+    isa::{EncInfo, TargetIsa},
+    regalloc::{
+        affinity::Affinity,
+        liveness::Liveness,
+        virtregs::{VirtReg, VirtRegs},
+    },
+    timing,
+};
 use alloc::vec::Vec;
-use core::cmp;
-use core::fmt;
-use core::iter;
-use core::slice;
+use core::{cmp, fmt, iter, slice};
 use log::debug;
 
 // # Implementation

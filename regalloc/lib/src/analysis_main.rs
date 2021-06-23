@@ -17,9 +17,9 @@ use crate::{
     analysis_reftypes::core_reftypes_analysis,
 };
 use crate::{Function, Reg};
-use alloc::vec::Vec;
-use alloc::string::{String, ToString};
 use alloc::format;
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
 
 //=============================================================================
 // Overall analysis return results, for both control- and data-flow analyses.

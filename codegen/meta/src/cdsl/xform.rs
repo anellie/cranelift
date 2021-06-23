@@ -1,15 +1,19 @@
-use crate::cdsl::ast::{
-    Apply, BlockPool, ConstPool, DefIndex, DefPool, DummyDef, DummyExpr, Expr, PatternPosition,
-    VarIndex, VarPool,
+use crate::cdsl::{
+    ast::{
+        Apply, BlockPool, ConstPool, DefIndex, DefPool, DummyDef, DummyExpr, Expr, PatternPosition,
+        VarIndex, VarPool,
+    },
+    instructions::Instruction,
+    type_inference::{infer_transform, TypeEnvironment},
+    typevar::TypeVar,
 };
-use crate::cdsl::instructions::Instruction;
-use crate::cdsl::type_inference::{infer_transform, TypeEnvironment};
-use crate::cdsl::typevar::TypeVar;
 
 use cranelift_entity::{entity_impl, PrimaryMap};
 
-use std::collections::{HashMap, HashSet};
-use std::iter::FromIterator;
+use std::{
+    collections::{HashMap, HashSet},
+    iter::FromIterator,
+};
 
 /// An instruction transformation consists of a source and destination pattern.
 ///
@@ -466,8 +470,10 @@ impl TransformGroups {
 #[test]
 #[should_panic]
 fn test_double_custom_legalization() {
-    use crate::cdsl::formats::InstructionFormatBuilder;
-    use crate::cdsl::instructions::{AllInstructions, InstructionBuilder, InstructionGroupBuilder};
+    use crate::cdsl::{
+        formats::InstructionFormatBuilder,
+        instructions::{AllInstructions, InstructionBuilder, InstructionGroupBuilder},
+    };
 
     let nullary = InstructionFormatBuilder::new("nullary").build();
 

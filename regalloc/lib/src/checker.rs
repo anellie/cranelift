@@ -55,19 +55,22 @@
 
 #![allow(dead_code)]
 
-use crate::data_structures::{BlockIx, InstIx, Map, RealReg, RealRegUniverse, Reg, RegSets, SpillSlot, VirtualReg, Writable, FxHashSet};
+use crate::data_structures::{
+    BlockIx, FxHashSet, InstIx, Map, RealReg, RealRegUniverse, Reg, RegSets, SpillSlot, VirtualReg,
+    Writable,
+};
 use crate::inst_stream::{ExtPoint, InstExtPoint, InstToInsertAndExtPoint};
 use crate::{analysis_data_flow::get_san_reg_sets_for_insn, StackmapRequestInfo};
 use crate::{Function, RegUsageMapper};
 
 use alloc::collections::VecDeque;
+use alloc::vec;
 use core::default::Default;
 use core::hash::Hash;
 use core::result::Result;
-use alloc::vec;
 
-use log::debug;
 use alloc::vec::Vec;
+use log::debug;
 
 /// A set of errors detected by the regalloc checker.
 #[derive(Clone, Debug)]

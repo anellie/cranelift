@@ -1,15 +1,15 @@
 //! Performs control flow analysis.
 
-use log::{debug, info};
 use core::cmp::Ordering;
+use log::{debug, info};
 
 use crate::analysis_main::AnalysisError;
 use crate::data_structures::{BlockIx, InstIx, Range, Set, TypedIxVec};
 use crate::sparse_set::{SparseSetU, SparseSetUIter};
 use crate::Function;
 
-use smallvec::SmallVec;
 use alloc::vec::Vec;
+use smallvec::SmallVec;
 
 //=============================================================================
 // Debugging config.  Set all these to `false` for normal operation.

@@ -15,18 +15,24 @@
 //!    be compatible. Otherwise, the value must be copied into a new register for some of the
 //!    operands.
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::ir::{ArgumentLoc, Block, Function, Inst, InstBuilder, SigRef, Value, ValueLoc};
-use crate::isa::registers::{RegClass, RegClassIndex, RegClassMask, RegUnit};
-use crate::isa::{ConstraintKind, EncInfo, RecipeConstraints, RegInfo, TargetIsa};
-use crate::regalloc::affinity::Affinity;
-use crate::regalloc::live_value_tracker::{LiveValue, LiveValueTracker};
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::pressure::Pressure;
-use crate::regalloc::virtregs::VirtRegs;
-use crate::timing;
-use crate::topo_order::TopoOrder;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    dominator_tree::DominatorTree,
+    ir::{ArgumentLoc, Block, Function, Inst, InstBuilder, SigRef, Value, ValueLoc},
+    isa::{
+        registers::{RegClass, RegClassIndex, RegClassMask, RegUnit},
+        ConstraintKind, EncInfo, RecipeConstraints, RegInfo, TargetIsa,
+    },
+    regalloc::{
+        affinity::Affinity,
+        live_value_tracker::{LiveValue, LiveValueTracker},
+        liveness::Liveness,
+        pressure::Pressure,
+        virtregs::VirtRegs,
+    },
+    timing,
+    topo_order::TopoOrder,
+};
 use alloc::vec::Vec;
 use core::fmt;
 use log::debug;

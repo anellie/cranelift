@@ -114,11 +114,12 @@
 //! Even the specialized `bforest::Map<Block, Inst>` implementation is slower than a plain sorted
 //! array, see <https://github.com/bytecodealliance/cranelift/issues/1084> for details.
 
-use crate::entity::SparseMapValue;
-use crate::ir::{Block, ExpandedProgramPoint, Inst, Layout, ProgramOrder, ProgramPoint, Value};
-use crate::regalloc::affinity::Affinity;
-use core::cmp::Ordering;
-use core::marker::PhantomData;
+use crate::{
+    entity::SparseMapValue,
+    ir::{Block, ExpandedProgramPoint, Inst, Layout, ProgramOrder, ProgramPoint, Value},
+    regalloc::affinity::Affinity,
+};
+use core::{cmp::Ordering, marker::PhantomData};
 use smallvec::SmallVec;
 
 /// Global live range of a single SSA value.
@@ -473,9 +474,10 @@ impl<PO: ProgramOrder> SparseMapValue<Value> for GenericLiveRange<PO> {
 #[cfg(test)]
 mod tests {
     use super::{GenericLiveRange, Interval};
-    use crate::entity::EntityRef;
-    use crate::ir::{Block, Inst, Value};
-    use crate::ir::{ExpandedProgramPoint, ProgramOrder};
+    use crate::{
+        entity::EntityRef,
+        ir::{Block, ExpandedProgramPoint, Inst, ProgramOrder, Value},
+    };
     use alloc::vec::Vec;
     use core::cmp::Ordering;
 

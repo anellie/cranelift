@@ -9,18 +9,23 @@
 //! possible to minimize the number of `fill` instructions needed. This must not cause the register
 //! pressure limits to be exceeded.
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::entity::{SparseMap, SparseMapValue};
-use crate::ir::{AbiParam, ArgumentLoc, InstBuilder};
-use crate::ir::{Block, Function, Inst, InstructionData, Opcode, Value, ValueLoc};
-use crate::isa::RegClass;
-use crate::isa::{ConstraintKind, EncInfo, Encoding, RecipeConstraints, TargetIsa};
-use crate::regalloc::affinity::Affinity;
-use crate::regalloc::live_value_tracker::{LiveValue, LiveValueTracker};
-use crate::regalloc::liveness::Liveness;
-use crate::timing;
-use crate::topo_order::TopoOrder;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    dominator_tree::DominatorTree,
+    entity::{SparseMap, SparseMapValue},
+    ir::{
+        AbiParam, ArgumentLoc, Block, Function, Inst, InstBuilder, InstructionData, Opcode, Value,
+        ValueLoc,
+    },
+    isa::{ConstraintKind, EncInfo, Encoding, RecipeConstraints, RegClass, TargetIsa},
+    regalloc::{
+        affinity::Affinity,
+        live_value_tracker::{LiveValue, LiveValueTracker},
+        liveness::Liveness,
+    },
+    timing,
+    topo_order::TopoOrder,
+};
 use alloc::vec::Vec;
 use log::debug;
 

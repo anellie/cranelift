@@ -1,14 +1,14 @@
 //! A loop analysis represented as mappings of loops to their header Block
 //! and parent in the loop tree.
 
-use crate::dominator_tree::DominatorTree;
-use crate::entity::entity_impl;
-use crate::entity::SecondaryMap;
-use crate::entity::{Keys, PrimaryMap};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir::{Block, Function, Layout};
-use crate::packed_option::PackedOption;
-use crate::timing;
+use crate::{
+    dominator_tree::DominatorTree,
+    entity::{entity_impl, Keys, PrimaryMap, SecondaryMap},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir::{Block, Function, Layout},
+    packed_option::PackedOption,
+    timing,
+};
 use alloc::vec::Vec;
 
 /// A opaque reference to a code loop.
@@ -232,11 +232,13 @@ impl LoopAnalysis {
 
 #[cfg(test)]
 mod tests {
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::dominator_tree::DominatorTree;
-    use crate::flowgraph::ControlFlowGraph;
-    use crate::ir::{types, Function, InstBuilder};
-    use crate::loop_analysis::{Loop, LoopAnalysis};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        dominator_tree::DominatorTree,
+        flowgraph::ControlFlowGraph,
+        ir::{types, Function, InstBuilder},
+        loop_analysis::{Loop, LoopAnalysis},
+    };
     use alloc::vec::Vec;
 
     #[test]

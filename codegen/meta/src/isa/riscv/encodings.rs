@@ -1,16 +1,23 @@
-use crate::cdsl::ast::{Apply, Expr, Literal, VarPool};
-use crate::cdsl::encodings::{Encoding, EncodingBuilder};
-use crate::cdsl::instructions::{
-    Bindable, BoundInstruction, InstSpec, InstructionPredicateNode, InstructionPredicateRegistry,
+use crate::cdsl::{
+    ast::{Apply, Expr, Literal, VarPool},
+    encodings::{Encoding, EncodingBuilder},
+    instructions::{
+        Bindable, BoundInstruction, InstSpec, InstructionPredicateNode,
+        InstructionPredicateRegistry,
+    },
+    recipes::{EncodingRecipeNumber, Recipes},
+    settings::SettingGroup,
 };
-use crate::cdsl::recipes::{EncodingRecipeNumber, Recipes};
-use crate::cdsl::settings::SettingGroup;
 
-use crate::shared::types::Bool::B1;
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I16, I32, I64, I8};
-use crate::shared::types::Reference::{R32, R64};
-use crate::shared::Definitions as SharedDefinitions;
+use crate::shared::{
+    types::{
+        Bool::B1,
+        Float::{F32, F64},
+        Int::{I16, I32, I64, I8},
+        Reference::{R32, R64},
+    },
+    Definitions as SharedDefinitions,
+};
 
 use super::recipes::RecipeGroup;
 

@@ -1,12 +1,16 @@
 //! Boxed slices for `PrimaryMap`.
 
-use crate::iter::{Iter, IterMut};
-use crate::keys::Keys;
-use crate::EntityRef;
+use crate::{
+    iter::{Iter, IterMut},
+    keys::Keys,
+    EntityRef,
+};
 use alloc::boxed::Box;
-use core::marker::PhantomData;
-use core::ops::{Index, IndexMut};
-use core::slice;
+use core::{
+    marker::PhantomData,
+    ops::{Index, IndexMut},
+    slice,
+};
 
 /// A slice mapping `K -> V` allocating dense entity references.
 ///

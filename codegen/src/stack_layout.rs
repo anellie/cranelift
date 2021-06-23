@@ -1,8 +1,12 @@
 //! Computing stack layout.
 
-use crate::ir::stackslot::{StackOffset, StackSize, StackSlotKind};
-use crate::ir::{StackLayoutInfo, StackSlots};
-use crate::result::{CodegenError, CodegenResult};
+use crate::{
+    ir::{
+        stackslot::{StackOffset, StackSize, StackSlotKind},
+        StackLayoutInfo, StackSlots,
+    },
+    result::{CodegenError, CodegenResult},
+};
 use core::cmp::{max, min};
 
 /// Compute the stack frame layout.
@@ -135,10 +139,10 @@ pub fn layout_stack(
 #[cfg(test)]
 mod tests {
     use super::layout_stack;
-    use crate::ir::stackslot::StackOffset;
-    use crate::ir::types;
-    use crate::ir::{StackSlotData, StackSlotKind, StackSlots};
-    use crate::result::CodegenError;
+    use crate::{
+        ir::{stackslot::StackOffset, types, StackSlotData, StackSlotKind, StackSlots},
+        result::CodegenError,
+    };
 
     #[test]
     fn layout() {

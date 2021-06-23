@@ -69,11 +69,12 @@
 //! branch editing that in practice elides empty blocks and simplifies some of
 //! the other redundancies that this scheme produces.
 
-use crate::entity::SecondaryMap;
-use crate::fx::{FxHashMap, FxHashSet};
-use crate::ir::{Block, Function, Inst, Opcode};
-use crate::machinst::lower::visit_block_succs;
-use crate::machinst::*;
+use crate::{
+    entity::SecondaryMap,
+    fx::{FxHashMap, FxHashSet},
+    ir::{Block, Function, Inst, Opcode},
+    machinst::{lower::visit_block_succs, *},
+};
 
 use log::debug;
 use smallvec::SmallVec;
@@ -444,10 +445,11 @@ impl BlockLoweringOrder {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::types::*;
-    use crate::ir::{AbiParam, ExternalName, Function, InstBuilder, Signature};
-    use crate::isa::CallConv;
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types::*, AbiParam, ExternalName, Function, InstBuilder, Signature},
+        isa::CallConv,
+    };
 
     fn build_test_func(n_blocks: usize, edges: &[(usize, usize)]) -> Function {
         assert!(n_blocks > 0);

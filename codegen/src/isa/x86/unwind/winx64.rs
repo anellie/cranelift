@@ -1,9 +1,14 @@
 //! Unwind information for Windows x64 ABI.
 
-use crate::ir::Function;
-use crate::isa::x86::registers::{FPR, GPR};
-use crate::isa::{unwind::winx64::UnwindInfo, RegUnit, TargetIsa};
-use crate::result::CodegenResult;
+use crate::{
+    ir::Function,
+    isa::{
+        unwind::winx64::UnwindInfo,
+        x86::registers::{FPR, GPR},
+        RegUnit, TargetIsa,
+    },
+    result::CodegenResult,
+};
 
 pub(crate) fn create_unwind_info(
     func: &Function,
@@ -42,13 +47,16 @@ impl crate::isa::unwind::winx64::RegisterMapper<RegUnit> for RegisterMapper {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::{ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind};
-    use crate::isa::unwind::winx64::UnwindCode;
-    use crate::isa::x86::registers::RU;
-    use crate::isa::{lookup_variant, BackendVariant, CallConv};
-    use crate::settings::{builder, Flags};
-    use crate::Context;
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind},
+        isa::{
+            lookup_variant, unwind::winx64::UnwindCode, x86::registers::RU, BackendVariant,
+            CallConv,
+        },
+        settings::{builder, Flags},
+        Context,
+    };
     use std::str::FromStr;
     use target_lexicon::triple;
 

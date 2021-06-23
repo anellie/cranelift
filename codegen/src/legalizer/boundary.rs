@@ -17,19 +17,19 @@
 //! Between the two phases, preamble signatures and call/return arguments don't match. This
 //! intermediate state doesn't type check.
 
-use crate::abi::{legalize_abi_value, ValueConversion};
-use crate::cursor::{Cursor, FuncCursor};
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::instructions::CallInfo;
-use crate::ir::{
-    AbiParam, ArgumentLoc, ArgumentPurpose, Block, DataFlowGraph, ExtFuncData, ExternalName,
-    Function, Inst, InstBuilder, LibCall, MemFlags, SigRef, Signature, StackSlotData,
-    StackSlotKind, Type, Value, ValueLoc,
+use crate::{
+    abi::{legalize_abi_value, ValueConversion},
+    cursor::{Cursor, FuncCursor},
+    flowgraph::ControlFlowGraph,
+    ir::{
+        instructions::CallInfo, AbiParam, ArgumentLoc, ArgumentPurpose, Block, DataFlowGraph,
+        ExtFuncData, ExternalName, Function, Inst, InstBuilder, LibCall, MemFlags, SigRef,
+        Signature, StackSlotData, StackSlotKind, Type, Value, ValueLoc,
+    },
+    isa::TargetIsa,
+    legalizer::split::{isplit, vsplit},
 };
-use crate::isa::TargetIsa;
-use crate::legalizer::split::{isplit, vsplit};
-use alloc::borrow::Cow;
-use alloc::vec::Vec;
+use alloc::{borrow::Cow, vec::Vec};
 use core::mem;
 use cranelift_entity::EntityList;
 use log::debug;

@@ -1,10 +1,6 @@
 //! Compilation backend pipeline: optimized IR to VCode / binemit.
 
-use crate::ir::Function;
-use crate::log::DeferredDisplay;
-use crate::machinst::*;
-use crate::settings;
-use crate::timing;
+use crate::{ir::Function, log::DeferredDisplay, machinst::*, settings, timing};
 
 use log::debug;
 use regalloc::{allocate_registers_with_opts, Algorithm, Options, PrettyPrint};
@@ -53,8 +49,7 @@ where
 
     #[cfg(feature = "regalloc-snapshot")]
     {
-        use std::fs;
-        use std::path::Path;
+        use std::{fs, path::Path};
         if let Some(path) = std::env::var("SERIALIZE_REGALLOC").ok() {
             let snapshot = regalloc::IRSnapshot::from_function(&vcode, b.reg_universe());
             let serialized = bincode::serialize(&snapshot).expect("couldn't serialize snapshot");

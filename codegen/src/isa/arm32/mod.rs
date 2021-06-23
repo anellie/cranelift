@@ -1,11 +1,12 @@
 //! 32-bit ARM Instruction Set Architecture.
 
-use crate::ir::condcodes::IntCC;
-use crate::ir::Function;
-use crate::isa::Builder as IsaBuilder;
-use crate::machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode};
-use crate::result::CodegenResult;
-use crate::settings;
+use crate::{
+    ir::{condcodes::IntCC, Function},
+    isa::Builder as IsaBuilder,
+    machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode},
+    result::CodegenResult,
+    settings,
+};
 
 use alloc::{boxed::Box, vec::Vec};
 use core::hash::{Hash, Hasher};

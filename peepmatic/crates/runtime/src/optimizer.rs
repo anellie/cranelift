@@ -1,16 +1,20 @@
 //! An optimizer for a set of peephole optimizations.
 
-use crate::instruction_set::InstructionSet;
-use crate::linear::{bool_to_match_result, Action, Else, MatchOp, MatchResult};
-use crate::optimizations::PeepholeOptimizations;
-use crate::part::{Constant, Part};
-use crate::r#type::{BitWidth, Type};
-use crate::unquote::UnquoteOperator;
+use crate::{
+    instruction_set::InstructionSet,
+    linear::{bool_to_match_result, Action, Else, MatchOp, MatchResult},
+    optimizations::PeepholeOptimizations,
+    part::{Constant, Part},
+    r#type::{BitWidth, Type},
+    unquote::UnquoteOperator,
+};
 use peepmatic_automata::State;
-use std::convert::TryFrom;
-use std::fmt::{self, Debug};
-use std::mem;
-use std::num::NonZeroU32;
+use std::{
+    convert::TryFrom,
+    fmt::{self, Debug},
+    mem,
+    num::NonZeroU32,
+};
 
 /// A peephole optimizer instance that can apply a set of peephole
 /// optimizations to instructions.

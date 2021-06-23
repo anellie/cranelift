@@ -1,12 +1,13 @@
-use crate::cdsl::instructions::{InstSpec, Instruction, InstructionPredicate};
-use crate::cdsl::operands::{OperandKind, OperandKindFields};
-use crate::cdsl::types::ValueType;
-use crate::cdsl::typevar::{TypeSetBuilder, TypeVar};
+use crate::cdsl::{
+    instructions::{InstSpec, Instruction, InstructionPredicate},
+    operands::{OperandKind, OperandKindFields},
+    types::ValueType,
+    typevar::{TypeSetBuilder, TypeVar},
+};
 
 use cranelift_entity::{entity_impl, PrimaryMap, SparseMap, SparseMapValue};
 
-use std::fmt;
-use std::iter::IntoIterator;
+use std::{fmt, iter::IntoIterator};
 
 pub(crate) enum Expr {
     Var(VarIndex),

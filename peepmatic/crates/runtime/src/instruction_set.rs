@@ -1,10 +1,10 @@
 //! Interfacing with actual instructions.
 
-use crate::part::{Constant, Part};
-use crate::r#type::Type;
-use std::fmt::Debug;
-use std::hash::Hash;
-use std::num::NonZeroU32;
+use crate::{
+    part::{Constant, Part},
+    r#type::Type,
+};
+use std::{fmt::Debug, hash::Hash, num::NonZeroU32};
 
 /// A trait for interfacing with actual instruction sequences.
 ///

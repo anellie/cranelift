@@ -3,15 +3,16 @@
 // Some variants are never constructed, but we still want them as options in the future.
 #![allow(dead_code)]
 
-use crate::ir::types::*;
-use crate::ir::Type;
-use crate::isa::aarch64::inst::*;
-use crate::machinst::{ty_bits, MachLabel};
+use crate::{
+    ir::{types::*, Type},
+    isa::aarch64::inst::*,
+    machinst::{ty_bits, MachLabel},
+};
 
 use regalloc::{PrettyPrint, RealRegUniverse, Reg, Writable};
 
-use core::convert::Into;
 use alloc::string::String;
+use core::convert::Into;
 
 //=============================================================================
 // Instruction sub-components: shift and extend descriptors

@@ -1,9 +1,13 @@
-use std::collections::{hash_map, HashMap, HashSet};
-use std::iter::FromIterator;
+use std::{
+    collections::{hash_map, HashMap, HashSet},
+    iter::FromIterator,
+};
 
-use crate::cdsl::encodings::Encoding;
-use crate::cdsl::types::{LaneType, ValueType};
-use crate::cdsl::xform::{TransformGroup, TransformGroupIndex};
+use crate::cdsl::{
+    encodings::Encoding,
+    types::{LaneType, ValueType},
+    xform::{TransformGroup, TransformGroupIndex},
+};
 
 pub(crate) struct CpuMode {
     pub name: &'static str,

@@ -1,10 +1,16 @@
-use crate::cdsl::ast::{var, ExprBuilder, Literal};
-use crate::cdsl::instructions::{Bindable, Instruction, InstructionGroup};
-use crate::cdsl::xform::{TransformGroupBuilder, TransformGroups};
+use crate::cdsl::{
+    ast::{var, ExprBuilder, Literal},
+    instructions::{Bindable, Instruction, InstructionGroup},
+    xform::{TransformGroupBuilder, TransformGroups},
+};
 
-use crate::shared::immediates::Immediates;
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I128, I16, I32, I64, I8};
+use crate::shared::{
+    immediates::Immediates,
+    types::{
+        Float::{F32, F64},
+        Int::{I128, I16, I32, I64, I8},
+    },
+};
 use cranelift_codegen_shared::condcodes::{CondCode, IntCC};
 
 #[allow(clippy::many_single_char_names, clippy::cognitive_complexity)]

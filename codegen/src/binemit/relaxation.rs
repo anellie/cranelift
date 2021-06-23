@@ -27,16 +27,17 @@
 //! block23:
 //! ```
 
-use crate::binemit::{CodeInfo, CodeOffset};
-use crate::cursor::{Cursor, FuncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::{Block, Function, Inst, InstructionData, Opcode, Value, ValueList};
-use crate::isa::{EncInfo, TargetIsa};
-use crate::iterators::IteratorExtras;
-use crate::regalloc::RegDiversions;
-use crate::timing;
-use crate::CodegenResult;
+use crate::{
+    binemit::{CodeInfo, CodeOffset},
+    cursor::{Cursor, FuncCursor},
+    dominator_tree::DominatorTree,
+    flowgraph::ControlFlowGraph,
+    ir::{Block, Function, Inst, InstructionData, Opcode, Value, ValueList},
+    isa::{EncInfo, TargetIsa},
+    iterators::IteratorExtras,
+    regalloc::RegDiversions,
+    timing, CodegenResult,
+};
 use core::convert::TryFrom;
 use log::debug;
 

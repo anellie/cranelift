@@ -1,18 +1,22 @@
 //! A frontend for building Cranelift IR from other languages.
-use crate::ssa::{SSABuilder, SideEffects};
-use crate::variable::Variable;
-use cranelift_codegen::cursor::{Cursor, FuncCursor};
-use cranelift_codegen::entity::{EntitySet, SecondaryMap};
-use cranelift_codegen::ir;
-use cranelift_codegen::ir::function::DisplayFunction;
-use cranelift_codegen::ir::{
-    types, AbiParam, Block, DataFlowGraph, ExtFuncData, ExternalName, FuncRef, Function,
-    GlobalValue, GlobalValueData, Heap, HeapData, Inst, InstBuilder, InstBuilderBase,
-    InstructionData, JumpTable, JumpTableData, LibCall, MemFlags, SigRef, Signature, StackSlot,
-    StackSlotData, Type, Value, ValueLabel, ValueLabelAssignments, ValueLabelStart,
+use crate::{
+    ssa::{SSABuilder, SideEffects},
+    variable::Variable,
 };
-use cranelift_codegen::isa::{TargetFrontendConfig, TargetIsa};
-use cranelift_codegen::packed_option::PackedOption;
+use cranelift_codegen::{
+    cursor::{Cursor, FuncCursor},
+    entity::{EntitySet, SecondaryMap},
+    ir,
+    ir::{
+        function::DisplayFunction, types, AbiParam, Block, DataFlowGraph, ExtFuncData,
+        ExternalName, FuncRef, Function, GlobalValue, GlobalValueData, Heap, HeapData, Inst,
+        InstBuilder, InstBuilderBase, InstructionData, JumpTable, JumpTableData, LibCall, MemFlags,
+        SigRef, Signature, StackSlot, StackSlotData, Type, Value, ValueLabel,
+        ValueLabelAssignments, ValueLabelStart,
+    },
+    isa::{TargetFrontendConfig, TargetIsa},
+    packed_option::PackedOption,
+};
 
 /// Structure used for translating a series of functions into Cranelift IR.
 ///
@@ -846,17 +850,18 @@ impl<'a> FunctionBuilder<'a> {
 #[cfg(test)]
 mod tests {
     use super::greatest_divisible_power_of_two;
-    use crate::frontend::{FunctionBuilder, FunctionBuilderContext};
-    use crate::Variable;
-    use alloc::string::ToString;
-    use cranelift_codegen::entity::EntityRef;
-    use cranelift_codegen::ir::types::*;
-    use cranelift_codegen::ir::{
-        AbiParam, ExternalName, Function, InstBuilder, MemFlags, Signature,
+    use crate::{
+        frontend::{FunctionBuilder, FunctionBuilderContext},
+        Variable,
     };
-    use cranelift_codegen::isa::{CallConv, TargetFrontendConfig};
-    use cranelift_codegen::settings;
-    use cranelift_codegen::verifier::verify_function;
+    use alloc::string::ToString;
+    use cranelift_codegen::{
+        entity::EntityRef,
+        ir::{types::*, AbiParam, ExternalName, Function, InstBuilder, MemFlags, Signature},
+        isa::{CallConv, TargetFrontendConfig},
+        settings,
+        verifier::verify_function,
+    };
     use target_lexicon::PointerWidth;
 
     fn sample_function(lazy_seal: bool) {

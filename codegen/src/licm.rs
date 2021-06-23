@@ -1,16 +1,19 @@
 //! A Loop Invariant Code Motion optimization pass
 
-use crate::cursor::{Cursor, EncCursor, FuncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::entity::{EntityList, ListPool};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::fx::FxHashSet;
-use crate::ir::{
-    Block, DataFlowGraph, Function, Inst, InstBuilder, InstructionData, Layout, Opcode, Type, Value,
+use crate::{
+    cursor::{Cursor, EncCursor, FuncCursor},
+    dominator_tree::DominatorTree,
+    entity::{EntityList, ListPool},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    fx::FxHashSet,
+    ir::{
+        Block, DataFlowGraph, Function, Inst, InstBuilder, InstructionData, Layout, Opcode, Type,
+        Value,
+    },
+    isa::TargetIsa,
+    loop_analysis::{Loop, LoopAnalysis},
+    timing,
 };
-use crate::isa::TargetIsa;
-use crate::loop_analysis::{Loop, LoopAnalysis};
-use crate::timing;
 use alloc::vec::Vec;
 
 /// Performs the LICM pass by detecting loops within the CFG and moving

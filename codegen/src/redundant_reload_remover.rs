@@ -1,18 +1,20 @@
 //! This module implements a late-stage redundant-reload remover, which runs after registers have
 //! been allocated and stack slots have been given specific offsets.
 
-use crate::cursor::{Cursor, CursorPosition, EncCursor, FuncCursor};
-use crate::entity::EntitySet;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::dfg::DataFlowGraph;
-use crate::ir::instructions::BranchInfo;
-use crate::ir::stackslot::{StackSlotKind, StackSlots};
-use crate::ir::{
-    Block, Function, Inst, InstBuilder, InstructionData, Opcode, StackSlotData, Type, Value,
-    ValueLoc,
+use crate::{
+    cursor::{Cursor, CursorPosition, EncCursor, FuncCursor},
+    entity::EntitySet,
+    flowgraph::ControlFlowGraph,
+    ir::{
+        dfg::DataFlowGraph,
+        instructions::BranchInfo,
+        stackslot::{StackSlotKind, StackSlots},
+        Block, Function, Inst, InstBuilder, InstructionData, Opcode, StackSlotData, Type, Value,
+        ValueLoc,
+    },
+    isa::{RegInfo, RegUnit, TargetIsa},
+    regalloc::RegDiversions,
 };
-use crate::isa::{RegInfo, RegUnit, TargetIsa};
-use crate::regalloc::RegDiversions;
 use alloc::vec::Vec;
 use core::convert::TryInto;
 use cranelift_entity::{PrimaryMap, SecondaryMap};

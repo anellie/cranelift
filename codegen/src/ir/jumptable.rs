@@ -5,8 +5,10 @@
 
 use crate::ir::entities::Block;
 use alloc::vec::Vec;
-use core::fmt::{self, Display, Formatter};
-use core::slice::{Iter, IterMut};
+use core::{
+    fmt::{self, Display, Formatter},
+    slice::{Iter, IterMut},
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
@@ -92,8 +94,7 @@ impl Display for JumpTableData {
 #[cfg(test)]
 mod tests {
     use super::JumpTableData;
-    use crate::entity::EntityRef;
-    use crate::ir::Block;
+    use crate::{entity::EntityRef, ir::Block};
     use alloc::string::ToString;
 
     #[test]

@@ -19,13 +19,15 @@
 //!
 //! We do a standard forward dataflow analysis to compute this info.
 
-use crate::ir::ValueLabel;
-use crate::machinst::*;
-use crate::value_label::{LabelValueLoc, ValueLabelsRanges, ValueLocRange};
+use crate::{
+    ir::ValueLabel,
+    machinst::*,
+    value_label::{LabelValueLoc, ValueLabelsRanges, ValueLocRange},
+};
+use core::hash::Hash;
+use hashbrown::{HashMap, HashSet};
 use log::trace;
 use regalloc::{Reg, RegUsageCollector};
-use hashbrown::{HashMap, HashSet};
-use core::hash::Hash;
 
 /// Location of a labeled value: in a register or in a stack slot. Note that a
 /// value may live in more than one location; `AnalysisInfo` maps each

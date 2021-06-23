@@ -3,10 +3,14 @@
 // Some variants are never constructed, but we still want them as options in the future.
 #![allow(dead_code)]
 
-use crate::ir::condcodes::{FloatCC, IntCC};
-use crate::ir::MemFlags;
-use crate::isa::s390x::inst::*;
-use crate::machinst::MachLabel;
+use crate::{
+    ir::{
+        condcodes::{FloatCC, IntCC},
+        MemFlags,
+    },
+    isa::s390x::inst::*,
+    machinst::MachLabel,
+};
 
 use regalloc::{PrettyPrint, RealRegUniverse, Reg};
 

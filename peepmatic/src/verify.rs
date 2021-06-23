@@ -12,20 +12,23 @@
 //! and RHS produce different results) for a particular optimization is not
 //! implemented yet.
 
-use crate::ast::{Span as _, *};
-use crate::traversals::{Dfs, TraversalEvent};
+use crate::{
+    ast::{Span as _, *},
+    traversals::{Dfs, TraversalEvent},
+};
 use peepmatic_runtime::r#type::{BitWidth, Kind, Type};
 use peepmatic_traits::{TypingContext as TypingContextTrait, TypingRules};
-use std::borrow::Cow;
-use std::collections::HashMap;
-use std::convert::{TryFrom, TryInto};
-use std::fmt;
-use std::fmt::Debug;
-use std::hash::Hash;
-use std::iter;
-use std::mem;
-use std::ops::{Deref, DerefMut};
-use std::path::Path;
+use std::{
+    borrow::Cow,
+    collections::HashMap,
+    convert::{TryFrom, TryInto},
+    fmt,
+    fmt::Debug,
+    hash::Hash,
+    iter, mem,
+    ops::{Deref, DerefMut},
+    path::Path,
+};
 use wast::{Error as WastError, Id, Span};
 use z3::ast::Ast;
 

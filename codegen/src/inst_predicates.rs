@@ -1,7 +1,9 @@
 //! Instruction predicates/properties, shared by various analyses.
 
-use crate::ir::{DataFlowGraph, Function, Inst, InstructionData, Opcode};
-use crate::machinst::ty_bits;
+use crate::{
+    ir::{DataFlowGraph, Function, Inst, InstructionData, Opcode},
+    machinst::ty_bits,
+};
 use cranelift_entity::EntityRef;
 
 /// Preserve instructions with used result values.

@@ -8,8 +8,10 @@
 //! subclass. This is just a hint, and the register allocator is allowed to pick a register from a
 //! larger register class instead.
 
-use crate::ir::{AbiParam, ArgumentLoc};
-use crate::isa::{ConstraintKind, OperandConstraint, RegClassIndex, RegInfo, TargetIsa};
+use crate::{
+    ir::{AbiParam, ArgumentLoc},
+    isa::{ConstraintKind, OperandConstraint, RegClassIndex, RegInfo, TargetIsa},
+};
 use core::fmt;
 
 /// Preferred register allocation for an SSA value.

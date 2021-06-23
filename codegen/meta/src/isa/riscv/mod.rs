@@ -1,12 +1,18 @@
-use crate::cdsl::cpu_modes::CpuMode;
-use crate::cdsl::instructions::InstructionGroupBuilder;
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::regs::{IsaRegs, IsaRegsBuilder, RegBankBuilder, RegClassBuilder};
-use crate::cdsl::settings::{PredicateNode, SettingGroup, SettingGroupBuilder};
+use crate::cdsl::{
+    cpu_modes::CpuMode,
+    instructions::InstructionGroupBuilder,
+    isa::TargetIsa,
+    regs::{IsaRegs, IsaRegsBuilder, RegBankBuilder, RegClassBuilder},
+    settings::{PredicateNode, SettingGroup, SettingGroupBuilder},
+};
 
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I32, I64};
-use crate::shared::Definitions as SharedDefinitions;
+use crate::shared::{
+    types::{
+        Float::{F32, F64},
+        Int::{I32, I64},
+    },
+    Definitions as SharedDefinitions,
+};
 
 mod encodings;
 mod recipes;

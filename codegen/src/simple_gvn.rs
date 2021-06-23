@@ -1,13 +1,17 @@
 //! A simple GVN pass.
 
-use crate::cursor::{Cursor, FuncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::ir::{Function, Inst, InstructionData, Opcode, Type};
-use crate::scoped_hash_map::ScopedHashMap;
-use crate::timing;
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    dominator_tree::DominatorTree,
+    ir::{Function, Inst, InstructionData, Opcode, Type},
+    scoped_hash_map::ScopedHashMap,
+    timing,
+};
 use alloc::vec::Vec;
-use core::cell::{Ref, RefCell};
-use core::hash::{Hash, Hasher};
+use core::{
+    cell::{Ref, RefCell},
+    hash::{Hash, Hasher},
+};
 
 /// Test whether the given opcode is unsafe to even consider for GVN.
 fn trivially_unsafe_for_gvn(opcode: Opcode) -> bool {

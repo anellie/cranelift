@@ -140,17 +140,19 @@
 //! Given these invariants, we argue why each optimization preserves execution
 //! semantics below (grep for "Preserves execution semantics").
 
-use crate::binemit::{Addend, CodeOffset, CodeSink, Reloc, StackMap};
-use crate::ir::{ExternalName, Opcode, SourceLoc, TrapCode};
-use crate::isa::unwind::UnwindInst;
-use crate::machinst::{BlockIndex, MachInstLabelUse, VCodeConstant, VCodeConstants, VCodeInst};
-use crate::timing;
+use crate::{
+    binemit::{Addend, CodeOffset, CodeSink, Reloc, StackMap},
+    ir::{ExternalName, Opcode, SourceLoc, TrapCode},
+    isa::unwind::UnwindInst,
+    machinst::{BlockIndex, MachInstLabelUse, VCodeConstant, VCodeConstants, VCodeInst},
+    timing,
+};
 use cranelift_entity::{entity_impl, SecondaryMap};
 
+use alloc::string::String;
+use core::mem;
 use log::trace;
 use smallvec::SmallVec;
-use core::mem;
-use alloc::string::String;
 
 /// A buffer of output to be produced, fixed up, and then emitted to a CodeSink
 /// in bulk.
@@ -1483,14 +1485,17 @@ impl MachBranch {
 #[cfg(all(test, feature = "arm64"))]
 mod test {
     use super::*;
-    use crate::ir::{ConstantOffset, Function, JumpTable, Value};
-    use crate::isa::aarch64::inst::xreg;
-    use crate::isa::aarch64::inst::{BranchTarget, CondBrKind, EmitInfo, Inst};
-    use crate::isa::TargetIsa;
-    use crate::machinst::MachInstEmit;
-    use crate::settings;
-    use std::default::Default;
+    use crate::{
+        ir::{ConstantOffset, Function, JumpTable, Value},
+        isa::{
+            aarch64::inst::{xreg, BranchTarget, CondBrKind, EmitInfo, Inst},
+            TargetIsa,
+        },
+        machinst::MachInstEmit,
+        settings,
+    };
     use alloc::vec::Vec;
+    use std::default::Default;
 
     fn label(n: u32) -> MachLabel {
         MachLabel::from_block(n)

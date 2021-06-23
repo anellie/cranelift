@@ -26,9 +26,9 @@ use analysis::{AnalysisInfo, RangeFrag};
 use smallvec::SmallVec;
 
 use self::analysis::{BlockBoundary, BlockPos};
-use alloc::vec::Vec;
 use alloc::format;
 use alloc::vec;
+use alloc::vec::Vec;
 
 mod analysis;
 mod assign_registers;

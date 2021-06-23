@@ -51,11 +51,13 @@ extern crate alloc;
 
 use hashbrown::{hash_map, HashMap, HashSet};
 
-pub use crate::context::Context;
-pub use crate::legalizer::legalize_function;
-pub use crate::value_label::{ValueLabelsRanges, ValueLocRange};
-pub use crate::verifier::verify_function;
-pub use crate::write::write_function;
+pub use crate::{
+    context::Context,
+    legalizer::legalize_function,
+    value_label::{ValueLabelsRanges, ValueLocRange},
+    verifier::verify_function,
+    write::write_function,
+};
 
 pub use cranelift_bforest as bforest;
 pub use cranelift_entity as entity;

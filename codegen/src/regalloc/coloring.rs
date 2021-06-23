@@ -42,22 +42,30 @@
 //!
 //! The exception is the entry block whose arguments are colored from the ABI requirements.
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::{ArgumentLoc, InstBuilder, ValueDef};
-use crate::ir::{Block, Function, Inst, InstructionData, Layout, Opcode, SigRef, Value, ValueLoc};
-use crate::isa::{regs_overlap, RegClass, RegInfo, RegUnit};
-use crate::isa::{ConstraintKind, EncInfo, OperandConstraint, RecipeConstraints, TargetIsa};
-use crate::packed_option::PackedOption;
-use crate::regalloc::affinity::Affinity;
-use crate::regalloc::diversion::RegDiversions;
-use crate::regalloc::live_value_tracker::{LiveValue, LiveValueTracker};
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::liverange::LiveRange;
-use crate::regalloc::register_set::RegisterSet;
-use crate::regalloc::solver::{Solver, SolverError};
-use crate::timing;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    dominator_tree::DominatorTree,
+    flowgraph::ControlFlowGraph,
+    ir::{
+        ArgumentLoc, Block, Function, Inst, InstBuilder, InstructionData, Layout, Opcode, SigRef,
+        Value, ValueDef, ValueLoc,
+    },
+    isa::{
+        regs_overlap, ConstraintKind, EncInfo, OperandConstraint, RecipeConstraints, RegClass,
+        RegInfo, RegUnit, TargetIsa,
+    },
+    packed_option::PackedOption,
+    regalloc::{
+        affinity::Affinity,
+        diversion::RegDiversions,
+        live_value_tracker::{LiveValue, LiveValueTracker},
+        liveness::Liveness,
+        liverange::LiveRange,
+        register_set::RegisterSet,
+        solver::{Solver, SolverError},
+    },
+    timing,
+};
 use core::mem;
 use log::debug;
 

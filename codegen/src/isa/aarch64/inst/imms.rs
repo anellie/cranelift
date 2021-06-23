@@ -3,13 +3,15 @@
 // Some variants are never constructed, but we still want them as options in the future.
 #[allow(dead_code)]
 use crate::ir::types::*;
-use crate::ir::Type;
-use crate::isa::aarch64::inst::{OperandSize, ScalarSize};
+use crate::{
+    ir::Type,
+    isa::aarch64::inst::{OperandSize, ScalarSize},
+};
 
 use regalloc::{PrettyPrint, RealRegUniverse};
 
-use core::convert::TryFrom;
 use alloc::string::String;
+use core::convert::TryFrom;
 
 /// An immediate that represents the NZCV flags.
 #[derive(Clone, Copy, Debug)]

@@ -1,7 +1,6 @@
 //! Densely numbered entity references as set keys.
 
-use crate::keys::Keys;
-use crate::EntityRef;
+use crate::{keys::Keys, EntityRef};
 use alloc::vec::Vec;
 use core::marker::PhantomData;
 

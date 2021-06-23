@@ -4,15 +4,19 @@ use std::fmt;
 use cranelift_codegen_shared::constant_hash;
 use cranelift_entity::EntityRef;
 
-use crate::cdsl::camel_case;
-use crate::cdsl::formats::InstructionFormat;
-use crate::cdsl::instructions::{AllInstructions, Instruction};
-use crate::cdsl::operands::Operand;
-use crate::cdsl::typevar::{TypeSet, TypeVar};
+use crate::cdsl::{
+    camel_case,
+    formats::InstructionFormat,
+    instructions::{AllInstructions, Instruction},
+    operands::Operand,
+    typevar::{TypeSet, TypeVar},
+};
 
-use crate::error;
-use crate::srcgen::{Formatter, Match};
-use crate::unique_table::{UniqueSeqTable, UniqueTable};
+use crate::{
+    error,
+    srcgen::{Formatter, Match},
+    unique_table::{UniqueSeqTable, UniqueTable},
+};
 
 // TypeSet indexes are encoded in 8 bits, with `0xff` reserved.
 const TYPESET_LIMIT: usize = 0xff;

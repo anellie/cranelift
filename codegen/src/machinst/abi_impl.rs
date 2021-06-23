@@ -124,20 +124,19 @@
 //!   - Return v0 in memory at `[P+16]`.
 
 use super::abi::*;
-use crate::binemit::StackMap;
-use crate::ir::types::*;
-use crate::ir::{ArgumentExtension, ArgumentPurpose, StackSlot};
-use crate::machinst::*;
-use crate::settings;
-use crate::CodegenResult;
-use crate::{ir, isa};
+use crate::{
+    binemit::StackMap,
+    ir,
+    ir::{types::*, ArgumentExtension, ArgumentPurpose, StackSlot},
+    isa,
+    machinst::*,
+    settings, CodegenResult,
+};
 use alloc::vec::Vec;
+use core::{convert::TryFrom, marker::PhantomData, mem};
 use log::{debug, trace};
 use regalloc::{RealReg, Reg, RegClass, Set, SpillSlot, Writable};
 use smallvec::{smallvec, SmallVec};
-use core::convert::TryFrom;
-use core::marker::PhantomData;
-use core::mem;
 
 /// A location for (part of) an argument or return value. These "storage slots"
 /// are specified for each register-sized part of an argument.

@@ -2,13 +2,17 @@
 //! instructions that may return a NaN result with a sequence of operations
 //! that will replace nondeterministic NaN's with a single canonical NaN value.
 
-use crate::cursor::{Cursor, FuncCursor};
-use crate::ir::condcodes::FloatCC;
-use crate::ir::immediates::{Ieee32, Ieee64};
-use crate::ir::types;
-use crate::ir::types::Type;
-use crate::ir::{Function, Inst, InstBuilder, InstructionData, Opcode, Value};
-use crate::timing;
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    ir::{
+        condcodes::FloatCC,
+        immediates::{Ieee32, Ieee64},
+        types,
+        types::Type,
+        Function, Inst, InstBuilder, InstructionData, Opcode, Value,
+    },
+    timing,
+};
 
 // Canonical 32-bit and 64-bit NaN values.
 static CANON_32BIT_NAN: u32 = 0b01111111110000000000000000000000;

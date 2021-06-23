@@ -3,11 +3,11 @@
 //! A `Builder` provides a convenient interface for inserting instructions into a Cranelift
 //! function. Many of its methods are generated from the meta language instruction definitions.
 
-use crate::ir;
-use crate::ir::types;
-use crate::ir::{DataFlowGraph, InstructionData};
-use crate::ir::{Inst, Opcode, Type, Value};
-use crate::isa;
+use crate::{
+    ir,
+    ir::{types, DataFlowGraph, Inst, InstructionData, Opcode, Type, Value},
+    isa,
+};
 
 /// Base trait for instruction builders.
 ///
@@ -215,10 +215,10 @@ impl<'f> InstBuilderBase<'f> for ReplaceBuilder<'f> {
 
 #[cfg(test)]
 mod tests {
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::condcodes::*;
-    use crate::ir::types::*;
-    use crate::ir::{Function, InstBuilder, ValueDef};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{condcodes::*, types::*, Function, InstBuilder, ValueDef},
+    };
 
     #[test]
     fn types() {

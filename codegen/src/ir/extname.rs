@@ -5,9 +5,11 @@
 //! Cranelift, which compiles functions independently.
 
 use crate::ir::LibCall;
-use core::cmp;
-use core::fmt::{self, Write};
-use core::str::FromStr;
+use core::{
+    cmp,
+    fmt::{self, Write},
+    str::FromStr,
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};

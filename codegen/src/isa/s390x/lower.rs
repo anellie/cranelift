@@ -1,18 +1,16 @@
 //! Lowering rules for S390x.
 
-use crate::ir::condcodes::{FloatCC, IntCC};
-use crate::ir::Inst as IRInst;
-use crate::ir::{types, Endianness, InstructionData, MemFlags, Opcode, TrapCode, Type};
-use crate::isa::s390x::abi::*;
-use crate::isa::s390x::inst::*;
-use crate::isa::s390x::settings as s390x_settings;
-use crate::isa::s390x::S390xBackend;
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::settings::Flags;
-use crate::CodegenResult;
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    ir::{
+        condcodes::{FloatCC, IntCC},
+        types, Endianness, Inst as IRInst, InstructionData, MemFlags, Opcode, TrapCode, Type,
+    },
+    isa::s390x::{abi::*, inst::*, settings as s390x_settings, S390xBackend},
+    machinst::{lower::*, *},
+    settings::Flags,
+    CodegenResult,
+};
+use alloc::{boxed::Box, vec::Vec};
 use core::convert::TryFrom;
 use regalloc::{Reg, Writable};
 use smallvec::SmallVec;

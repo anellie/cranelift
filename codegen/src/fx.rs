@@ -11,9 +11,11 @@
 // except according to those terms.
 
 use super::{HashMap, HashSet};
-use core::default::Default;
-use core::hash::{BuildHasherDefault, Hash, Hasher};
-use core::ops::BitXor;
+use core::{
+    default::Default,
+    hash::{BuildHasherDefault, Hash, Hasher},
+    ops::BitXor,
+};
 
 pub type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 pub type FxHashSet<V> = HashSet<V, BuildHasherDefault<FxHasher>>;

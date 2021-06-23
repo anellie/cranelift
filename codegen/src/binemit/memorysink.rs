@@ -14,10 +14,14 @@
 //! relocations to a `RelocSink` trait object. Relocations are less frequent than the
 //! `CodeSink::put*` methods, so the performance impact of the virtual callbacks is less severe.
 use super::{Addend, CodeInfo, CodeOffset, CodeSink, Reloc};
-use crate::binemit::stack_map::StackMap;
-use crate::ir::entities::Value;
-use crate::ir::{ConstantOffset, ExternalName, Function, JumpTable, Opcode, SourceLoc, TrapCode};
-use crate::isa::TargetIsa;
+use crate::{
+    binemit::stack_map::StackMap,
+    ir::{
+        entities::Value, ConstantOffset, ExternalName, Function, JumpTable, Opcode, SourceLoc,
+        TrapCode,
+    },
+    isa::TargetIsa,
+};
 use core::ptr::write_unaligned;
 
 /// A `CodeSink` that writes binary machine code directly into memory.

@@ -1,21 +1,27 @@
 //! Encoding tables for x86 ISAs.
 
 use super::registers::*;
-use crate::bitset::BitSet;
-use crate::cursor::{Cursor, FuncCursor};
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::condcodes::{FloatCC, IntCC};
-use crate::ir::types::*;
-use crate::ir::{self, Function, Inst, InstBuilder, MemFlags};
-use crate::isa::constraints::*;
-use crate::isa::enc_tables::*;
-use crate::isa::encoding::base_size;
-use crate::isa::encoding::{Encoding, RecipeSizing};
-use crate::isa::RegUnit;
-use crate::isa::{self, TargetIsa};
-use crate::legalizer::expand_as_libcall;
-use crate::predicates;
-use crate::regalloc::RegDiversions;
+use crate::{
+    bitset::BitSet,
+    cursor::{Cursor, FuncCursor},
+    flowgraph::ControlFlowGraph,
+    ir::{
+        self,
+        condcodes::{FloatCC, IntCC},
+        types::*,
+        Function, Inst, InstBuilder, MemFlags,
+    },
+    isa::{
+        self,
+        constraints::*,
+        enc_tables::*,
+        encoding::{base_size, Encoding, RecipeSizing},
+        RegUnit, TargetIsa,
+    },
+    legalizer::expand_as_libcall,
+    predicates,
+    regalloc::RegDiversions,
+};
 
 include!(concat!(env!("OUT_DIR"), "/encoding-x86.rs"));
 include!(concat!(env!("OUT_DIR"), "/legalize-x86.rs"));

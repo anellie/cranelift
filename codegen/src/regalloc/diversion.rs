@@ -7,11 +7,12 @@
 //! These register diversions are local to a block. No values can be diverted when entering a new
 //! block.
 
-use crate::fx::FxHashMap;
-use crate::hash_map::{Entry, Iter};
-use crate::ir::{Block, StackSlot, Value, ValueLoc, ValueLocations};
-use crate::ir::{InstructionData, Opcode};
-use crate::isa::{RegInfo, RegUnit};
+use crate::{
+    fx::FxHashMap,
+    hash_map::{Entry, Iter},
+    ir::{Block, InstructionData, Opcode, StackSlot, Value, ValueLoc, ValueLocations},
+    isa::{RegInfo, RegUnit},
+};
 use core::fmt;
 use cranelift_entity::{SparseMap, SparseMapValue};
 
@@ -295,8 +296,7 @@ impl<'a> fmt::Display for DisplayDiversions<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::entity::EntityRef;
-    use crate::ir::Value;
+    use crate::{entity::EntityRef, ir::Value};
 
     #[test]
     fn inserts() {

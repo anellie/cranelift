@@ -5,7 +5,7 @@
 //! very small sets, even if the elements are sparse relative to the universe.
 
 use alloc::fmt;
-use core::hash::{Hash};
+use core::hash::Hash;
 
 //=============================================================================
 // SparseSet
@@ -17,12 +17,12 @@ pub type SparseSet<T> = SparseSetU<[T; 12]>;
 
 // Implementation: for small, unordered but no dups
 
+use crate::data_structures::FxHashSet;
+use alloc::format;
+use alloc::string::ToString;
+use alloc::vec::Vec;
 use core::mem::MaybeUninit;
 use core::ptr::{read, write};
-use alloc::vec::Vec;
-use alloc::string::ToString;
-use alloc::format;
-use crate::data_structures::FxHashSet;
 
 // Types that can be used as the backing store for a SparseSet.
 pub trait Array {

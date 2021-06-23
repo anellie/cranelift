@@ -24,9 +24,7 @@
 extern crate alloc as std;
 
 use hashbrown::{hash_map, HashMap};
-use std::borrow::ToOwned;
-use std::boxed::Box;
-use std::string::String;
+use std::{borrow::ToOwned, boxed::Box, string::String};
 
 use cranelift_codegen::ir;
 
@@ -34,12 +32,14 @@ mod data_context;
 mod module;
 mod traps;
 
-pub use crate::data_context::{DataContext, DataDescription, Init};
-pub use crate::module::{
-    DataId, FuncId, FuncOrDataId, Linkage, Module, ModuleCompiledFunction, ModuleDeclarations,
-    ModuleError, ModuleResult, RelocRecord,
+pub use crate::{
+    data_context::{DataContext, DataDescription, Init},
+    module::{
+        DataId, FuncId, FuncOrDataId, Linkage, Module, ModuleCompiledFunction, ModuleDeclarations,
+        ModuleError, ModuleResult, RelocRecord,
+    },
+    traps::TrapSite,
 };
-pub use crate::traps::TrapSite;
 
 /// Version number of this crate.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

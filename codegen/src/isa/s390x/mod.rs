@@ -1,14 +1,14 @@
 //! IBM Z 64-bit Instruction Set Architecture.
 
-use crate::ir::condcodes::IntCC;
-use crate::ir::Function;
-use crate::isa::s390x::settings as s390x_settings;
 #[cfg(feature = "unwind")]
 use crate::isa::unwind::systemv::RegisterMappingError;
-use crate::isa::Builder as IsaBuilder;
-use crate::machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode};
-use crate::result::CodegenResult;
-use crate::settings as shared_settings;
+use crate::{
+    ir::{condcodes::IntCC, Function},
+    isa::{s390x::settings as s390x_settings, Builder as IsaBuilder},
+    machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode},
+    result::CodegenResult,
+    settings as shared_settings,
+};
 
 use alloc::{boxed::Box, vec::Vec};
 use core::hash::{Hash, Hasher};
@@ -134,8 +134,7 @@ impl MachBackend for S390xBackend {
         result: &MachCompileResult,
         kind: crate::machinst::UnwindInfoKind,
     ) -> CodegenResult<Option<crate::isa::unwind::UnwindInfo>> {
-        use crate::isa::unwind::UnwindInfo;
-        use crate::machinst::UnwindInfoKind;
+        use crate::{isa::unwind::UnwindInfo, machinst::UnwindInfoKind};
         Ok(match kind {
             UnwindInfoKind::SystemV => {
                 let mapper = self::inst::unwind::systemv::RegisterMapper;
@@ -179,12 +178,13 @@ pub fn isa_builder(triple: Triple) -> IsaBuilder {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::types::*;
-    use crate::ir::{AbiParam, ExternalName, Function, InstBuilder, Signature};
-    use crate::isa::CallConv;
-    use crate::settings;
-    use crate::settings::Configurable;
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types::*, AbiParam, ExternalName, Function, InstBuilder, Signature},
+        isa::CallConv,
+        settings,
+        settings::Configurable,
+    };
     use core::str::FromStr;
     use target_lexicon::Triple;
 

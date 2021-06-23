@@ -3,12 +3,15 @@
 pub mod systemv;
 pub mod winx64;
 
-use crate::ir::{Function, InstructionData, Opcode, ValueLoc};
-use crate::isa::x86::registers::{FPR, RU};
-use crate::isa::{RegUnit, TargetIsa};
-use crate::result::CodegenResult;
-use alloc::vec::Vec;
-use alloc::collections::HashMap;
+use crate::{
+    ir::{Function, InstructionData, Opcode, ValueLoc},
+    isa::{
+        x86::registers::{FPR, RU},
+        RegUnit, TargetIsa,
+    },
+    result::CodegenResult,
+};
+use alloc::{collections::HashMap, vec::Vec};
 
 use crate::isa::unwind::input::{UnwindCode, UnwindInfo};
 
@@ -246,13 +249,13 @@ pub(crate) fn create_unwind_info(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::{
-        types, AbiParam, ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind,
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types, AbiParam, ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind},
+        isa::{lookup_variant, BackendVariant, CallConv},
+        settings::{builder, Flags},
+        Context,
     };
-    use crate::isa::{lookup_variant, BackendVariant, CallConv};
-    use crate::settings::{builder, Flags};
-    use crate::Context;
     use std::str::FromStr;
     use target_lexicon::triple;
 

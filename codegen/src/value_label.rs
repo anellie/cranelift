@@ -1,15 +1,17 @@
-use crate::ir::{Function, SourceLoc, Value, ValueLabel, ValueLabelAssignments, ValueLoc};
-use crate::isa::TargetIsa;
-use crate::machinst::MachCompileResult;
-use crate::regalloc::{Context, RegDiversions};
-use crate::HashMap;
-use alloc::collections::BTreeMap;
-use alloc::vec::Vec;
-use core::cmp::Ordering;
-use core::convert::From;
-use core::iter::Iterator;
-use core::ops::Bound::*;
-use core::ops::Deref;
+use crate::{
+    ir::{Function, SourceLoc, Value, ValueLabel, ValueLabelAssignments, ValueLoc},
+    isa::TargetIsa,
+    machinst::MachCompileResult,
+    regalloc::{Context, RegDiversions},
+    HashMap,
+};
+use alloc::{collections::BTreeMap, vec::Vec};
+use core::{
+    cmp::Ordering,
+    convert::From,
+    iter::Iterator,
+    ops::{Bound::*, Deref},
+};
 use regalloc::Reg;
 
 #[cfg(feature = "enable-serde")]

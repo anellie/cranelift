@@ -2,14 +2,18 @@
 
 #![allow(non_snake_case)]
 
-use crate::cursor::{Cursor, EncCursor};
-use crate::ir::condcodes::{CondCode, FloatCC, IntCC};
-use crate::ir::dfg::ValueDef;
-use crate::ir::immediates::{Imm64, Offset32};
-use crate::ir::instructions::{Opcode, ValueList};
-use crate::ir::{Block, Function, Inst, InstBuilder, InstructionData, MemFlags, Type, Value};
-use crate::isa::TargetIsa;
-use crate::timing;
+use crate::{
+    cursor::{Cursor, EncCursor},
+    ir::{
+        condcodes::{CondCode, FloatCC, IntCC},
+        dfg::ValueDef,
+        immediates::{Imm64, Offset32},
+        instructions::{Opcode, ValueList},
+        Block, Function, Inst, InstBuilder, InstructionData, MemFlags, Type, Value,
+    },
+    isa::TargetIsa,
+    timing,
+};
 
 /// Information collected about a compare+branch sequence.
 struct CmpBrInfo {

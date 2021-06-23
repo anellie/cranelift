@@ -3,12 +3,16 @@
 use self::inst::EmitInfo;
 
 use super::TargetIsa;
-use crate::ir::{condcodes::IntCC, Function};
-use crate::isa::x64::{inst::regs::create_reg_universe_systemv, settings as x64_settings};
-use crate::isa::Builder as IsaBuilder;
-use crate::machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode};
-use crate::result::CodegenResult;
-use crate::settings::{self as shared_settings, Flags};
+use crate::{
+    ir::{condcodes::IntCC, Function},
+    isa::{
+        x64::{inst::regs::create_reg_universe_systemv, settings as x64_settings},
+        Builder as IsaBuilder,
+    },
+    machinst::{compile, MachBackend, MachCompileResult, TargetIsaAdapter, VCode},
+    result::CodegenResult,
+    settings::{self as shared_settings, Flags},
+};
 use alloc::{boxed::Box, vec::Vec};
 use core::hash::{Hash, Hasher};
 use regalloc::{PrettyPrint, RealRegUniverse};
@@ -127,8 +131,7 @@ impl MachBackend for X64Backend {
         result: &MachCompileResult,
         kind: crate::machinst::UnwindInfoKind,
     ) -> CodegenResult<Option<crate::isa::unwind::UnwindInfo>> {
-        use crate::isa::unwind::UnwindInfo;
-        use crate::machinst::UnwindInfoKind;
+        use crate::{isa::unwind::UnwindInfo, machinst::UnwindInfoKind};
         Ok(match kind {
             UnwindInfoKind::SystemV => {
                 let mapper = self::inst::unwind::systemv::RegisterMapper;

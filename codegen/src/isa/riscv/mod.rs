@@ -9,16 +9,21 @@ pub mod settings;
 use super::super::settings as shared_settings;
 #[cfg(feature = "testing_hooks")]
 use crate::binemit::CodeSink;
-use crate::binemit::{emit_function, MemoryCodeSink};
-use crate::ir;
-use crate::isa::enc_tables::{self as shared_enc_tables, lookup_enclist, Encodings};
-use crate::isa::Builder as IsaBuilder;
-use crate::isa::{EncInfo, RegClass, RegInfo, TargetIsa};
-use crate::regalloc;
+use crate::{
+    binemit::{emit_function, MemoryCodeSink},
+    ir,
+    isa::{
+        enc_tables::{self as shared_enc_tables, lookup_enclist, Encodings},
+        Builder as IsaBuilder, EncInfo, RegClass, RegInfo, TargetIsa,
+    },
+    regalloc,
+};
 use alloc::{borrow::Cow, boxed::Box, vec::Vec};
-use core::any::Any;
-use core::fmt;
-use core::hash::{Hash, Hasher};
+use core::{
+    any::Any,
+    fmt,
+    hash::{Hash, Hasher},
+};
 use target_lexicon::{PointerWidth, Triple};
 
 #[allow(dead_code)]
@@ -148,10 +153,11 @@ impl TargetIsa for Isa {
 
 #[cfg(test)]
 mod tests {
-    use crate::ir::{immediates, types};
-    use crate::ir::{Function, InstructionData, Opcode};
-    use crate::isa;
-    use crate::settings::{self, Configurable};
+    use crate::{
+        ir::{immediates, types, Function, InstructionData, Opcode},
+        isa,
+        settings::{self, Configurable},
+    };
     use alloc::string::{String, ToString};
     use core::str::FromStr;
     use target_lexicon::triple;

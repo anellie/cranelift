@@ -7,21 +7,23 @@
 //! directory.
 
 use alloc::vec::Vec;
-use core::convert::{TryFrom, TryInto};
-use core::fmt::{self, Display, Formatter};
-use core::num::NonZeroU32;
-use core::ops::{Deref, DerefMut};
-use core::str::FromStr;
+use core::{
+    convert::{TryFrom, TryInto},
+    fmt::{self, Display, Formatter},
+    num::NonZeroU32,
+    ops::{Deref, DerefMut},
+    str::FromStr,
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 
-use crate::ir::{self, trapcode::TrapCode, types, Block, FuncRef, JumpTable, SigRef, Type, Value};
-use crate::isa;
+use crate::{
+    ir::{self, trapcode::TrapCode, types, Block, FuncRef, JumpTable, SigRef, Type, Value},
+    isa,
+};
 
-use crate::bitset::BitSet;
-use crate::data_value::DataValue;
-use crate::entity;
+use crate::{bitset::BitSet, data_value::DataValue, entity};
 use ir::condcodes::{FloatCC, IntCC};
 
 /// Some instructions use an external list of argument values because there is not enough space in
@@ -701,8 +703,7 @@ impl OperandConstraint {
     /// Resolve this operand constraint into a concrete value type, given the value of the
     /// controlling type variable.
     pub fn resolve(&self, ctrl_type: Type) -> ResolvedConstraint {
-        use self::OperandConstraint::*;
-        use self::ResolvedConstraint::Bound;
+        use self::{OperandConstraint::*, ResolvedConstraint::Bound};
         match *self {
             Concrete(t) => Bound(t),
             Free(vts) => ResolvedConstraint::Free(TYPE_SETS[vts as usize]),

@@ -20,12 +20,15 @@
 //! assert_eq!(f.opt_level(), settings::OptLevel::SpeedAndSize);
 //! ```
 
-use crate::constant_hash::{probe, simple_hash};
-use crate::isa::TargetIsa;
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use core::fmt;
-use core::str;
+use crate::{
+    constant_hash::{probe, simple_hash},
+    isa::TargetIsa,
+};
+use alloc::{
+    boxed::Box,
+    string::{String, ToString},
+};
+use core::{fmt, str};
 
 /// A string-based configurator for settings groups.
 ///
@@ -317,8 +320,7 @@ impl<'a> PredicateView<'a> {
 /// code in other modules.
 pub mod detail {
     use crate::constant_hash;
-    use core::fmt;
-    use core::hash::Hash;
+    use core::{fmt, hash::Hash};
 
     /// An instruction group template.
     #[derive(Hash)]
@@ -478,9 +480,7 @@ impl<'a> From<&'a dyn TargetIsa> for FlagsOrIsa<'a> {
 
 #[cfg(test)]
 mod tests {
-    use super::Configurable;
-    use super::SetError::*;
-    use super::{builder, Flags};
+    use super::{builder, Configurable, Flags, SetError::*};
     use alloc::string::ToString;
 
     #[test]

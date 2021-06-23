@@ -1,8 +1,10 @@
-use crate::cdsl::instructions::{InstructionGroupBuilder, InstructionPredicateMap};
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::recipes::Recipes;
-use crate::cdsl::regs::{IsaRegs, IsaRegsBuilder, RegBankBuilder, RegClassBuilder};
-use crate::cdsl::settings::{SettingGroup, SettingGroupBuilder};
+use crate::cdsl::{
+    instructions::{InstructionGroupBuilder, InstructionPredicateMap},
+    isa::TargetIsa,
+    recipes::Recipes,
+    regs::{IsaRegs, IsaRegsBuilder, RegBankBuilder, RegClassBuilder},
+    settings::{SettingGroup, SettingGroupBuilder},
+};
 
 use crate::shared::Definitions as SharedDefinitions;
 

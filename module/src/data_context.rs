@@ -1,12 +1,11 @@
 //! Defines `DataContext`.
 
-use cranelift_codegen::binemit::{Addend, CodeOffset, Reloc};
-use cranelift_codegen::entity::PrimaryMap;
-use cranelift_codegen::ir;
-use std::borrow::ToOwned;
-use std::boxed::Box;
-use std::string::String;
-use std::vec::Vec;
+use cranelift_codegen::{
+    binemit::{Addend, CodeOffset, Reloc},
+    entity::PrimaryMap,
+    ir,
+};
+use std::{borrow::ToOwned, boxed::Box, string::String, vec::Vec};
 
 use crate::RelocRecord;
 

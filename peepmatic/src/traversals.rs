@@ -1,9 +1,7 @@
 //! Traversals over the AST.
 
 use crate::ast::*;
-use std::collections::VecDeque;
-use std::fmt::Debug;
-use std::hash::Hash;
+use std::{collections::VecDeque, fmt::Debug, hash::Hash};
 
 /// A low-level DFS traversal event: either entering or exiting the traversal of
 /// an AST node.

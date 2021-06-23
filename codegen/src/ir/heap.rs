@@ -1,7 +1,6 @@
 //! Heaps.
 
-use crate::ir::immediates::Uimm64;
-use crate::ir::{GlobalValue, Type};
+use crate::ir::{immediates::Uimm64, GlobalValue, Type};
 use core::fmt;
 
 #[cfg(feature = "enable-serde")]

@@ -4,24 +4,20 @@
 //! the register allocator algorithm. This doesn't preserve any data between functions, but it
 //! avoids allocating data structures independently for each function begin compiled.
 
-use crate::dominator_tree::DominatorTree;
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::Function;
-use crate::isa::TargetIsa;
-use crate::regalloc::branch_splitting;
-use crate::regalloc::coalescing::Coalescing;
-use crate::regalloc::coloring::Coloring;
-use crate::regalloc::live_value_tracker::LiveValueTracker;
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::reload::Reload;
-use crate::regalloc::safepoint::emit_stack_maps;
-use crate::regalloc::spilling::Spilling;
-use crate::regalloc::virtregs::VirtRegs;
-use crate::result::CodegenResult;
-use crate::timing;
-use crate::topo_order::TopoOrder;
-use crate::verifier::{
-    verify_context, verify_cssa, verify_liveness, verify_locations, VerifierErrors,
+use crate::{
+    dominator_tree::DominatorTree,
+    flowgraph::ControlFlowGraph,
+    ir::Function,
+    isa::TargetIsa,
+    regalloc::{
+        branch_splitting, coalescing::Coalescing, coloring::Coloring,
+        live_value_tracker::LiveValueTracker, liveness::Liveness, reload::Reload,
+        safepoint::emit_stack_maps, spilling::Spilling, virtregs::VirtRegs,
+    },
+    result::CodegenResult,
+    timing,
+    topo_order::TopoOrder,
+    verifier::{verify_context, verify_cssa, verify_liveness, verify_locations, VerifierErrors},
 };
 
 /// Persistent memory allocations for register allocation.

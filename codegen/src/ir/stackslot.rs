@@ -3,15 +3,18 @@
 //! The `StackSlotData` struct keeps track of a single stack slot in a function.
 //!
 
-use crate::entity::{Iter, IterMut, Keys, PrimaryMap};
-use crate::ir::{StackSlot, Type};
-use crate::packed_option::PackedOption;
+use crate::{
+    entity::{Iter, IterMut, Keys, PrimaryMap},
+    ir::{StackSlot, Type},
+    packed_option::PackedOption,
+};
 use alloc::vec::Vec;
-use core::cmp;
-use core::fmt;
-use core::ops::{Index, IndexMut};
-use core::slice;
-use core::str::FromStr;
+use core::{
+    cmp, fmt,
+    ops::{Index, IndexMut},
+    slice,
+    str::FromStr,
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
@@ -356,8 +359,7 @@ impl StackSlots {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ir::types;
-    use crate::ir::Function;
+    use crate::ir::{types, Function};
     use alloc::string::ToString;
 
     #[test]

@@ -1,25 +1,30 @@
 //! Lowering rules for X64.
 
-use crate::data_value::DataValue;
-use crate::ir::{
-    condcodes::FloatCC, condcodes::IntCC, types, AbiParam, ArgumentPurpose, ExternalName,
-    Inst as IRInst, InstructionData, LibCall, Opcode, Signature, Type,
+use crate::{
+    data_value::DataValue,
+    ir::{
+        condcodes::{FloatCC, IntCC},
+        types, AbiParam, ArgumentPurpose, ExternalName, Inst as IRInst, InstructionData, LibCall,
+        Opcode, Signature, Type,
+    },
+    isa::{
+        x64::{
+            abi::*,
+            inst::{args::*, *},
+            settings as x64_settings, X64Backend,
+        },
+        CallConv,
+    },
+    machinst::{lower::*, *},
+    result::CodegenResult,
+    settings::{Flags, TlsModel},
 };
-use crate::isa::x64::abi::*;
-use crate::isa::x64::inst::args::*;
-use crate::isa::x64::inst::*;
-use crate::isa::{x64::settings as x64_settings, x64::X64Backend, CallConv};
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::result::CodegenResult;
-use crate::settings::{Flags, TlsModel};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{boxed::Box, vec::Vec};
+use core::convert::TryFrom;
 use cranelift_codegen_shared::condcodes::CondCode;
 use log::trace;
 use regalloc::{Reg, RegClass, Writable};
 use smallvec::{smallvec, SmallVec};
-use core::convert::TryFrom;
 use target_lexicon::Triple;
 
 //=============================================================================

@@ -1,11 +1,13 @@
 //! Unwind information for System V ABI (x86-64).
 
-use crate::ir::Function;
-use crate::isa::{
-    unwind::systemv::{RegisterMappingError, UnwindInfo},
-    RegUnit, TargetIsa,
+use crate::{
+    ir::Function,
+    isa::{
+        unwind::systemv::{RegisterMappingError, UnwindInfo},
+        RegUnit, TargetIsa,
+    },
+    result::CodegenResult,
 };
-use crate::result::CodegenResult;
 use gimli::{write::CommonInformationEntry, Encoding, Format, Register, X86_64};
 
 /// Creates a new x86-64 common information entry (CIE).
@@ -133,13 +135,13 @@ pub(crate) fn create_unwind_info(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::{
-        types, AbiParam, ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind,
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types, AbiParam, ExternalName, InstBuilder, Signature, StackSlotData, StackSlotKind},
+        isa::{lookup_variant, BackendVariant, CallConv},
+        settings::{builder, Flags},
+        Context,
     };
-    use crate::isa::{lookup_variant, BackendVariant, CallConv};
-    use crate::settings::{builder, Flags};
-    use crate::Context;
     use gimli::write::Address;
     use std::str::FromStr;
     use target_lexicon::triple;

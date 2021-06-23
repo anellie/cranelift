@@ -13,8 +13,10 @@
 //! The prefix is then followeded by the opcode byte, the ModR/M byte, and other optional suffixes
 //! (e.g. SIB byte, displacements, immediates) based on the instruction (see section 2.6, Intel
 //! Software Development Manual, volume 2A).
-use super::rex::{encode_modrm, LegacyPrefixes, OpcodeMap};
-use super::ByteSink;
+use super::{
+    rex::{encode_modrm, LegacyPrefixes, OpcodeMap},
+    ByteSink,
+};
 use core::ops::RangeInclusive;
 
 /// Constructs an EVEX-encoded instruction using a builder pattern. This approach makes it visually

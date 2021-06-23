@@ -5,12 +5,13 @@
 //!
 //! This module declares the data types used to represent external functions and call signatures.
 
-use crate::ir::{ArgumentLoc, ExternalName, SigRef, Type};
-use crate::isa::{CallConv, RegInfo, RegUnit};
-use crate::machinst::RelocDistance;
+use crate::{
+    ir::{ArgumentLoc, ExternalName, SigRef, Type},
+    isa::{CallConv, RegInfo, RegUnit},
+    machinst::RelocDistance,
+};
 use alloc::vec::Vec;
-use core::fmt;
-use core::str::FromStr;
+use core::{fmt, str::FromStr};
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 

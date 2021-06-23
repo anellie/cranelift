@@ -1,11 +1,11 @@
 //! AArch64 ISA: binary code emission.
 
-use crate::binemit::{CodeOffset, Reloc, StackMap};
-use crate::ir::constant::ConstantData;
-use crate::ir::types::*;
-use crate::ir::{MemFlags, TrapCode};
-use crate::isa::aarch64::inst::*;
-use crate::machinst::ty_bits;
+use crate::{
+    binemit::{CodeOffset, Reloc, StackMap},
+    ir::{constant::ConstantData, types::*, MemFlags, TrapCode},
+    isa::aarch64::inst::*,
+    machinst::ty_bits,
+};
 
 use regalloc::{Reg, RegClass, Writable};
 

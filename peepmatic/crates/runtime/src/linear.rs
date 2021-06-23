@@ -5,14 +5,14 @@
 //!
 //! See also `src/linearize.rs` for the AST to linear IR translation pass.
 
-use crate::cc::ConditionCode;
-use crate::integer_interner::{IntegerId, IntegerInterner};
-use crate::r#type::{BitWidth, Type};
-use crate::unquote::UnquoteOperator;
+use crate::{
+    cc::ConditionCode,
+    integer_interner::{IntegerId, IntegerInterner},
+    r#type::{BitWidth, Type},
+    unquote::UnquoteOperator,
+};
 use serde::{Deserialize, Serialize};
-use std::fmt::Debug;
-use std::hash::Hash;
-use std::num::NonZeroU32;
+use std::{fmt::Debug, hash::Hash, num::NonZeroU32};
 
 /// A set of linear optimizations.
 #[derive(Debug)]

@@ -11,17 +11,15 @@
 //! If any values in a virtual register are spilled, they will use the same stack slot. This avoids
 //! memory-to-memory copies when a spilled value is passed as a block argument.
 
-use crate::dbg::DisplayList;
-use crate::dominator_tree::DominatorTreePreorder;
-use crate::entity::entity_impl;
-use crate::entity::{EntityList, ListPool};
-use crate::entity::{Keys, PrimaryMap, SecondaryMap};
-use crate::ir::{Function, Value};
-use crate::packed_option::PackedOption;
+use crate::{
+    dbg::DisplayList,
+    dominator_tree::DominatorTreePreorder,
+    entity::{entity_impl, EntityList, Keys, ListPool, PrimaryMap, SecondaryMap},
+    ir::{Function, Value},
+    packed_option::PackedOption,
+};
 use alloc::vec::Vec;
-use core::cmp::Ordering;
-use core::fmt;
-use core::slice;
+use core::{cmp::Ordering, fmt, slice};
 use smallvec::SmallVec;
 
 /// A virtual register reference.
@@ -401,8 +399,7 @@ impl VirtRegs {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::entity::EntityRef;
-    use crate::ir::Value;
+    use crate::{entity::EntityRef, ir::Value};
 
     #[test]
     fn empty_union_find() {

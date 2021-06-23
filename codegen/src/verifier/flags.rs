@@ -1,13 +1,15 @@
 //! Verify CPU flags values.
 
-use crate::entity::{EntitySet, SecondaryMap};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir;
-use crate::ir::instructions::BranchInfo;
-use crate::isa;
-use crate::packed_option::PackedOption;
-use crate::timing;
-use crate::verifier::{VerifierErrors, VerifierStepResult};
+use crate::{
+    entity::{EntitySet, SecondaryMap},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir,
+    ir::instructions::BranchInfo,
+    isa,
+    packed_option::PackedOption,
+    timing,
+    verifier::{VerifierErrors, VerifierStepResult},
+};
 
 /// Verify that CPU flags are used correctly.
 ///

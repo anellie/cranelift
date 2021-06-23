@@ -1,6 +1,5 @@
 use crate::cdsl::operands::OperandKind;
-use std::fmt;
-use std::rc::Rc;
+use std::{fmt, rc::Rc};
 
 /// An immediate field in an instruction format.
 ///

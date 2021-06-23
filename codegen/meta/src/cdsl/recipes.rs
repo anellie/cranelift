@@ -2,10 +2,10 @@ use std::rc::Rc;
 
 use cranelift_entity::{entity_impl, PrimaryMap};
 
-use crate::cdsl::formats::InstructionFormat;
-use crate::cdsl::instructions::InstructionPredicate;
-use crate::cdsl::regs::RegClassIndex;
-use crate::cdsl::settings::SettingPredicateNumber;
+use crate::cdsl::{
+    formats::InstructionFormat, instructions::InstructionPredicate, regs::RegClassIndex,
+    settings::SettingPredicateNumber,
+};
 
 /// A specific register in a register class.
 ///

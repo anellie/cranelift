@@ -99,16 +99,15 @@
 //! over.
 
 use super::RegisterSet;
-use crate::dbg::DisplayList;
-use crate::entity::{SparseMap, SparseMapValue};
-use crate::ir::Value;
-use crate::isa::{RegClass, RegUnit};
-use crate::regalloc::register_set::RegSetIter;
+use crate::{
+    dbg::DisplayList,
+    entity::{SparseMap, SparseMapValue},
+    ir::Value,
+    isa::{RegClass, RegUnit},
+    regalloc::register_set::RegSetIter,
+};
 use alloc::vec::Vec;
-use core::cmp;
-use core::fmt;
-use core::mem;
-use core::u16;
+use core::{cmp, fmt, mem, u16};
 use log::debug;
 
 /// A variable in the constraint problem.
@@ -1147,11 +1146,15 @@ impl fmt::Display for Solver {
 #[cfg(feature = "arm32")]
 mod tests {
     use super::{Move, Solver};
-    use crate::entity::EntityRef;
-    use crate::ir::Value;
-    use crate::isa::registers::{RegBank, RegClassData};
-    use crate::isa::{RegClass, RegInfo, RegUnit};
-    use crate::regalloc::RegisterSet;
+    use crate::{
+        entity::EntityRef,
+        ir::Value,
+        isa::{
+            registers::{RegBank, RegClassData},
+            RegClass, RegInfo, RegUnit,
+        },
+        regalloc::RegisterSet,
+    };
     use core::borrow::Borrow;
 
     // Arm32 `TargetIsa` is now `TargetIsaAdapter`, which does not hold any info

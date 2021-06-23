@@ -1,7 +1,9 @@
 //! Trap codes describing the reason for a trap.
 
-use core::fmt::{self, Display, Formatter};
-use core::str::FromStr;
+use core::{
+    fmt::{self, Display, Formatter},
+    str::FromStr,
+};
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 

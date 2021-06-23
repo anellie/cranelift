@@ -3,14 +3,14 @@
 
 //! Backtracking allocator: the as-yet-unallocated VirtualReg LR prio queue.
 
-use core::cmp::Ordering;
 use alloc::collections::BinaryHeap;
+use core::cmp::Ordering;
 
 use crate::data_structures::{TypedIxVec, VirtualRange, VirtualRangeIx};
-use alloc::string::{ToString, String};
 use alloc::format;
-use alloc::vec::Vec;
+use alloc::string::{String, ToString};
 use alloc::vec;
+use alloc::vec::Vec;
 
 //=============================================================================
 // The as-yet-unallocated VirtualReg LR prio queue, `VirtualRangePrioQ`.

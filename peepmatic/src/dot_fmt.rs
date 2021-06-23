@@ -8,10 +8,12 @@ use peepmatic_runtime::{
     integer_interner::{IntegerId, IntegerInterner},
     linear,
 };
-use std::convert::{TryFrom, TryInto};
-use std::fmt::Debug;
-use std::io::{self, Write};
-use std::num::{NonZeroU16, NonZeroU32};
+use std::{
+    convert::{TryFrom, TryInto},
+    fmt::Debug,
+    io::{self, Write},
+    num::{NonZeroU16, NonZeroU32},
+};
 
 #[derive(Debug)]
 pub(crate) struct PeepholeDotFmt<'a>(pub(crate) &'a IntegerInterner);

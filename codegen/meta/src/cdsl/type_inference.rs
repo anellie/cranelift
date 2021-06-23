@@ -1,8 +1,12 @@
-use crate::cdsl::ast::{Def, DefIndex, DefPool, Var, VarIndex, VarPool};
-use crate::cdsl::typevar::{DerivedFunc, TypeSet, TypeVar};
+use crate::cdsl::{
+    ast::{Def, DefIndex, DefPool, Var, VarIndex, VarPool},
+    typevar::{DerivedFunc, TypeSet, TypeVar},
+};
 
-use std::collections::{HashMap, HashSet};
-use std::iter::FromIterator;
+use std::{
+    collections::{HashMap, HashSet},
+    iter::FromIterator,
+};
 
 #[derive(Debug, Hash, PartialEq, Eq)]
 pub(crate) enum Constraint {

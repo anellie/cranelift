@@ -3,10 +3,10 @@
 
 //! Core implementation of the backtracking allocator.
 
+use alloc::fmt;
+use core::default;
 use log::{debug, info, log_enabled, Level};
 use smallvec::SmallVec;
-use core::default;
-use alloc::fmt;
 
 use crate::analysis_data_flow::{add_raw_reg_vecs_for_insn, does_inst_use_def_or_mod_reg};
 use crate::analysis_main::{run_analysis, AnalysisInfo};
@@ -27,10 +27,10 @@ use crate::inst_stream::{
 use crate::sparse_set::SparseSetU;
 use crate::union_find::UnionFindEquivClasses;
 use crate::{AlgorithmWithDefaults, Function, RegAllocError, RegAllocResult, StackmapRequestInfo};
-use alloc::vec::Vec;
-use alloc::vec;
-use alloc::string::{String, ToString};
 use alloc::format;
+use alloc::string::{String, ToString};
+use alloc::vec;
+use alloc::vec::Vec;
 
 #[derive(Clone)]
 pub struct BacktrackingOptions {

@@ -2,19 +2,27 @@
 
 #![allow(dead_code)]
 
-use crate::binemit::CodeOffset;
-use crate::ir::types::{B1, B16, B32, B8, I16, I32, I8, IFLAGS};
-use crate::ir::{ExternalName, Opcode, TrapCode, Type};
-use crate::machinst::*;
-use crate::{settings, CodegenError, CodegenResult};
+use crate::{
+    binemit::CodeOffset,
+    ir::{
+        types::{B1, B16, B32, B8, I16, I32, I8, IFLAGS},
+        ExternalName, Opcode, TrapCode, Type,
+    },
+    machinst::*,
+    settings, CodegenError, CodegenResult,
+};
 
-use regalloc::{PrettyPrint, RealRegUniverse, Reg, RegClass, SpillSlot, VirtualReg, Writable};
-use regalloc::{RegUsageCollector, RegUsageMapper};
+use regalloc::{
+    PrettyPrint, RealRegUniverse, Reg, RegClass, RegUsageCollector, RegUsageMapper, SpillSlot,
+    VirtualReg, Writable,
+};
 
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{
+    boxed::Box,
+    string::{String, ToString},
+    vec::Vec,
+};
 use smallvec::{smallvec, SmallVec};
-use alloc::string::{String, ToString};
 
 mod args;
 pub use self::args::*;

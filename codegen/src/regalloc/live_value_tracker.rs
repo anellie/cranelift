@@ -4,14 +4,14 @@
 //! The sets of live values are computed on the fly as the tracker is moved from instruction to
 //! instruction, starting at the block header.
 
-use crate::dominator_tree::DominatorTree;
-use crate::entity::{EntityList, ListPool};
-use crate::fx::FxHashMap;
-use crate::ir::{Block, DataFlowGraph, ExpandedProgramPoint, Inst, Layout, Value};
-use crate::partition_slice::partition_slice;
-use crate::regalloc::affinity::Affinity;
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::liverange::LiveRange;
+use crate::{
+    dominator_tree::DominatorTree,
+    entity::{EntityList, ListPool},
+    fx::FxHashMap,
+    ir::{Block, DataFlowGraph, ExpandedProgramPoint, Inst, Layout, Value},
+    partition_slice::partition_slice,
+    regalloc::{affinity::Affinity, liveness::Liveness, liverange::LiveRange},
+};
 use alloc::vec::Vec;
 
 type ValueList = EntityList<Value>;

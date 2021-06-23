@@ -3,24 +3,32 @@
 // Some variants are not constructed, but we still want them as options in the future.
 #![allow(dead_code)]
 
-use crate::binemit::CodeOffset;
-use crate::ir::types::{
-    B1, B128, B16, B32, B64, B8, F32, F64, FFLAGS, I128, I16, I32, I64, I8, I8X16, IFLAGS, R32, R64,
+use crate::{
+    binemit::CodeOffset,
+    ir::{
+        types::{
+            B1, B128, B16, B32, B64, B8, F32, F64, FFLAGS, I128, I16, I32, I64, I8, I8X16, IFLAGS,
+            R32, R64,
+        },
+        ExternalName, MemFlags, Opcode, SourceLoc, TrapCode, Type, ValueLabel,
+    },
+    isa::{unwind::UnwindInst, CallConv},
+    machinst::*,
+    settings, CodegenError, CodegenResult,
 };
-use crate::ir::{ExternalName, MemFlags, Opcode, SourceLoc, TrapCode, Type, ValueLabel};
-use crate::isa::unwind::UnwindInst;
-use crate::isa::CallConv;
-use crate::machinst::*;
-use crate::{settings, CodegenError, CodegenResult};
 
-use regalloc::{PrettyPrint, RealRegUniverse, Reg, RegClass, SpillSlot, VirtualReg, Writable};
-use regalloc::{RegUsageCollector, RegUsageMapper};
+use regalloc::{
+    PrettyPrint, RealRegUniverse, Reg, RegClass, RegUsageCollector, RegUsageMapper, SpillSlot,
+    VirtualReg, Writable,
+};
 
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{
+    boxed::Box,
+    string::{String, ToString},
+    vec::Vec,
+};
 use core::convert::TryFrom;
 use smallvec::{smallvec, SmallVec};
-use alloc::string::{String, ToString};
 
 pub mod regs;
 pub use self::regs::*;

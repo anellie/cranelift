@@ -7,16 +7,17 @@
 //!
 //! - Floating-point immediates (FIMM instruction).
 
-use crate::ir::condcodes::{FloatCC, IntCC};
-use crate::ir::types::*;
-use crate::ir::Inst as IRInst;
-use crate::ir::{Opcode, Type};
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::CodegenResult;
+use crate::{
+    ir::{
+        condcodes::{FloatCC, IntCC},
+        types::*,
+        Inst as IRInst, Opcode, Type,
+    },
+    machinst::{lower::*, *},
+    CodegenResult,
+};
 
-use crate::isa::aarch64::inst::*;
-use crate::isa::aarch64::AArch64Backend;
+use crate::isa::aarch64::{inst::*, AArch64Backend};
 
 use super::lower_inst;
 

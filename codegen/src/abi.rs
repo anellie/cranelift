@@ -4,8 +4,7 @@
 //! `TargetIsa::legalize_signature()` method.
 
 use crate::ir::{AbiParam, ArgumentExtension, ArgumentLoc, Type};
-use alloc::borrow::Cow;
-use alloc::vec::Vec;
+use alloc::{borrow::Cow, vec::Vec};
 use core::cmp::Ordering;
 
 /// Legalization action to perform on a single argument or return value when converting a
@@ -223,8 +222,7 @@ pub fn legalize_abi_value(have: Type, arg: &AbiParam) -> ValueConversion {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ir::types;
-    use crate::ir::AbiParam;
+    use crate::ir::{types, AbiParam};
 
     #[test]
     fn legalize() {

@@ -9,8 +9,7 @@
 //! Some of these predicates may be unused in certain ISA configurations, so we suppress the
 //! dead code warning.
 
-use crate::ir;
-use crate::ir::ConstantData;
+use crate::{ir, ir::ConstantData};
 
 /// Check that an integer value is zero.
 #[allow(dead_code)]

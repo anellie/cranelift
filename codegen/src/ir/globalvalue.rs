@@ -1,9 +1,13 @@
 //! Global values.
 
-use crate::ir::immediates::{Imm64, Offset32};
-use crate::ir::{ExternalName, GlobalValue, Type};
-use crate::isa::TargetIsa;
-use crate::machinst::RelocDistance;
+use crate::{
+    ir::{
+        immediates::{Imm64, Offset32},
+        ExternalName, GlobalValue, Type,
+    },
+    isa::TargetIsa,
+    machinst::RelocDistance,
+};
 use core::fmt;
 
 #[cfg(feature = "enable-serde")]

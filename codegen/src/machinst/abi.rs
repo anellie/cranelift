@@ -1,10 +1,12 @@
 //! ABI definitions.
 
-use crate::binemit::StackMap;
-use crate::ir::{Signature, StackSlot};
-use crate::isa::CallConv;
-use crate::machinst::*;
-use crate::settings;
+use crate::{
+    binemit::StackMap,
+    ir::{Signature, StackSlot},
+    isa::CallConv,
+    machinst::*,
+    settings,
+};
 use regalloc::{Reg, Set, SpillSlot, Writable};
 use smallvec::SmallVec;
 

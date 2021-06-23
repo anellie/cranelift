@@ -13,10 +13,7 @@ use serde::{
     ser::SerializeTupleStruct,
     Deserialize, Serialize, Serializer,
 };
-use std::collections::BTreeMap;
-use std::fmt;
-use std::hash::Hash;
-use std::marker::PhantomData;
+use std::{collections::BTreeMap, fmt, hash::Hash, marker::PhantomData};
 
 const SERIALIZATION_VERSION: u32 = 1;
 

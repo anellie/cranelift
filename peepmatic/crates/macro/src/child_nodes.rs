@@ -1,6 +1,5 @@
 use quote::quote;
-use syn::DeriveInput;
-use syn::{parse_quote, GenericParam, Generics, Result};
+use syn::{parse_quote, DeriveInput, GenericParam, Generics, Result};
 
 pub fn derive_child_nodes(input: &DeriveInput) -> Result<impl quote::ToTokens> {
     let children = get_child_nodes(&input.data)?;

@@ -1,8 +1,10 @@
-use cranelift_codegen::binemit::{NullStackMapSink, NullTrapSink};
-use cranelift_codegen::ir::*;
-use cranelift_codegen::isa::CallConv;
-use cranelift_codegen::settings::{self, Configurable};
-use cranelift_codegen::{ir::types::I16, Context};
+use cranelift_codegen::{
+    binemit::{NullStackMapSink, NullTrapSink},
+    ir::{types::I16, *},
+    isa::CallConv,
+    settings::{self, Configurable},
+    Context,
+};
 use cranelift_entity::EntityRef;
 use cranelift_frontend::*;
 use cranelift_jit::*;

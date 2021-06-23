@@ -44,31 +44,32 @@
 //! The instruction predicate is also used to distinguish between polymorphic instructions with
 //! different types for secondary type variables.
 
-use std::collections::btree_map;
-use std::collections::{BTreeMap, HashMap, HashSet};
-use std::convert::TryFrom;
-use std::iter::FromIterator;
+use std::{
+    collections::{btree_map, BTreeMap, HashMap, HashSet},
+    convert::TryFrom,
+    iter::FromIterator,
+};
 
 use cranelift_codegen_shared::constant_hash::generate_table;
 use cranelift_entity::EntityRef;
 
-use crate::error;
-use crate::srcgen::Formatter;
+use crate::{error, srcgen::Formatter};
 
-use crate::cdsl::cpu_modes::CpuMode;
-use crate::cdsl::encodings::Encoding;
-use crate::cdsl::instructions::{Instruction, InstructionPredicate, InstructionPredicateNumber};
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::recipes::{EncodingRecipe, OperandConstraint, Recipes, Register};
-use crate::cdsl::regs::IsaRegs;
-use crate::cdsl::settings::SettingPredicateNumber;
-use crate::cdsl::types::ValueType;
-use crate::cdsl::xform::TransformGroupIndex;
+use crate::cdsl::{
+    cpu_modes::CpuMode,
+    encodings::Encoding,
+    instructions::{Instruction, InstructionPredicate, InstructionPredicateNumber},
+    isa::TargetIsa,
+    recipes::{EncodingRecipe, OperandConstraint, Recipes, Register},
+    regs::IsaRegs,
+    settings::SettingPredicateNumber,
+    types::ValueType,
+    xform::TransformGroupIndex,
+};
 
 use crate::shared::Definitions as SharedDefinitions;
 
-use crate::default_map::MapWithDefault;
-use crate::unique_table::UniqueSeqTable;
+use crate::{default_map::MapWithDefault, unique_table::UniqueSeqTable};
 
 /// Emit code for matching an instruction predicate against an `InstructionData` reference called
 /// `inst`.

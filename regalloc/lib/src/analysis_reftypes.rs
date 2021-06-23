@@ -2,12 +2,12 @@
 
 use crate::data_structures::*;
 use crate::sparse_set::{SparseSet, SparseSetU};
-use alloc::{fmt};
+use alloc::fmt;
 
+use alloc::vec::Vec;
+use core::hash::Hash;
 use log::debug;
 use smallvec::SmallVec;
-use core::hash::Hash;
-use alloc::vec::Vec;
 
 /// Parameters to configure a reftype analysis.
 pub(crate) trait ReftypeAnalysis {

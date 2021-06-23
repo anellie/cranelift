@@ -1,10 +1,10 @@
 //! Performs dataflow and liveness analysis, including live range construction.
 
-use log::{debug, info, log_enabled, Level};
-use smallvec::{smallvec, SmallVec};
-use core::cmp::min;
 use alloc::fmt;
 use alloc::vec::Vec;
+use core::cmp::min;
+use log::{debug, info, log_enabled, Level};
+use smallvec::{smallvec, SmallVec};
 
 use crate::data_structures::*;
 use crate::sparse_set::SparseSet;

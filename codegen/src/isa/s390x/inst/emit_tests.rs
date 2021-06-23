@@ -1,8 +1,11 @@
-use crate::ir::MemFlags;
-use crate::isa::s390x::inst::*;
-use crate::isa::s390x::settings as s390x_settings;
-use crate::isa::test_utils;
-use crate::settings;
+use crate::{
+    ir::MemFlags,
+    isa::{
+        s390x::{inst::*, settings as s390x_settings},
+        test_utils,
+    },
+    settings,
+};
 use alloc::vec::Vec;
 
 #[test]

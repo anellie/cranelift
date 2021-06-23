@@ -3,10 +3,12 @@
 use alloc::vec::Vec;
 use core::fmt::{Display, Formatter, Result, Write};
 
-use crate::entity::SecondaryMap;
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir::Function;
-use crate::write::{FuncWriter, PlainWriter};
+use crate::{
+    entity::SecondaryMap,
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir::Function,
+    write::{FuncWriter, PlainWriter},
+};
 
 /// A utility for pretty-printing the CFG of a `Function`.
 pub struct CFGPrinter<'a> {

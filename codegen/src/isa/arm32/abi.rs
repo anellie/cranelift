@@ -1,14 +1,9 @@
 //! Implementation of the 32-bit ARM ABI.
 
-use crate::ir;
-use crate::ir::types::*;
-use crate::isa;
-use crate::isa::arm32::inst::*;
-use crate::machinst::*;
-use crate::settings;
-use crate::{CodegenError, CodegenResult};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    ir, ir::types::*, isa, isa::arm32::inst::*, machinst::*, settings, CodegenError, CodegenResult,
+};
+use alloc::{boxed::Box, vec::Vec};
 use regalloc::{RealReg, Reg, RegClass, Set, Writable};
 use smallvec::{smallvec, SmallVec};
 

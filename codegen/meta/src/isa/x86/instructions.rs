@@ -1,15 +1,16 @@
 #![allow(non_snake_case)]
 
-use crate::cdsl::instructions::{
-    AllInstructions, InstructionBuilder as Inst, InstructionGroup, InstructionGroupBuilder,
+use crate::{
+    cdsl::{
+        instructions::{
+            AllInstructions, InstructionBuilder as Inst, InstructionGroup, InstructionGroupBuilder,
+        },
+        operands::Operand,
+        types::ValueType,
+        typevar::{Interval, TypeSetBuilder, TypeVar},
+    },
+    shared::{entities::EntityRefs, formats::Formats, immediates::Immediates, types},
 };
-use crate::cdsl::operands::Operand;
-use crate::cdsl::types::ValueType;
-use crate::cdsl::typevar::{Interval, TypeSetBuilder, TypeVar};
-use crate::shared::entities::EntityRefs;
-use crate::shared::formats::Formats;
-use crate::shared::immediates::Immediates;
-use crate::shared::types;
 
 #[allow(clippy::many_single_char_names)]
 pub(crate) fn define(

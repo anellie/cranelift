@@ -23,11 +23,12 @@
 //! Here `Block1` and `Block2` would each have a single predecessor denoted as `(Block0, brz)`
 //! and `(Block0, jmp Block2)` respectively.
 
-use crate::bforest;
-use crate::entity::SecondaryMap;
-use crate::ir::instructions::BranchInfo;
-use crate::ir::{Block, Function, Inst};
-use crate::timing;
+use crate::{
+    bforest,
+    entity::SecondaryMap,
+    ir::{instructions::BranchInfo, Block, Function, Inst},
+    timing,
+};
 use core::mem;
 
 /// A basic block denoted by its enclosing Block and last instruction.
@@ -212,8 +213,10 @@ pub type SuccIter<'a> = bforest::SetIter<'a, Block>;
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::ir::{types, Function, InstBuilder};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        ir::{types, Function, InstBuilder},
+    };
     use alloc::vec::Vec;
 
     #[test]

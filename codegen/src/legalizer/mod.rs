@@ -15,11 +15,16 @@
 
 #[cfg(any(feature = "x86", feature = "riscv"))]
 use crate::bitset::BitSet;
-use crate::cursor::{Cursor, FuncCursor};
-use crate::flowgraph::ControlFlowGraph;
-use crate::ir::types::{I32, I64};
-use crate::ir::{self, InstBuilder, MemFlags};
-use crate::isa::TargetIsa;
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    flowgraph::ControlFlowGraph,
+    ir::{
+        self,
+        types::{I32, I64},
+        InstBuilder, MemFlags,
+    },
+    isa::TargetIsa,
+};
 
 #[cfg(any(feature = "x86", feature = "riscv"))]
 use crate::predicates;
@@ -39,10 +44,8 @@ mod table;
 
 #[cfg(any(feature = "x86", feature = "riscv"))]
 use self::call::expand_call;
-use self::globalvalue::expand_global_value;
-use self::heap::expand_heap_addr;
 pub(crate) use self::libcall::expand_as_libcall;
-use self::table::expand_table_addr;
+use self::{globalvalue::expand_global_value, heap::expand_heap_addr, table::expand_table_addr};
 
 enum LegalizeInstResult {
     Done,

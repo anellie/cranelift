@@ -4,8 +4,10 @@
 //! are different rules for comparing integers and floating point numbers, so they use different
 //! condition codes.
 
-use core::fmt::{self, Display, Formatter};
-use core::str::FromStr;
+use core::{
+    fmt::{self, Display, Formatter},
+    str::FromStr,
+};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};

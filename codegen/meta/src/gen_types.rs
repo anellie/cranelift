@@ -7,9 +7,7 @@
 //! This ensures that the metaprogram and the generated program see the same
 //! type numbering.
 
-use crate::cdsl::types as cdsl_types;
-use crate::error;
-use crate::srcgen;
+use crate::{cdsl::types as cdsl_types, error, srcgen};
 
 /// Emit a constant definition of a single value type.
 fn emit_type(ty: &cdsl_types::ValueType, fmt: &mut srcgen::Formatter) -> Result<(), error::Error> {

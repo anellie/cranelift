@@ -7,8 +7,7 @@
 //! This module provides a `PackedOption<T>` for types that have a reserved value that can be used
 //! to represent `None`.
 
-use core::fmt;
-use core::mem;
+use core::{fmt, mem};
 
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};

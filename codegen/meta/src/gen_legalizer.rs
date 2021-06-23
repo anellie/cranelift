@@ -1,18 +1,19 @@
 //! Generate transformations to legalize instructions without encodings.
-use crate::cdsl::ast::{Def, DefPool, Expr, VarPool};
-use crate::cdsl::isa::TargetIsa;
-use crate::cdsl::operands::Operand;
-use crate::cdsl::type_inference::Constraint;
-use crate::cdsl::typevar::{TypeSet, TypeVar};
-use crate::cdsl::xform::{Transform, TransformGroup, TransformGroups};
+use crate::cdsl::{
+    ast::{Def, DefPool, Expr, VarPool},
+    isa::TargetIsa,
+    operands::Operand,
+    type_inference::Constraint,
+    typevar::{TypeSet, TypeVar},
+    xform::{Transform, TransformGroup, TransformGroups},
+};
 
-use crate::error;
-use crate::gen_inst::gen_typesets_table;
-use crate::srcgen::Formatter;
-use crate::unique_table::UniqueTable;
+use crate::{error, gen_inst::gen_typesets_table, srcgen::Formatter, unique_table::UniqueTable};
 
-use std::collections::{HashMap, HashSet};
-use std::iter::FromIterator;
+use std::{
+    collections::{HashMap, HashSet},
+    iter::FromIterator,
+};
 
 /// Given a `Def` node, emit code that extracts all the instruction fields from
 /// `pos.func.dfg[iref]`.

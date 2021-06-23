@@ -1,13 +1,14 @@
 //! Verify conventional SSA form.
 
-use crate::dbg::DisplayList;
-use crate::dominator_tree::{DominatorTree, DominatorTreePreorder};
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir::{ExpandedProgramPoint, Function};
-use crate::regalloc::liveness::Liveness;
-use crate::regalloc::virtregs::VirtRegs;
-use crate::timing;
-use crate::verifier::{VerifierErrors, VerifierStepResult};
+use crate::{
+    dbg::DisplayList,
+    dominator_tree::{DominatorTree, DominatorTreePreorder},
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir::{ExpandedProgramPoint, Function},
+    regalloc::{liveness::Liveness, virtregs::VirtRegs},
+    timing,
+    verifier::{VerifierErrors, VerifierStepResult},
+};
 
 /// Verify conventional SSA form for `func`.
 ///

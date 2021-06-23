@@ -3,14 +3,20 @@
 //! The order of basic blocks in a function and the order of instructions in a block is
 //! determined by the `Layout` data structure defined in this module.
 
-use crate::entity::SecondaryMap;
-use crate::ir::dfg::DataFlowGraph;
-use crate::ir::progpoint::{ExpandedProgramPoint, ProgramOrder};
-use crate::ir::{Block, Inst};
-use crate::packed_option::PackedOption;
-use crate::timing;
-use core::cmp;
-use core::iter::{IntoIterator, Iterator};
+use crate::{
+    entity::SecondaryMap,
+    ir::{
+        dfg::DataFlowGraph,
+        progpoint::{ExpandedProgramPoint, ProgramOrder},
+        Block, Inst,
+    },
+    packed_option::PackedOption,
+    timing,
+};
+use core::{
+    cmp,
+    iter::{IntoIterator, Iterator},
+};
 use log::debug;
 
 /// The `Layout` struct determines the layout of blocks and instructions in a function. It does not
@@ -794,12 +800,12 @@ impl<'f> DoubleEndedIterator for Insts<'f> {
 /// ```
 #[cfg(feature = "enable-serde")]
 mod serde {
-    use ::serde::de::{Deserializer, Error, SeqAccess, Visitor};
-    use ::serde::ser::{SerializeSeq, Serializer};
-    use ::serde::{Deserialize, Serialize};
-    use core::convert::TryFrom;
-    use core::fmt;
-    use core::marker::PhantomData;
+    use ::serde::{
+        de::{Deserializer, Error, SeqAccess, Visitor},
+        ser::{SerializeSeq, Serializer},
+        Deserialize, Serialize,
+    };
+    use core::{convert::TryFrom, fmt, marker::PhantomData};
 
     use super::*;
 
@@ -875,9 +881,11 @@ mod serde {
 #[cfg(test)]
 mod tests {
     use super::Layout;
-    use crate::cursor::{Cursor, CursorPosition};
-    use crate::entity::EntityRef;
-    use crate::ir::{Block, Inst, ProgramOrder, SourceLoc};
+    use crate::{
+        cursor::{Cursor, CursorPosition},
+        entity::EntityRef,
+        ir::{Block, Inst, ProgramOrder, SourceLoc},
+    };
     use alloc::vec::Vec;
     use core::cmp::Ordering;
 

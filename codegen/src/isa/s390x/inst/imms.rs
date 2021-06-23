@@ -1,7 +1,7 @@
 //! S390x ISA definitions: immediate constants.
 
-use regalloc::{PrettyPrint, RealRegUniverse};
 use alloc::string::String;
+use regalloc::{PrettyPrint, RealRegUniverse};
 
 /// An unsigned 12-bit immediate.
 #[derive(Clone, Copy, Debug)]

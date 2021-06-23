@@ -5,11 +5,12 @@
 //! flexibility. However, once register allocation is done, this is no longer important, and we
 //! can switch to smaller encodings when possible.
 
-use crate::ir::instructions::InstructionData;
-use crate::ir::Function;
-use crate::isa::TargetIsa;
-use crate::regalloc::RegDiversions;
-use crate::timing;
+use crate::{
+    ir::{instructions::InstructionData, Function},
+    isa::TargetIsa,
+    regalloc::RegDiversions,
+    timing,
+};
 use log::debug;
 
 /// Pick the smallest valid encodings for instructions.

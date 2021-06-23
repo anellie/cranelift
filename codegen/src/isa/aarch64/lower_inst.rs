@@ -1,23 +1,19 @@
 //! Lower a single Cranelift instruction into vcode.
 
-use crate::binemit::CodeOffset;
-use crate::ir::condcodes::FloatCC;
-use crate::ir::types::*;
-use crate::ir::Inst as IRInst;
-use crate::ir::{InstructionData, Opcode, TrapCode};
-use crate::isa::aarch64::settings as aarch64_settings;
-use crate::machinst::lower::*;
-use crate::machinst::*;
-use crate::settings::Flags;
-use crate::{CodegenError, CodegenResult};
+use crate::{
+    binemit::CodeOffset,
+    ir::{condcodes::FloatCC, types::*, Inst as IRInst, InstructionData, Opcode, TrapCode},
+    isa::aarch64::settings as aarch64_settings,
+    machinst::{lower::*, *},
+    settings::Flags,
+    CodegenError, CodegenResult,
+};
 
-use crate::isa::aarch64::abi::*;
-use crate::isa::aarch64::inst::*;
+use crate::isa::aarch64::{abi::*, inst::*};
 
 use regalloc::Writable;
 
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use alloc::{boxed::Box, vec::Vec};
 use core::convert::TryFrom;
 
 use super::lower::*;

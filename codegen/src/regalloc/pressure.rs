@@ -36,11 +36,11 @@
 // Remove once we're using the pressure tracker.
 #![allow(dead_code)]
 
-use crate::isa::registers::{RegClass, RegClassMask, RegInfo};
-use crate::regalloc::RegisterSet;
-use core::cmp::min;
-use core::fmt;
-use core::iter::ExactSizeIterator;
+use crate::{
+    isa::registers::{RegClass, RegClassMask, RegInfo},
+    regalloc::RegisterSet,
+};
+use core::{cmp::min, fmt, iter::ExactSizeIterator};
 use cranelift_codegen_shared::constants::MAX_TRACKED_TOP_RCS;
 
 /// Information per top-level register class.
@@ -274,9 +274,13 @@ impl fmt::Display for Pressure {
 #[cfg(feature = "arm32")]
 mod tests {
     use super::Pressure;
-    use crate::isa::registers::{RegBank, RegClassData};
-    use crate::isa::{RegClass, RegInfo, RegUnit};
-    use crate::regalloc::RegisterSet;
+    use crate::{
+        isa::{
+            registers::{RegBank, RegClassData},
+            RegClass, RegInfo, RegUnit,
+        },
+        regalloc::RegisterSet,
+    };
     use core::borrow::Borrow;
 
     // Arm32 `TargetIsa` is now `TargetIsaAdapter`, which does not hold any info

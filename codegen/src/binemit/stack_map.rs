@@ -1,6 +1,4 @@
-use crate::bitset::BitSet;
-use crate::ir;
-use crate::isa::TargetIsa;
+use crate::{bitset::BitSet, ir, isa::TargetIsa};
 use alloc::vec::Vec;
 
 type Num = u32;

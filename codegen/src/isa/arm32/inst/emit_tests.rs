@@ -1,6 +1,7 @@
-use crate::isa::arm32::inst::*;
-use crate::isa::test_utils;
-use crate::settings;
+use crate::{
+    isa::{arm32::inst::*, test_utils},
+    settings,
+};
 
 use alloc::vec::Vec;
 

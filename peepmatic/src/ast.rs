@@ -25,9 +25,11 @@ use peepmatic_runtime::{
     r#type::{BitWidth, Type},
     unquote::UnquoteOperator,
 };
-use std::cell::Cell;
-use std::hash::{Hash, Hasher};
-use std::marker::PhantomData;
+use std::{
+    cell::Cell,
+    hash::{Hash, Hasher},
+    marker::PhantomData,
+};
 use wast::Id;
 
 /// A reference to any AST node.

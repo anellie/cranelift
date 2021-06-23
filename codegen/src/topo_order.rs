@@ -1,8 +1,10 @@
 //! Topological order of blocks, according to the dominator tree.
 
-use crate::dominator_tree::DominatorTree;
-use crate::entity::EntitySet;
-use crate::ir::{Block, Layout};
+use crate::{
+    dominator_tree::DominatorTree,
+    entity::EntitySet,
+    ir::{Block, Layout},
+};
 use alloc::vec::Vec;
 
 /// Present blocks in a topological order such that all dominating blocks are guaranteed to be visited
@@ -93,10 +95,12 @@ impl TopoOrder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::dominator_tree::DominatorTree;
-    use crate::flowgraph::ControlFlowGraph;
-    use crate::ir::{Function, InstBuilder};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        dominator_tree::DominatorTree,
+        flowgraph::ControlFlowGraph,
+        ir::{Function, InstBuilder},
+    };
     use core::iter;
 
     #[test]

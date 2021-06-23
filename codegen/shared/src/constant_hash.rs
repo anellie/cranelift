@@ -10,9 +10,8 @@
 //! This module provides build meta support for lookups in these tables, as well as the shared hash
 //! function used for probing.
 
+use alloc::{vec, vec::Vec};
 use core::iter;
-use alloc::vec::Vec;
-use alloc::vec;
 
 /// A primitive hash function for matching opcodes.
 pub fn simple_hash(s: &str) -> usize {

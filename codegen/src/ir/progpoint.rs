@@ -1,10 +1,10 @@
 //! Program points.
 
-use crate::entity::EntityRef;
-use crate::ir::{Block, Inst, ValueDef};
-use core::cmp;
-use core::fmt;
-use core::u32;
+use crate::{
+    entity::EntityRef,
+    ir::{Block, Inst, ValueDef},
+};
+use core::{cmp, fmt, u32};
 
 /// A `ProgramPoint` represents a position in a function where the live range of an SSA value can
 /// begin or end. It can be either:
@@ -146,8 +146,10 @@ pub trait ProgramOrder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::entity::EntityRef;
-    use crate::ir::{Block, Inst};
+    use crate::{
+        entity::EntityRef,
+        ir::{Block, Inst},
+    };
     use alloc::string::ToString;
 
     #[test]

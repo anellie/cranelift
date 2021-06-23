@@ -1,10 +1,18 @@
-use crate::cdsl::ast::{constant, var, ExprBuilder, Literal};
-use crate::cdsl::instructions::{vector, Bindable, InstructionGroup};
-use crate::cdsl::types::{LaneType, ValueType};
-use crate::cdsl::xform::TransformGroupBuilder;
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I16, I32, I64, I8};
-use crate::shared::Definitions as SharedDefinitions;
+use crate::{
+    cdsl::{
+        ast::{constant, var, ExprBuilder, Literal},
+        instructions::{vector, Bindable, InstructionGroup},
+        types::{LaneType, ValueType},
+        xform::TransformGroupBuilder,
+    },
+    shared::{
+        types::{
+            Float::{F32, F64},
+            Int::{I16, I32, I64, I8},
+        },
+        Definitions as SharedDefinitions,
+    },
+};
 
 #[allow(clippy::many_single_char_names)]
 pub(crate) fn define(shared: &mut SharedDefinitions, x86_instructions: &InstructionGroup) {

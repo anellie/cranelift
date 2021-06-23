@@ -10,8 +10,8 @@ use crate::data_structures::{
 };
 use crate::union_find::UnionFindEquivClasses;
 use crate::Function;
-use alloc::vec::Vec;
 use alloc::vec;
+use alloc::vec::Vec;
 
 //=============================================================================
 // A spill slot allocator.  This could be implemented more simply than it is.

@@ -1,7 +1,6 @@
 //! Unwind information for System V ABI (Aarch64).
 
-use crate::isa::aarch64::inst::regs;
-use crate::isa::unwind::systemv::RegisterMappingError;
+use crate::isa::{aarch64::inst::regs, unwind::systemv::RegisterMappingError};
 use gimli::{write::CommonInformationEntry, Encoding, Format, Register};
 use regalloc::{Reg, RegClass};
 

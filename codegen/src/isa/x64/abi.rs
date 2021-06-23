@@ -1,19 +1,17 @@
 //! Implementation of the standard x64 ABI.
 
-use crate::ir::types::*;
-use crate::ir::{self, types, ExternalName, LibCall, MemFlags, Opcode, TrapCode, Type};
-use crate::isa;
-use crate::isa::{unwind::UnwindInst, x64::inst::*, CallConv};
-use crate::machinst::abi_impl::*;
-use crate::machinst::*;
-use crate::settings;
-use crate::{CodegenError, CodegenResult};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    ir::{self, types, types::*, ExternalName, LibCall, MemFlags, Opcode, TrapCode, Type},
+    isa,
+    isa::{unwind::UnwindInst, x64::inst::*, CallConv},
+    machinst::{abi_impl::*, *},
+    settings, CodegenError, CodegenResult,
+};
+use alloc::{boxed::Box, vec::Vec};
 use args::*;
+use core::convert::TryFrom;
 use regalloc::{RealReg, Reg, RegClass, Set, Writable};
 use smallvec::{smallvec, SmallVec};
-use core::convert::TryFrom;
 
 /// This is the limit for the size of argument and return-value areas on the
 /// stack. We place a reasonable limit here to avoid integer overflow issues

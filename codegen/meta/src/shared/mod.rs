@@ -8,18 +8,16 @@ pub mod legalize;
 pub mod settings;
 pub mod types;
 
-use crate::cdsl::formats::{FormatStructure, InstructionFormat};
-use crate::cdsl::instructions::{AllInstructions, InstructionGroup};
-use crate::cdsl::settings::SettingGroup;
-use crate::cdsl::xform::TransformGroups;
+use crate::cdsl::{
+    formats::{FormatStructure, InstructionFormat},
+    instructions::{AllInstructions, InstructionGroup},
+    settings::SettingGroup,
+    xform::TransformGroups,
+};
 
-use crate::shared::entities::EntityRefs;
-use crate::shared::formats::Formats;
-use crate::shared::immediates::Immediates;
+use crate::shared::{entities::EntityRefs, formats::Formats, immediates::Immediates};
 
-use std::collections::HashMap;
-use std::iter::FromIterator;
-use std::rc::Rc;
+use std::{collections::HashMap, iter::FromIterator, rc::Rc};
 
 pub(crate) struct Definitions {
     pub settings: SettingGroup,

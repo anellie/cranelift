@@ -1,8 +1,6 @@
-use core::convert::TryFrom;
-use core::mem;
-use core::ptr;
-use alloc::vec::Vec;
 use crate::mem_manage;
+use alloc::vec::Vec;
+use core::{convert::TryFrom, mem, ptr};
 
 /// Round `size` up to the nearest multiple of `page_size`.
 fn round_up_to_page_size(size: usize, page_size: usize) -> usize {

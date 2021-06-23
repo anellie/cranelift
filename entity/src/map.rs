@@ -1,13 +1,17 @@
 //! Densely numbered entity references as mapping keys.
 
-use crate::iter::{Iter, IterMut};
-use crate::keys::Keys;
-use crate::EntityRef;
+use crate::{
+    iter::{Iter, IterMut},
+    keys::Keys,
+    EntityRef,
+};
 use alloc::vec::Vec;
-use core::cmp::min;
-use core::marker::PhantomData;
-use core::ops::{Index, IndexMut};
-use core::slice;
+use core::{
+    cmp::min,
+    marker::PhantomData,
+    ops::{Index, IndexMut},
+    slice,
+};
 #[cfg(feature = "enable-serde")]
 use serde::{
     de::{Deserializer, SeqAccess, Visitor},

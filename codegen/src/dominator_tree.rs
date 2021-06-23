@@ -1,15 +1,17 @@
 //! A Dominator Tree represented as mappings of Blocks to their immediate dominator.
 
-use crate::entity::SecondaryMap;
-use crate::flowgraph::{BlockPredecessor, ControlFlowGraph};
-use crate::ir::instructions::BranchInfo;
-use crate::ir::{Block, ExpandedProgramPoint, Function, Inst, Layout, ProgramOrder, Value};
-use crate::packed_option::PackedOption;
-use crate::timing;
+use crate::{
+    entity::SecondaryMap,
+    flowgraph::{BlockPredecessor, ControlFlowGraph},
+    ir::{
+        instructions::BranchInfo, Block, ExpandedProgramPoint, Function, Inst, Layout,
+        ProgramOrder, Value,
+    },
+    packed_option::PackedOption,
+    timing,
+};
 use alloc::vec::Vec;
-use core::cmp;
-use core::cmp::Ordering;
-use core::mem;
+use core::{cmp, cmp::Ordering, mem};
 
 /// RPO numbers are not first assigned in a contiguous way but as multiples of STRIDE, to leave
 /// room for modifications of the dominator tree.
@@ -624,10 +626,11 @@ impl DominatorTreePreorder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cursor::{Cursor, FuncCursor};
-    use crate::flowgraph::ControlFlowGraph;
-    use crate::ir::types::*;
-    use crate::ir::{Function, InstBuilder, TrapCode};
+    use crate::{
+        cursor::{Cursor, FuncCursor},
+        flowgraph::ControlFlowGraph,
+        ir::{types::*, Function, InstBuilder, TrapCode},
+    };
 
     #[test]
     fn empty() {

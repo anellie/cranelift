@@ -1,7 +1,6 @@
 //! Parts of instructions.
 
-use crate::cc::ConditionCode;
-use crate::r#type::BitWidth;
+use crate::{cc::ConditionCode, r#type::BitWidth};
 use std::fmt::Debug;
 
 /// A constant value.

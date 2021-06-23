@@ -1,18 +1,23 @@
 //! Instruction operand sub-components (aka "parts"): definitions and printing.
 
-use super::regs::{self, show_ireg_sized};
-use super::EmitState;
-use crate::ir::condcodes::{FloatCC, IntCC};
-use crate::ir::{MemFlags, Type};
-use crate::isa::x64::inst::Inst;
-use crate::machinst::*;
+use super::{
+    regs::{self, show_ireg_sized},
+    EmitState,
+};
+use crate::{
+    ir::{
+        condcodes::{FloatCC, IntCC},
+        MemFlags, Type,
+    },
+    isa::x64::inst::Inst,
+    machinst::*,
+};
+use alloc::{fmt, string::String};
 use regalloc::{
     PrettyPrint, PrettyPrintSized, RealRegUniverse, Reg, RegClass, RegUsageCollector,
     RegUsageMapper, Writable,
 };
 use smallvec::{smallvec, SmallVec};
-use alloc::fmt;
-use alloc::string::String;
 
 /// A possible addressing mode (amode) that can be used in instructions.
 /// These denote a 64-bit value only.

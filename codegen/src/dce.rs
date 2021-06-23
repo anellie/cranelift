@@ -3,12 +3,14 @@
 //! Dead code here means instructions that have no side effects and have no
 //! result values used by other instructions.
 
-use crate::cursor::{Cursor, FuncCursor};
-use crate::dominator_tree::DominatorTree;
-use crate::entity::EntityRef;
-use crate::inst_predicates::{any_inst_results_used, has_side_effect};
-use crate::ir::Function;
-use crate::timing;
+use crate::{
+    cursor::{Cursor, FuncCursor},
+    dominator_tree::DominatorTree,
+    entity::EntityRef,
+    inst_predicates::{any_inst_results_used, has_side_effect},
+    ir::Function,
+    timing,
+};
 
 /// Perform DCE on `func`.
 pub fn do_dce(func: &mut Function, domtree: &mut DominatorTree) {

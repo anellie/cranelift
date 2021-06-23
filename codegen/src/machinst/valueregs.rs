@@ -1,8 +1,8 @@
 //! Data structure for tracking the (possibly multiple) registers that hold one
 //! SSA `Value`.
 
-use regalloc::{RealReg, Reg, VirtualReg, Writable};
 use alloc::fmt::Debug;
+use regalloc::{RealReg, Reg, VirtualReg, Writable};
 
 #[cfg(feature = "arm32")]
 const VALUE_REGS_PARTS: usize = 4;

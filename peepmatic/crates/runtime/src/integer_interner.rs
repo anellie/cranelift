@@ -5,13 +5,17 @@
 //! few compared to the full range of `u64`) integers we are matching against
 //! here and then reference them by `IntegerId`.
 
-use serde::de::{Deserializer, SeqAccess, Visitor};
-use serde::ser::{SerializeSeq, Serializer};
-use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
-use std::fmt;
-use std::marker::PhantomData;
-use std::num::{NonZeroU16, NonZeroU32};
+use serde::{
+    de::{Deserializer, SeqAccess, Visitor},
+    ser::{SerializeSeq, Serializer},
+    Deserialize, Serialize,
+};
+use std::{
+    collections::BTreeMap,
+    fmt,
+    marker::PhantomData,
+    num::{NonZeroU16, NonZeroU32},
+};
 
 /// An identifier for an interned integer.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]

@@ -1,9 +1,13 @@
 use std::collections::HashMap;
 
-use crate::cdsl::instructions::InstructionPredicate;
-use crate::cdsl::recipes::{EncodingRecipeBuilder, EncodingRecipeNumber, Recipes, Stack};
-use crate::cdsl::regs::IsaRegs;
-use crate::shared::Definitions as SharedDefinitions;
+use crate::{
+    cdsl::{
+        instructions::InstructionPredicate,
+        recipes::{EncodingRecipeBuilder, EncodingRecipeNumber, Recipes, Stack},
+        regs::IsaRegs,
+    },
+    shared::Definitions as SharedDefinitions,
+};
 
 /// An helper to create recipes and use them when defining the RISCV encodings.
 pub(crate) struct RecipeGroup {

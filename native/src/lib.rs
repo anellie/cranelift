@@ -158,8 +158,7 @@ pub fn builder_with_options(
 #[cfg(test)]
 mod tests {
     use super::builder;
-    use cranelift_codegen::isa::CallConv;
-    use cranelift_codegen::settings;
+    use cranelift_codegen::{isa::CallConv, settings};
 
     #[test]
     fn test() {

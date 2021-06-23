@@ -3,15 +3,17 @@ use std::rc::Rc;
 
 use cranelift_codegen_shared::isa::x86::EncodingBits;
 
-use crate::cdsl::ast::Literal;
-use crate::cdsl::formats::InstructionFormat;
-use crate::cdsl::instructions::InstructionPredicate;
-use crate::cdsl::recipes::{
-    EncodingRecipe, EncodingRecipeBuilder, OperandConstraint, Register, Stack,
+use crate::{
+    cdsl::{
+        ast::Literal,
+        formats::InstructionFormat,
+        instructions::InstructionPredicate,
+        recipes::{EncodingRecipe, EncodingRecipeBuilder, OperandConstraint, Register, Stack},
+        regs::IsaRegs,
+        settings::SettingGroup,
+    },
+    shared::Definitions as SharedDefinitions,
 };
-use crate::cdsl::regs::IsaRegs;
-use crate::cdsl::settings::SettingGroup;
-use crate::shared::Definitions as SharedDefinitions;
 
 use crate::isa::x86::opcodes;
 

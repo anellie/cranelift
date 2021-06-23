@@ -3,19 +3,27 @@
 use cranelift_codegen_shared::condcodes::IntCC;
 use std::collections::HashMap;
 
-use crate::cdsl::encodings::{Encoding, EncodingBuilder};
-use crate::cdsl::instructions::{
-    vector, Bindable, Immediate, InstSpec, Instruction, InstructionGroup, InstructionPredicate,
-    InstructionPredicateNode, InstructionPredicateRegistry,
+use crate::{
+    cdsl::{
+        encodings::{Encoding, EncodingBuilder},
+        instructions::{
+            vector, Bindable, Immediate, InstSpec, Instruction, InstructionGroup,
+            InstructionPredicate, InstructionPredicateNode, InstructionPredicateRegistry,
+        },
+        recipes::{EncodingRecipe, EncodingRecipeNumber, Recipes},
+        settings::{SettingGroup, SettingPredicateNumber},
+        types::{LaneType, ValueType},
+    },
+    shared::{
+        types::{
+            Bool::{B1, B16, B32, B64, B8},
+            Float::{F32, F64},
+            Int::{I16, I32, I64, I8},
+            Reference::{R32, R64},
+        },
+        Definitions as SharedDefinitions,
+    },
 };
-use crate::cdsl::recipes::{EncodingRecipe, EncodingRecipeNumber, Recipes};
-use crate::cdsl::settings::{SettingGroup, SettingPredicateNumber};
-use crate::cdsl::types::{LaneType, ValueType};
-use crate::shared::types::Bool::{B1, B16, B32, B64, B8};
-use crate::shared::types::Float::{F32, F64};
-use crate::shared::types::Int::{I16, I32, I64, I8};
-use crate::shared::types::Reference::{R32, R64};
-use crate::shared::Definitions as SharedDefinitions;
 
 use crate::isa::x86::opcodes::*;
 

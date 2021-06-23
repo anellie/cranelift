@@ -3,18 +3,18 @@
 //! The `write` module provides the `write_function` function which converts an IR `Function` to an
 //! equivalent textual form. This textual form can be read back by the `cranelift-reader` crate.
 
-use crate::entity::SecondaryMap;
-use crate::ir::entities::AnyEntity;
-use crate::ir::{
-    Block, DataFlowGraph, DisplayFunctionAnnotations, Function, Inst, SigRef, Type, Value,
-    ValueDef, ValueLoc,
+use crate::{
+    entity::SecondaryMap,
+    ir::{
+        entities::AnyEntity, Block, DataFlowGraph, DisplayFunctionAnnotations, Function, Inst,
+        SigRef, Type, Value, ValueDef, ValueLoc,
+    },
+    isa::{RegInfo, TargetIsa},
+    packed_option::ReservedValue,
+    value_label::{LabelValueLoc, ValueLabelsRanges},
+    HashSet,
 };
-use crate::isa::{RegInfo, TargetIsa};
-use crate::packed_option::ReservedValue;
-use crate::value_label::{LabelValueLoc, ValueLabelsRanges};
-use crate::HashSet;
-use alloc::string::String;
-use alloc::vec::Vec;
+use alloc::{string::String, vec::Vec};
 use core::fmt::{self, Write};
 
 /// A `FuncWriter` used to decorate functions during printing.
@@ -769,9 +769,10 @@ impl<'a> fmt::Display for DisplayValuesWithDelimiter<'a> {
 
 #[cfg(test)]
 mod tests {
-    use crate::cursor::{Cursor, CursorPosition, FuncCursor};
-    use crate::ir::types;
-    use crate::ir::{ExternalName, Function, InstBuilder, StackSlotData, StackSlotKind};
+    use crate::{
+        cursor::{Cursor, CursorPosition, FuncCursor},
+        ir::{types, ExternalName, Function, InstBuilder, StackSlotData, StackSlotKind},
+    };
     use alloc::string::ToString;
 
     #[test]

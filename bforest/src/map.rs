@@ -427,8 +427,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    use super::super::NodeData;
-    use super::*;
+    use super::{super::NodeData, *};
     use alloc::vec::Vec;
     use core::mem;
 

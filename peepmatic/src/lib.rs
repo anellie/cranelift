@@ -24,12 +24,7 @@ pub use self::{
 
 use peepmatic_runtime::PeepholeOptimizations;
 use peepmatic_traits::TypingRules;
-use std::convert::TryFrom;
-use std::fmt::Debug;
-use std::fs;
-use std::hash::Hash;
-use std::num::NonZeroU32;
-use std::path::Path;
+use std::{convert::TryFrom, fmt::Debug, fs, hash::Hash, num::NonZeroU32, path::Path};
 
 /// Compile the given DSL file into a compact peephole optimizations automaton!
 ///

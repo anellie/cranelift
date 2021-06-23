@@ -5,12 +5,16 @@
 //!
 //! This doesn't support the soft-float ABI at the moment.
 
-use super::registers::{FPR, GPR};
-use super::settings;
-use crate::abi::{legalize_args, ArgAction, ArgAssigner, ValueConversion};
-use crate::ir::{self, AbiParam, ArgumentExtension, ArgumentLoc, ArgumentPurpose, Type};
-use crate::isa::RegClass;
-use crate::regalloc::RegisterSet;
+use super::{
+    registers::{FPR, GPR},
+    settings,
+};
+use crate::{
+    abi::{legalize_args, ArgAction, ArgAssigner, ValueConversion},
+    ir::{self, AbiParam, ArgumentExtension, ArgumentLoc, ArgumentPurpose, Type},
+    isa::RegClass,
+    regalloc::RegisterSet,
+};
 use alloc::borrow::Cow;
 use core::i32;
 use target_lexicon::Triple;

@@ -1,5 +1,7 @@
-use crate::cdsl::formats::{InstructionFormat, InstructionFormatBuilder as Builder};
-use crate::shared::{entities::EntityRefs, immediates::Immediates};
+use crate::{
+    cdsl::formats::{InstructionFormat, InstructionFormatBuilder as Builder},
+    shared::{entities::EntityRefs, immediates::Immediates},
+};
 use std::rc::Rc;
 
 pub(crate) struct Formats {

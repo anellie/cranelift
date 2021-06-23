@@ -57,22 +57,18 @@
 //!   (low address)
 //! ```
 
-use crate::ir;
-use crate::ir::condcodes::IntCC;
-use crate::ir::types;
-use crate::ir::MemFlags;
-use crate::ir::Type;
-use crate::isa;
-use crate::isa::s390x::inst::*;
-use crate::isa::unwind::UnwindInst;
-use crate::machinst::*;
-use crate::settings;
-use crate::{CodegenError, CodegenResult};
-use alloc::boxed::Box;
-use alloc::vec::Vec;
+use crate::{
+    ir,
+    ir::{condcodes::IntCC, types, MemFlags, Type},
+    isa,
+    isa::{s390x::inst::*, unwind::UnwindInst},
+    machinst::*,
+    settings, CodegenError, CodegenResult,
+};
+use alloc::{boxed::Box, vec::Vec};
+use core::convert::TryFrom;
 use regalloc::{RealReg, Reg, RegClass, Set, Writable};
 use smallvec::{smallvec, SmallVec};
-use core::convert::TryFrom;
 
 // We use a generic implementation that factors out ABI commonalities.
 

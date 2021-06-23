@@ -2,25 +2,24 @@
 
 use smallvec::SmallVec;
 
-use core::cmp::Ordering;
 use alloc::collections::VecDeque;
 use alloc::fmt;
-use core::hash::{Hash, BuildHasherDefault};
+use core::cmp::Ordering;
+use core::hash::{BuildHasherDefault, Hash};
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut, Index, IndexMut};
 use core::slice::{Iter, IterMut};
-use rustc_hash::FxHasher;
 use hashbrown::{HashMap, HashSet};
+use rustc_hash::FxHasher;
 
 use crate::{Function, RegUsageMapper};
 
+use alloc::format;
+use alloc::string::{String, ToString};
+use alloc::vec;
+use alloc::vec::Vec;
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
-use alloc::vec::Vec;
-use alloc::string::{ToString, String};
-use alloc::format;
-use alloc::vec;
-
 
 pub type FxHashMap<K, V> = HashMap<K, V, BuildHasherDefault<FxHasher>>;
 pub type FxHashSet<V> = HashSet<V, BuildHasherDefault<FxHasher>>;

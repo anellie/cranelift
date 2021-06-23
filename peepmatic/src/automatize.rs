@@ -2,8 +2,7 @@
 
 use peepmatic_automata::{Automaton, Builder};
 use peepmatic_runtime::linear;
-use std::fmt::Debug;
-use std::hash::Hash;
+use std::{fmt::Debug, hash::Hash};
 
 /// Construct an automaton from a set of linear optimizations.
 pub fn automatize<TOperator>(

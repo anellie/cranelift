@@ -1,12 +1,13 @@
-use crate::cdsl::instructions::{
-    InstSpec, Instruction, InstructionPredicate, InstructionPredicateNode,
-    InstructionPredicateNumber, InstructionPredicateRegistry, ValueTypeOrAny,
+use crate::cdsl::{
+    instructions::{
+        InstSpec, Instruction, InstructionPredicate, InstructionPredicateNode,
+        InstructionPredicateNumber, InstructionPredicateRegistry, ValueTypeOrAny,
+    },
+    recipes::{EncodingRecipeNumber, Recipes},
+    settings::SettingPredicateNumber,
+    types::ValueType,
 };
-use crate::cdsl::recipes::{EncodingRecipeNumber, Recipes};
-use crate::cdsl::settings::SettingPredicateNumber;
-use crate::cdsl::types::ValueType;
-use std::rc::Rc;
-use std::string::ToString;
+use std::{rc::Rc, string::ToString};
 
 /// Encoding for a concrete instruction.
 ///

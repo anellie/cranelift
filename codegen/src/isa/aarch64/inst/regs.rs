@@ -1,9 +1,9 @@
 //! AArch64 ISA definitions: registers.
 
-use crate::isa::aarch64::inst::OperandSize;
-use crate::isa::aarch64::inst::ScalarSize;
-use crate::isa::aarch64::inst::VectorSize;
-use crate::settings;
+use crate::{
+    isa::aarch64::inst::{OperandSize, ScalarSize, VectorSize},
+    settings,
+};
 
 use regalloc::{
     PrettyPrint, RealRegUniverse, Reg, RegClass, RegClassInfo, Writable, NUM_REG_CLASSES,

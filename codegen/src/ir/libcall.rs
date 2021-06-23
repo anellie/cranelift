@@ -1,12 +1,13 @@
 //! Naming well-known routines in the runtime library.
 
-use crate::ir::{
-    types, AbiParam, ArgumentPurpose, ExtFuncData, ExternalName, FuncRef, Function, Inst, Opcode,
-    Signature, Type,
+use crate::{
+    ir::{
+        types, AbiParam, ArgumentPurpose, ExtFuncData, ExternalName, FuncRef, Function, Inst,
+        Opcode, Signature, Type,
+    },
+    isa::{CallConv, RegUnit, TargetIsa},
 };
-use crate::isa::{CallConv, RegUnit, TargetIsa};
-use core::fmt;
-use core::str::FromStr;
+use core::{fmt, str::FromStr};
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};
 

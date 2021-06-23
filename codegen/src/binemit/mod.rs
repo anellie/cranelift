@@ -8,19 +8,23 @@ mod relaxation;
 mod shrink;
 mod stack_map;
 
-pub use self::memorysink::{
-    MemoryCodeSink, NullRelocSink, NullStackMapSink, NullTrapSink, RelocSink, StackMapSink,
-    TrapSink,
+pub use self::{
+    memorysink::{
+        MemoryCodeSink, NullRelocSink, NullStackMapSink, NullTrapSink, RelocSink, StackMapSink,
+        TrapSink,
+    },
+    relaxation::relax_branches,
+    shrink::shrink_instructions,
+    stack_map::StackMap,
 };
-pub use self::relaxation::relax_branches;
-pub use self::shrink::shrink_instructions;
-pub use self::stack_map::StackMap;
-use crate::ir::entities::Value;
-use crate::ir::{
-    ConstantOffset, ExternalName, Function, Inst, JumpTable, Opcode, SourceLoc, TrapCode,
-};
-use crate::isa::TargetIsa;
 pub use crate::regalloc::RegDiversions;
+use crate::{
+    ir::{
+        entities::Value, ConstantOffset, ExternalName, Function, Inst, JumpTable, Opcode,
+        SourceLoc, TrapCode,
+    },
+    isa::TargetIsa,
+};
 use core::fmt;
 #[cfg(feature = "enable-serde")]
 use serde::{Deserialize, Serialize};

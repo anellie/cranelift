@@ -1,8 +1,10 @@
 //! 32-bit ARM ISA: binary code emission.
 
-use crate::binemit::{Reloc, StackMap};
-use crate::ir::SourceLoc;
-use crate::isa::arm32::inst::*;
+use crate::{
+    binemit::{Reloc, StackMap},
+    ir::SourceLoc,
+    isa::arm32::inst::*,
+};
 
 use core::convert::TryFrom;
 use log::debug;

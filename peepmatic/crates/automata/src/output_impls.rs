@@ -1,6 +1,5 @@
 use crate::Output;
-use std::cmp;
-use std::hash::Hash;
+use std::{cmp, hash::Hash};
 
 impl Output for u64 {
     fn empty() -> Self {

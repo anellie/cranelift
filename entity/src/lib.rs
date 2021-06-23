@@ -142,11 +142,13 @@ mod primary;
 mod set;
 mod sparse;
 
-pub use self::boxed_slice::BoxedSlice;
-pub use self::iter::{Iter, IterMut};
-pub use self::keys::Keys;
-pub use self::list::{EntityList, ListPool};
-pub use self::map::SecondaryMap;
-pub use self::primary::PrimaryMap;
-pub use self::set::EntitySet;
-pub use self::sparse::{SparseMap, SparseMapValue, SparseSet};
+pub use self::{
+    boxed_slice::BoxedSlice,
+    iter::{Iter, IterMut},
+    keys::Keys,
+    list::{EntityList, ListPool},
+    map::SecondaryMap,
+    primary::PrimaryMap,
+    set::EntitySet,
+    sparse::{SparseMap, SparseMapValue, SparseSet},
+};

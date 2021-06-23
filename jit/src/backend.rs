@@ -1,11 +1,20 @@
 //! Defines `JITModule`.
 
 use crate::{compiled_blob::CompiledBlob, memory::Memory};
-use cranelift_codegen::isa::TargetIsa;
-use cranelift_codegen::settings::Configurable;
-use cranelift_codegen::{self, ir, settings};
+use alloc::{borrow::ToOwned, boxed::Box, format, string::String, vec::Vec};
+use core::{
+    convert::{TryFrom, TryInto},
+    mem, ptr,
+    ptr::NonNull,
+    sync::atomic::{AtomicPtr, Ordering},
+};
 use cranelift_codegen::{
+    self,
     binemit::{Addend, CodeInfo, CodeOffset, Reloc, RelocSink, StackMapSink, TrapSink},
+    ir,
+    isa::TargetIsa,
+    settings,
+    settings::Configurable,
     CodegenError,
 };
 use cranelift_entity::SecondaryMap;
@@ -14,18 +23,9 @@ use cranelift_module::{
     ModuleDeclarations, ModuleError, ModuleResult, RelocRecord,
 };
 use cranelift_native;
-use log::info;
 use hashbrown::HashMap;
-use core::convert::{TryFrom, TryInto};
-use core::{ptr, mem};
-use core::ptr::NonNull;
-use core::sync::atomic::{AtomicPtr, Ordering};
+use log::info;
 use target_lexicon::PointerWidth;
-use alloc::boxed::Box;
-use alloc::string::String;
-use alloc::vec::Vec;
-use alloc::format;
-use alloc::borrow::ToOwned;
 
 const EXECUTABLE_DATA_ALIGNMENT: u64 = 0x10;
 const WRITABLE_DATA_ALIGNMENT: u64 = 0x8;
@@ -378,8 +378,7 @@ impl JITModule {
         (compiled.ptr, compiled.size)
     }
 
-    fn record_function_for_perf(&self, _ptr: *mut u8, _size: usize, _name: &str) {
-    }
+    fn record_function_for_perf(&self, _ptr: *mut u8, _size: usize, _name: &str) {}
 
     /// Finalize all functions and data objects that are defined but not yet finalized.
     /// All symbols referenced in their bodies that are declared as needing a definition
