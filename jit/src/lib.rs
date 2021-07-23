@@ -59,15 +59,11 @@ fn mem_manage() -> MutexGuard<'static, Box<dyn MemoryManager + Send>> {
 }
 
 /// Set the memory manager. See below.
-/// Only call once.
-/// Not needed with feature std.
+/// Only call once or expect unsoundness bugs.
+/// Not needed with feature std as default allocator is used.
 #[cfg(not(feature = "std"))]
 pub fn set_manager(new_mgr: Box<dyn MemoryManager + Send>) {
-    use core::any::Any;
-
-    let mut manager = MANAGER.lock();
-    assert_eq!((**manager).type_id(), DefaultManager.type_id());
-    *manager = new_mgr
+    *MANAGER.lock() = new_mgr
 }
 
 /// Trait to be implemented by consumers, to then set their impl
